@@ -4811,3 +4811,37 @@ gem-nav-list-item:is(.selected, [aria-current="page"]) a {
   box-shadow: 2px 2px 0 #000 !important;
 }
 }
+
+/*@@ soundcloud-magique @@*/
+@-moz-document domain("soundcloud.com") {
+/* Onglets (Overview, Likes…) et menu du haut : plats, l'actif en relief */
+a.g-tabs-link, a.header__navMenuItem { border: 2px solid transparent !important; border-radius: var(--sm-r-bouton) !important; color: var(--sm-lien-menu) !important; }
+a.g-tabs-link.active, a.header__navMenuItem.selected {
+  border-color: var(--sm-bouton-bord) !important;
+  background-color: var(--sm-bouton-fond) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  color: var(--sm-titre) !important;
+}
+a.g-tabs-link.active { padding-inline: 10px !important; }
+a.g-tabs-link.active::after, a.header__navMenuItem.selected::after { display: none !important; }
+}
+
+/*@@ anime-sama-magique @@*/
+@-moz-document regexp("https?://([^/]*\\.)?anime-sama\\.[^/]+/.*") {
+a.asn-nav-link { color: var(--sm-lien-menu) !important; }
+/* Cartes des animes : en relief, penchent au survol */
+.as-carte {
+  border: 2px solid var(--sm-carte-bord) !important;
+  border-radius: var(--sm-r-carte) !important;
+  box-shadow: 0 5px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap), border-color .2s !important;
+}
+.as-carte:hover {
+  translate: 0 -5px;
+  rotate: -1.5deg;
+  border-color: var(--sm-violet-vif) !important;
+  box-shadow: 6px 9px 0 var(--sm-violet) !important;
+}
+/* Place pour l'ombre et la carte qui penche dans les rangées qui défilent */
+.scrollBarStyled:has(> .as-carte) { padding-block: 10px 14px !important; }
+}
