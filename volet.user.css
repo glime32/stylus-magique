@@ -1,0 +1,115 @@
+/* ==UserStyle==
+@name           Stylus magique · volet
+@namespace      glime32.stylus-magique
+@version        1.0.0
+@description    Le volet violet du Nouvel onglet quand tu changes de page dans un même site. Coupe ce style pour l'enlever.
+@author         glime32
+@license        MIT
+@homepageURL    https://github.com/glime32/stylus-magique
+@updateURL      https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css
+@preprocessor   default
+==/UserStyle== */
+
+@-moz-document url-prefix("http://"), url-prefix("https://") {
+
+/* Entre deux pages du même site, le navigateur garde une image de l'ancienne :
+   sept bandes violettes la recouvrent de gauche à droite, puis repartent vers
+   la droite et découvrent la nouvelle. Mêmes bandes, mêmes vitesses que le
+   volet du Nouvel onglet. Le type « volet » évite de toucher aux animations
+   que certains sites font eux-mêmes. */
+@view-transition { navigation: auto; types: volet; }
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}
+
+/* Bord droit de chaque bande à l'aller (v), bord gauche au retour (w) */
+@property --v1 { syntax: "<percentage>"; inherits: true; initial-value: -3%; }
+@property --v2 { syntax: "<percentage>"; inherits: true; initial-value: -3%; }
+@property --v3 { syntax: "<percentage>"; inherits: true; initial-value: -3%; }
+@property --v4 { syntax: "<percentage>"; inherits: true; initial-value: -3%; }
+@property --v5 { syntax: "<percentage>"; inherits: true; initial-value: -3%; }
+@property --v6 { syntax: "<percentage>"; inherits: true; initial-value: -3%; }
+@property --v7 { syntax: "<percentage>"; inherits: true; initial-value: -3%; }
+@property --w1 { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+@property --w2 { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+@property --w3 { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+@property --w4 { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+@property --w5 { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+@property --w6 { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+@property --w7 { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+
+@keyframes volet-v1 { from { --v1: -3%; } 72% { --v1: 102.5%; } 86% { --v1: 98.8%; } to { --v1: 100%; } }
+@keyframes volet-v2 { from { --v2: -3%; } 72% { --v2: 102.5%; } 86% { --v2: 98.8%; } to { --v2: 100%; } }
+@keyframes volet-v3 { from { --v3: -3%; } 72% { --v3: 102.5%; } 86% { --v3: 98.8%; } to { --v3: 100%; } }
+@keyframes volet-v4 { from { --v4: -3%; } 72% { --v4: 102.5%; } 86% { --v4: 98.8%; } to { --v4: 100%; } }
+@keyframes volet-v5 { from { --v5: -3%; } 72% { --v5: 102.5%; } 86% { --v5: 98.8%; } to { --v5: 100%; } }
+@keyframes volet-v6 { from { --v6: -3%; } 72% { --v6: 102.5%; } 86% { --v6: 98.8%; } to { --v6: 100%; } }
+@keyframes volet-v7 { from { --v7: -3%; } 72% { --v7: 102.5%; } 86% { --v7: 98.8%; } to { --v7: 100%; } }
+@keyframes volet-w1 { from { --w1: 0%; } to { --w1: 104%; } }
+@keyframes volet-w2 { from { --w2: 0%; } to { --w2: 104%; } }
+@keyframes volet-w3 { from { --w3: 0%; } to { --w3: 104%; } }
+@keyframes volet-w4 { from { --w4: 0%; } to { --w4: 104%; } }
+@keyframes volet-w5 { from { --w5: 0%; } to { --w5: 104%; } }
+@keyframes volet-w6 { from { --w6: 0%; } to { --w6: 104%; } }
+@keyframes volet-w7 { from { --w7: 0%; } to { --w7: 104%; } }
+
+/* Les bandes (hauteurs 13, 21, 8, 17, 11, 19, 11) sont peintes sous les deux
+   images ; chaque image est découpée en peigne au ras des bandes. */
+html:active-view-transition-type(volet)::view-transition-image-pair(root) {
+  --bande: #610089;
+  --bord: #D980FF;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 3px, rgb(197 249 252 / .07) 3px 4px),
+    linear-gradient(90deg, transparent calc(var(--w1) - 6px), var(--bord) 0 var(--w1), var(--bande) 0 var(--v1), var(--bord) 0 calc(var(--v1) + 6px), transparent 0) 0 0 / 100% calc(13vh + 1px) no-repeat,
+    linear-gradient(90deg, transparent calc(var(--w2) - 6px), var(--bord) 0 var(--w2), var(--bande) 0 var(--v2), var(--bord) 0 calc(var(--v2) + 6px), transparent 0) 0 13vh / 100% calc(21vh + 1px) no-repeat,
+    linear-gradient(90deg, transparent calc(var(--w3) - 6px), var(--bord) 0 var(--w3), var(--bande) 0 var(--v3), var(--bord) 0 calc(var(--v3) + 6px), transparent 0) 0 34vh / 100% calc(8vh + 1px) no-repeat,
+    linear-gradient(90deg, transparent calc(var(--w4) - 6px), var(--bord) 0 var(--w4), var(--bande) 0 var(--v4), var(--bord) 0 calc(var(--v4) + 6px), transparent 0) 0 42vh / 100% calc(17vh + 1px) no-repeat,
+    linear-gradient(90deg, transparent calc(var(--w5) - 6px), var(--bord) 0 var(--w5), var(--bande) 0 var(--v5), var(--bord) 0 calc(var(--v5) + 6px), transparent 0) 0 59vh / 100% calc(11vh + 1px) no-repeat,
+    linear-gradient(90deg, transparent calc(var(--w6) - 6px), var(--bord) 0 var(--w6), var(--bande) 0 var(--v6), var(--bord) 0 calc(var(--v6) + 6px), transparent 0) 0 70vh / 100% calc(19vh + 1px) no-repeat,
+    linear-gradient(90deg, transparent calc(var(--w7) - 6px), var(--bord) 0 var(--w7), var(--bande) 0 var(--v7), var(--bord) 0 calc(var(--v7) + 6px), transparent 0) 0 89vh / 100% 11vh no-repeat;
+  animation:
+    volet-v1 .28s cubic-bezier(.8, 0, .2, 1) 20ms both,
+    volet-v2 .28s cubic-bezier(.8, 0, .2, 1) 0ms both,
+    volet-v3 .28s cubic-bezier(.8, 0, .2, 1) 35ms both,
+    volet-v4 .28s cubic-bezier(.8, 0, .2, 1) 10ms both,
+    volet-v5 .28s cubic-bezier(.8, 0, .2, 1) 45ms both,
+    volet-v6 .28s cubic-bezier(.8, 0, .2, 1) 5ms both,
+    volet-v7 .28s cubic-bezier(.8, 0, .2, 1) 30ms both,
+    volet-w1 .34s cubic-bezier(.8, 0, .2, 1) 270ms both,
+    volet-w2 .34s cubic-bezier(.8, 0, .2, 1) 300ms both,
+    volet-w3 .34s cubic-bezier(.8, 0, .2, 1) 260ms both,
+    volet-w4 .34s cubic-bezier(.8, 0, .2, 1) 285ms both,
+    volet-w5 .34s cubic-bezier(.8, 0, .2, 1) 275ms both,
+    volet-w6 .34s cubic-bezier(.8, 0, .2, 1) 305ms both,
+    volet-w7 .34s cubic-bezier(.8, 0, .2, 1) 265ms both;
+}
+
+html:active-view-transition-type(volet)::view-transition-old(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  clip-path: polygon(100% 0, 100% 100%,
+    calc(var(--v7) + 6px) 100%, calc(var(--v7) + 6px) 89%,
+    calc(var(--v6) + 6px) 89%, calc(var(--v6) + 6px) 70%,
+    calc(var(--v5) + 6px) 70%, calc(var(--v5) + 6px) 59%,
+    calc(var(--v4) + 6px) 59%, calc(var(--v4) + 6px) 42%,
+    calc(var(--v3) + 6px) 42%, calc(var(--v3) + 6px) 34%,
+    calc(var(--v2) + 6px) 34%, calc(var(--v2) + 6px) 13%,
+    calc(var(--v1) + 6px) 13%, calc(var(--v1) + 6px) 0);
+}
+
+html:active-view-transition-type(volet)::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+  clip-path: polygon(0 0,
+    calc(var(--w1) - 6px) 0, calc(var(--w1) - 6px) 13%,
+    calc(var(--w2) - 6px) 13%, calc(var(--w2) - 6px) 34%,
+    calc(var(--w3) - 6px) 34%, calc(var(--w3) - 6px) 42%,
+    calc(var(--w4) - 6px) 42%, calc(var(--w4) - 6px) 59%,
+    calc(var(--w5) - 6px) 59%, calc(var(--w5) - 6px) 70%,
+    calc(var(--w6) - 6px) 70%, calc(var(--w6) - 6px) 89%,
+    calc(var(--w7) - 6px) 89%, calc(var(--w7) - 6px) 100%,
+    0 100%);
+}
+
+}
