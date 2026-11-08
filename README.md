@@ -35,6 +35,14 @@ The look of my [new-tab page](https://github.com/glime32/nouvel-onglet-cours) on
 
    The wipe is a separate style, so it can be switched off on its own. Both files have an `@updateURL` pointing here: every pushed change reaches the browser by itself.
 
+3. The PDF viewer (optional). Stylus can't style an extension, so `pdfjs/magique-pdfjs.css` goes into an unpacked copy of the "PDF Viewer" extension (PDF.js): dark pages as violet cards on a black background, a top bar that hides and comes back when the mouse goes up, light violet icons, page number and zoom as pills, current page in dark violet with the bar, matches in violet.
+
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/glime32/stylus-magique/main/pdfjs/install.sh | bash
+   ```
+
+   The script finds the viewer, adds the CSS right after `viewer.css` and installs a systemd timer that updates it every hour. It replaces the stylus-oled PDF theme if it is there.
+
 ## The look
 
 - `#000` background everywhere, `#EBEBEB` text, aqua `#C5F9FC` headings;
