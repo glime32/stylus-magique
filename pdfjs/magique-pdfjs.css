@@ -1,5 +1,5 @@
 /* magique-pdfjs.css : calque « Stylus magique » pour le lecteur PDF.js (extension « PDF Viewer » non empaquetée).
-   Pages sombres en cartes violettes sur fond noir, barre cachée qui revient quand la souris monte,
+   Comme Xournal : pages sombres à bord rouge sur fond violet #61008A ; barre cachée qui revient quand la souris monte,
    icônes violet clair, numéro de page et zoom en pastilles noires, page en cours violet foncé avec la barre,
    mots trouvés en violet.
    Chargé juste après viewer.css, mis à jour tout seul depuis github.com/glime32/stylus-magique (pdfjs/install.sh). */
@@ -65,18 +65,18 @@
   --progressBar-bg-color: var(--pm-violet-fonce) !important;
   --progressBar-blend-color: var(--pm-violet) !important;
 
-  /* pages en cartes : bord violet 2 px, ombre dure dessous, 22 px entre deux pages */
-  --page-border: 2px solid var(--pm-bord) !important;
+  /* pages comme dans Xournal : bord rouge 2 px (selectionBorderColor #FF0000), 22 px entre deux pages */
+  --page-border: 2px solid #ff0000 !important;
   --page-margin: 22px auto !important;
 }
 
-/* ---------- les pages : sombres, en cartes, sur fond noir ---------- */
-#outerContainer #viewerContainer { background-color: #000000 !important; }
+/* ---------- les pages : sombres, sur le fond violet de Xournal (backgroundColor #61008A) ---------- */
+#outerContainer #viewerContainer { background-color: #61008a !important; }
 #outerContainer .pdfViewer .page {
   background-color: #000000 !important;
-  border: 2px solid var(--pm-bord) !important; /* passe devant le bord rouge ajouté à la main dans viewer.css */
-  border-radius: 4px !important;
-  box-shadow: 0 7px 0 var(--pm-violet) !important;
+  border: 2px solid #ff0000 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
 }
 /* la page est dessinée comme une image : on l'inverse (blanc → noir, noir → blanc) en gardant les teintes */
 #outerContainer .pdfViewer .page .canvasWrapper > canvas,
@@ -92,6 +92,9 @@
 }
 #outerContainer .textLayer .highlight.selected { outline: 2px solid var(--pm-violet-vif) !important; outline-offset: 1px !important; }
 #outerContainer .textLayer ::selection { background: rgb(97 0 137 / 0.6) !important; }
+/* recherche ouverte : les pages descendent sous la barre, sinon le mot trouvé tombe derrière
+   (viewer.css met les pages tout en haut de l'écran) */
+#outerContainer:has(#findbar:not(.hidden)) #viewerContainer { top: 76px !important; }
 /* « Occurrence 1 sur 3 » : violet foncé au lieu du bloc gris clair */
 #outerContainer #findbar #findResultsCount {
   background-color: var(--pm-violet-fonce) !important;
