@@ -1020,60 +1020,80 @@ form[role="search"] [role="option"][aria-selected="true"] {
   background-color: var(--sm-survol) !important;
 }
 
-/* ===== Bouton « Nouveau message » : violet comme la loupe DDG ===== */
+/* ===== Bouton « Nouveau message » : violet plein, en relief ===== */
 .T-I.T-I-KE.L3, .z0 > .L3 {
   background-color: var(--sm-violet) !important;
   color: #ffffff !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 16px !important;
+  border: 2px solid color-mix(in srgb, var(--sm-violet-vif) 60%, var(--sm-violet)) !important;
+  background-clip: padding-box !important;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important;
+  border-radius: var(--sm-r-carte) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
 }
 .T-I.T-I-KE.L3:hover, .z0 > .L3:hover {
-  background-color: var(--sm-survol) !important;
+  background-color: var(--sm-violet) !important;
+  translate: 0 -3px;
+  rotate: -3deg;
+  box-shadow: -4px 7px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important;
 }
 .T-I.T-I-KE.L3::before { filter: brightness(0) invert(1) !important; }
 
-/* ===== Menu de gauche : rouge comme les onglets DDG ===== */
-.aim .nU, .aim .nU a, .aim .n0, .aim .nU span,
-.TK .aim .bsU, .aim a.J-Ke {
-  color: var(--sm-rouge) !important;
+/* ===== Menu de gauche ===== */
+.aim .nU, .aim .nU a, .aim .n0, .aim .nU span, .aim a.J-Ke {
+  color: var(--sm-lien-menu) !important;
 }
 .aim .TO:hover, .aim .TO.NQ {
   background-color: var(--sm-survol) !important;
 }
+/* rubrique en cours : violet foncé et barre à gauche */
 .aim .TO.nZ, .aim .TO.nZ:hover {
-  background-color: var(--sm-survol) !important;
+  background-color: var(--sm-actif-fond) !important;
+  box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
+  border-radius: 0 999px 999px 0 !important;
 }
-/* pastilles du menu arrondies aux deux bouts (et plus collées au bord) */
 .aim .TO { border-radius: 999px !important; margin-inline-start: 6px !important; }
-.aim .TO.nZ .nU, .aim .TO.nZ .nU a, .aim .TO.nZ .bsU {
-  color: var(--sm-rouge) !important;
+.aim .TO.nZ .nU, .aim .TO.nZ .nU a {
+  color: var(--sm-titre) !important;
   font-weight: 700 !important;
 }
-/* Compteurs de non lus */
-.bsU { color: var(--sm-rouge) !important; }
-/* Titres de sections (Libellés, etc.) */
-.aAv, .aAw, .n3 .aAv { color: var(--sm-texte) !important; }
-
-/* ===== Onglets Principale / Promotions / Réseaux sociaux ===== */
-.aKh [role="tab"], .aRz [role="tab"] {
-  background-color: #000000 !important;
+/* Compteurs de non lus : étiquettes de bijoutier */
+.aim .bsU {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 5px;
+  padding: 1px 8px 1px 6px !important;
+  border: 2px solid #000;
+  border-radius: 4px 10px 10px 4px;
+  background: var(--sm-etiquette-fond) !important;
+  color: var(--sm-etiquette-texte) !important;
+  font: 800 .7rem/1.35 var(--sm-etroite) !important;
+  rotate: 7deg;
+  box-shadow: 2px 2px 0 #000;
 }
-.aKh [role="tab"] .aKz, .aRz [role="tab"] .aKz,
-.aKh [role="tab"] .aDG, .aRz [role="tab"] .aDG {
-  color: var(--sm-rouge) !important;
+.aim .bsU::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--sm-etiquette-texte); }
+/* Titres de sections (Libellés, etc.) */
+.aAv, .aAw, .n3 .aAv { color: var(--sm-violet-vif) !important; font: 800 .74rem/1.4 var(--sm-etroite) !important; font-stretch: 112% !important; letter-spacing: .07em !important; text-transform: uppercase !important; }
+
+/* ===== Onglets Principale / Promotions / Réseaux sociaux : plats, l'actif en relief ===== */
+.aKh [role="tab"], .aRz [role="tab"] {
+  background-color: transparent !important;
+  border: 2px solid transparent !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background-clip: padding-box !important;
+}
+.aKh [role="tab"] .aKz, .aRz [role="tab"] .aKz {
+  color: var(--sm-pale) !important;
 }
 .aKh [role="tab"]:hover, .aRz [role="tab"]:hover {
   background-color: var(--sm-survol) !important;
 }
 .aKh [role="tab"][aria-selected="true"],
 .aRz [role="tab"][aria-selected="true"] {
-  box-shadow: none !important;
+  background-color: var(--sm-bouton-fond) !important;
+  border-color: var(--sm-bouton-bord) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
 }
-/* Trait sous l'onglet actif (celui de Gmail, recoloré en violet) */
-[role="tab"][aria-selected="true"]::before {
-  background-color: var(--sm-actif-fond) !important;
-}
+[role="tab"][aria-selected="true"]::before { display: none !important; }
 .aKh [role="tab"][aria-selected="true"] .aKz,
 .aRz [role="tab"][aria-selected="true"] .aKz {
   font-weight: 700 !important;
@@ -1101,26 +1121,26 @@ tr.zA:hover, tr.zA:hover > td {
   background-color: var(--sm-survol) !important;
   box-shadow: none !important; /* plus de traits violets entre les cases (case à cocher, étoile…) */
 }
-tr.zA.zA:hover > td:first-child { box-shadow: inset 4px 0 0 var(--sm-violet-vif) !important; } /* survol : barre rouge à gauche */
+tr.zA.zE.zE:hover { box-shadow: 0 4px 0 var(--sm-violet) !important; }
 tr.zA.x7, tr.zA.x7 td, tr.zA.btb, tr.zA.btb td {
   background-color: var(--sm-violet-moyen) !important;
 }
 /* Libellés colorés dans la liste */
 tr.zA .ar.as { border-radius: 6px !important; }
 
-/* ===== Icônes rouges (menu de gauche + onglets) =====
-   Les icônes de Gmail sont des images : on les teinte en rouge #ff3b3b
-   avec un filtre. Sélecteur renforcé pour passer devant Dark Reader. */
+/* ===== Icônes violet clair (menu de gauche + onglets) =====
+   Les icônes de Gmail sont des images : on les teinte avec un filtre.
+   Sélecteur renforcé pour passer devant Dark Reader. */
 html:not(#a):not(#b) body .aim .qj,
 html:not(#a):not(#b) body .aim .qj::before,
 html:not(#a):not(#b) body .n6 .qj,
 html:not(#a):not(#b) body .n6 .qj::before,
 html:not(#a):not(#b) body [role="tab"] .aKp,
 html:not(#a):not(#b) body [role="tab"] .aKp::before {
-  filter: brightness(0) saturate(100%) invert(36%) sepia(93%) saturate(3500%) hue-rotate(345deg) brightness(102%) !important;
+  filter: brightness(0) saturate(100%) invert(73%) sepia(39%) saturate(5644%) hue-rotate(227deg) brightness(101%) contrast(101%) !important;
 }
 /* « Plus » dans le menu de gauche */
-.n6, .n6 * { color: var(--sm-rouge) !important; }
+.n6, .n6 * { color: var(--sm-lien-menu) !important; }
 .n6:hover, .n6 .TO:hover { background-color: var(--sm-survol) !important; }
 
 /* Bande grise derrière Répondre / Transférer */
@@ -1133,7 +1153,7 @@ html:not(#a):not(#b) body [role="tab"] .aKp::before {
 .adn, .h7, .gs, .ii, .aHU, .nH.if, .nH.aHU, .Bs, .bkK > .nH {
   background-color: #000000 !important;
 }
-.hP { color: var(--sm-texte) !important; }                       /* objet */
+.hP { color: var(--sm-titre) !important; }                       /* objet */
 .gD, .gD span { color: var(--sm-texte) !important; }             /* expéditeur */
 .go, .g3, .hb, .ajB { color: var(--sm-texte) !important; }        /* adresse, date */
 .a3s a, .ii a { color: var(--sm-lien) !important; }              /* liens du mail */
@@ -1141,12 +1161,14 @@ html:not(#a):not(#b) body [role="tab"] .aKp::before {
 .a3s a:visited, .ii a:visited { color: var(--sm-lien-vu) !important; }
 /* Boutons Répondre / Transférer */
 .ams, .amn .ams {
-  background-color: #000000 !important;
-  color: var(--sm-rouge) !important;
-  border: 2px solid var(--sm-violet) !important; background-clip: padding-box !important;
-  border-radius: 999px !important;
+  background-color: var(--sm-bouton-fond) !important;
+  color: var(--sm-titre) !important;
+  border: 2px solid var(--sm-bouton-bord) !important; background-clip: padding-box !important;
+  border-radius: var(--sm-r-bouton) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
 }
-.ams:hover { background-color: var(--sm-survol) !important; }
+.ams:hover { translate: 0 -3px; rotate: -3deg; box-shadow: -4px 7px 0 var(--sm-violet) !important; }
 
 /* ===== Fenêtre de rédaction ===== */
 .nH.Hd, .aDh, .aoI, .AD, .I5, .aDj, .GP, .aoD, .aZ, .aDg, .bAs,
@@ -1305,10 +1327,17 @@ html, body, ytd-app, ytd-app *:not(svg):not(path):not(g),
 ytd-popup-container *:not(svg):not(path), tp-yt-paper-dialog *:not(svg):not(path) {
   font-family: "Fira Sans", "Noto Sans", "Roboto", sans-serif !important;
 }
-h1.ytd-watch-metadata, h1.ytd-watch-metadata *,
-a.ytLockupMetadataViewModelTitle, a.ytLockupMetadataViewModelTitle *,
-#video-title, h1.dynamicTextViewModelH1, h1.dynamicTextViewModelH1 * {
+a.ytLockupMetadataViewModelTitle, a.ytLockupMetadataViewModelTitle *, #video-title {
   font-weight: 600 !important;
+  letter-spacing: 0 !important;
+}
+/* Gros titres (vidéo, chaîne, étagères) : Gloock */
+h1.ytd-watch-metadata, h1.ytd-watch-metadata *,
+h1.dynamicTextViewModelH1, h1.dynamicTextViewModelH1 *,
+ytd-rich-shelf-renderer #title, ytd-reel-shelf-renderer #title,
+yt-page-header-view-model h1, yt-page-header-view-model h1 * {
+  font-family: var(--sm-serif) !important;
+  font-weight: 400 !important;
   letter-spacing: 0 !important;
 }
 
@@ -1331,13 +1360,13 @@ ytd-item-section-header-renderer #title, #title.ytd-item-section-header-renderer
 }
 /* Durée des vidéos, « Nouveauté » : violet vif */
 .ytBadgeShapeText { color: var(--sm-texte) !important; font-weight: 600 !important; }
-/* Texte des boutons (Effacer l'historique, Plus…) : rouge */
-.ytSpecButtonShapeNextButtonTextContent { color: var(--sm-rouge-vif) !important; }
+/* Texte des boutons (Effacer l'historique, Plus…) : aqua */
+.ytSpecButtonShapeNextButtonTextContent { color: var(--sm-titre) !important; }
 ytd-subscribe-button-renderer .ytSpecButtonShapeNextButtonTextContent,
 .ytSpecButtonShapeNextFilled .ytSpecButtonShapeNextButtonTextContent { color: var(--sm-texte) !important; }
 ytd-browse-feed-actions-renderer yt-icon, ytd-browse-feed-actions-renderer svg {
-  color: var(--sm-rouge-vif) !important;
-  fill: var(--sm-rouge-vif) !important;
+  color: var(--sm-icone) !important;
+  fill: var(--sm-icone) !important;
 }
 ytd-browse-feed-actions-renderer input::placeholder { color: var(--sm-texte) !important; }
 
@@ -1363,15 +1392,12 @@ ytd-topbar-logo-renderer a#logo::before {
 /* ===== Bouton « Créer » caché ===== */
 ytd-masthead #buttons > ytd-button-renderer { display: none !important; }
 
-/* ===== Menu ≡ rouge vif (aussi dans le menu déplié), cloche violet vif ===== */
+/* ===== Menu ≡ et cloche : icônes violet clair ===== */
 #guide-button yt-icon, #guide-button svg, #guide-button path,
-yt-icon-button#guide-button, #guide-button button {
-  color: var(--sm-rouge) !important;
-  fill: var(--sm-rouge) !important;
-}
+yt-icon-button#guide-button, #guide-button button,
 ytd-notification-topbar-button-renderer yt-icon, ytd-notification-topbar-button-renderer svg,
 ytd-notification-topbar-button-renderer path {
-  color: var(--sm-texte) !important;
+  color: var(--sm-icone) !important;
   fill: var(--sm-icone) !important;
 }
 
@@ -1383,17 +1409,18 @@ ytd-notification-topbar-button-renderer path {
   border-radius: 999px 0 0 999px !important;
   box-shadow: none !important;
 }
-yt-searchbox:focus-within .ytSearchboxComponentInputBox { border-color: var(--sm-violet-vif) !important; }
+yt-searchbox:focus-within .ytSearchboxComponentInputBox { border-color: var(--sm-champ-actif) !important; }
 .ytSearchboxComponentInputBox input { color: var(--sm-texte) !important; background: transparent !important; }
-.ytSearchboxComponentInputBox input::placeholder { color: var(--sm-texte) !important; }
+.ytSearchboxComponentInputBox input::placeholder { color: var(--sm-pale) !important; }
 .ytSearchboxComponentSearchButton {
   background: var(--sm-violet) !important;
   border: 2px solid var(--sm-champ-bord) !important;
+  border-left: none !important;
   border-radius: 0 999px 999px 0 !important;
 }
-.ytSearchboxComponentSearchButton:hover { background: var(--sm-bouton-fond) !important; border-color: var(--sm-violet-vif) !important; }
-yt-searchbox:focus-within .ytSearchboxComponentSearchButton { border-color: var(--sm-violet-vif) !important; }
-.ytSearchboxComponentSearchButton * { color: var(--sm-texte) !important; fill: var(--sm-icone) !important; }
+.ytSearchboxComponentSearchButton:hover { background: color-mix(in srgb, var(--sm-violet) 70%, var(--sm-violet-vif)) !important; }
+yt-searchbox:focus-within .ytSearchboxComponentSearchButton { border-color: var(--sm-champ-actif) !important; }
+.ytSearchboxComponentSearchButton * { color: #fff !important; fill: #fff !important; }
 .ytSearchboxComponentSuggestionsContainer {
   background: #000000 !important;
   border: 2px solid var(--sm-champ-bord) !important;
@@ -1407,47 +1434,73 @@ yt-searchbox:focus-within .ytSearchboxComponentSearchButton { border-color: var(
 }
 #voice-search-button button { border: 2px solid var(--sm-champ-bord) !important; }
 #voice-search-button button:hover { background: var(--sm-survol) !important; }
-#voice-search-button yt-icon, #voice-search-button svg { color: var(--sm-rouge-vif) !important; fill: var(--sm-rouge-vif) !important; }
+#voice-search-button yt-icon, #voice-search-button svg { color: var(--sm-icone) !important; fill: var(--sm-icone) !important; }
 
-/* ===== Autres boutons gris (J'aime, Partager…) ===== */
+/* ===== Autres boutons (J'aime, Partager…) : en relief, penchent au survol ===== */
 .ytSpecButtonShapeNextTonal, .yt-spec-button-shape-next--tonal {
   background: var(--sm-bouton-fond) !important;
-  color: var(--sm-rouge-vif) !important;
+  color: var(--sm-titre) !important;
   border: 2px solid var(--sm-bouton-bord) !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background-clip: padding-box !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
 }
 .ytSpecButtonShapeNextTonal:hover, .yt-spec-button-shape-next--tonal:hover {
-  background: var(--sm-survol) !important;
+  translate: 0 -3px;
+  rotate: -3deg;
+  box-shadow: -4px 7px 0 var(--sm-violet) !important;
 }
 .ytSpecButtonShapeNextTonal yt-icon, .ytSpecButtonShapeNextTonal svg,
 .yt-spec-button-shape-next--tonal yt-icon, .yt-spec-button-shape-next--tonal svg {
-  color: var(--sm-rouge-vif) !important;
-  fill: var(--sm-rouge-vif) !important;
+  color: var(--sm-icone) !important;
+  fill: var(--sm-icone) !important;
 }
+/* J'aime / Je n'aime pas collés : un seul relief pour les deux */
+segmented-like-dislike-button-view-model .ytSpecButtonShapeNextTonal:hover { rotate: 0deg; }
 /* Pas de contour sur les petits boutons posés sur les miniatures */
 .ytSpecButtonShapeNextOverlayDark { border: none !important; }
 
-/* ===== Les ⋮ : rouges ===== */
+/* ===== Les ⋮ : violet clair ===== */
 .ytLockupMetadataViewModelMenuButton button,
 .ytLockupMetadataViewModelMenuButton yt-icon, .ytLockupMetadataViewModelMenuButton svg,
 button[aria-label="Autres actions"], button[aria-label="Autres actions"] *,
 button[aria-label="Action menu"], button[aria-label="Action menu"] *,
 ytd-menu-renderer yt-icon-button yt-icon, ytd-menu-renderer #button yt-icon,
 ytd-rich-shelf-renderer #menu yt-icon, ytd-rich-shelf-renderer #menu svg {
-  color: var(--sm-rouge-vif) !important;
-  fill: var(--sm-rouge-vif) !important;
+  color: var(--sm-icone) !important;
+  fill: var(--sm-icone) !important;
 }
 
 /* ===== Menu de gauche ===== */
 ytd-guide-entry-renderer yt-formatted-string, ytd-guide-entry-renderer .title,
+ytd-mini-guide-entry-renderer .title {
+  color: var(--sm-lien-menu) !important;
+}
 ytd-guide-entry-renderer yt-icon, ytd-guide-entry-renderer yt-icon *,
-ytd-mini-guide-entry-renderer .title, ytd-mini-guide-entry-renderer yt-icon {
-  color: var(--sm-rouge-vif) !important;
-  fill: var(--sm-rouge-vif) !important;
+ytd-mini-guide-entry-renderer yt-icon, ytd-mini-guide-entry-renderer yt-icon * {
+  color: var(--sm-icone) !important;
+  fill: var(--sm-icone) !important;
 }
 tp-yt-paper-item.ytd-guide-entry-renderer:hover { background: var(--sm-survol) !important; }
+/* rubrique en cours : violet foncé et barre à gauche */
 ytd-guide-entry-renderer[active] tp-yt-paper-item,
-ytd-guide-entry-renderer[active] tp-yt-paper-item:hover { background: var(--sm-survol) !important; }
-#guide-section-title, ytd-guide-section-renderer #guide-section-title { color: var(--sm-titre) !important; }
+ytd-guide-entry-renderer[active] tp-yt-paper-item:hover {
+  background: var(--sm-actif-fond) !important;
+  box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
+  border-radius: 0 10px 10px 0 !important;
+}
+ytd-guide-entry-renderer[active] :is(yt-formatted-string, .title) { color: var(--sm-titre) !important; }
+/* petits titres du menu (Abonnements, Vous, Explorer…) : majuscules larges */
+ytd-guide-entry-renderer#header-entry .title,
+#guide-section-title, ytd-guide-section-renderer #guide-section-title,
+ytd-guide-section-renderer h3, ytd-guide-section-renderer h3 * {
+  color: var(--sm-violet-vif) !important;
+  font: 800 .74rem/1.4 var(--sm-etroite) !important;
+  font-stretch: 112% !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
 
 /* Retirés : Shorts, « Autres contenus YouTube », Signalements, liens du bas */
 ytd-guide-entry-renderer:has(a[title="Shorts"]),
@@ -1462,17 +1515,20 @@ ytd-guide-renderer #footer {
   display: none !important;
 }
 
-/* ===== Filtres en haut (Tous, Jeux vidéo…) : contour 2px comme la recherche ===== */
+/* ===== Filtres en haut (Tous, Jeux vidéo…) : comme des onglets, l'actif en relief ===== */
 .ytChipShapeChip {
-  background: #000000 !important;
-  color: var(--sm-rouge-vif) !important;
-  border: 2px solid var(--sm-bouton-bord) !important;
+  background: transparent !important;
+  color: var(--sm-pale) !important;
+  border: 2px solid transparent !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background-clip: padding-box !important;
 }
-.ytChipShapeChip:hover { background: var(--sm-survol) !important; }
+.ytChipShapeChip:hover { background: var(--sm-survol) !important; color: var(--sm-texte) !important; }
 .ytChipShapeChip.ytChipShapeActive, .ytChipShapeActive {
-  background: var(--sm-violet) !important;
-  color: #ffffff !important;
+  background: var(--sm-bouton-fond) !important;
+  color: var(--sm-titre) !important;
   border-color: var(--sm-bouton-bord) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
 }
 
 /* ===== Accueil : 2 lignes de vidéos avant les Shorts ===== */
@@ -1499,12 +1555,12 @@ ytd-thumbnail-overlay-resume-playback-renderer #progress,
   filter: none !important;
 }
 
-/* ===== Noms des chaînes (créateurs) : bleu foncé saturé ===== */
-.ytContentMetadataViewModelMetadataRow:first-child .ytContentMetadataViewModelMetadataText,
-.ytContentMetadataViewModelMetadataRow:first-child .ytContentMetadataViewModelMetadataText *,
+/* ===== Noms des chaînes (créateurs) : bleu des liens ; vues et date : gris ===== */
+.ytContentMetadataViewModelMetadataText { color: var(--sm-pale) !important; }
+.ytContentMetadataViewModelMetadataRow a, .ytContentMetadataViewModelMetadataRow a *,
 ytd-channel-name a, ytd-channel-name yt-formatted-string,
 ytd-watch-metadata #owner #channel-name, ytd-watch-metadata #owner #channel-name * {
-  color: #2f6bff !important;
+  color: var(--sm-lien) !important;
 }
 
 /* ===== Page vidéo ===== */
@@ -1523,29 +1579,28 @@ ytd-subscribe-button-renderer .ytSpecButtonShapeNextFilled,
 ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled {
   background: var(--sm-violet) !important;
   color: #ffffff !important;
-  border: none !important;
-  box-shadow: none !important;
+  border: 2px solid color-mix(in srgb, var(--sm-violet-vif) 60%, var(--sm-violet)) !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background-clip: padding-box !important;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important;
   font-weight: 700 !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
 }
 ytd-subscribe-button-renderer .ytSpecButtonShapeNextFilled:hover,
 ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled:hover {
-  background: var(--sm-bouton-fond) !important;
+  translate: 0 -3px;
+  rotate: -3deg;
+  box-shadow: -4px 7px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important;
 }
-/* Boutons sous la vidéo (J'aime, Partager, Enregistrer…) : contour violet, fond noir */
+/* Boutons sous la vidéo (J'aime, Partager, Enregistrer…) : comme les autres boutons */
 ytd-watch-metadata .ytSpecButtonShapeNextTonal, ytd-watch-metadata .yt-spec-button-shape-next--tonal {
-  background: #000000 !important;
-  border: 2px solid var(--sm-bouton-bord) !important;
-  color: var(--sm-rouge-vif) !important;
+  color: var(--sm-titre) !important;
 }
-ytd-watch-metadata .ytSpecButtonShapeNextTonal:hover, ytd-watch-metadata .yt-spec-button-shape-next--tonal:hover {
-  background: var(--sm-survol) !important;
-  border-color: var(--sm-violet-vif) !important;
-}
-/* Pouce animé : rouge comme les autres icônes */
+/* Pouce animé : violet clair comme les autres icônes */
 ytd-watch-metadata like-button-view-model *, ytd-watch-metadata dislike-button-view-model *,
 ytd-watch-metadata yt-animated-icon *, ytd-watch-metadata .ytSpecButtonShapeNextIcon * {
-  color: var(--sm-rouge-vif) !important;
-  fill: var(--sm-rouge-vif) !important;
+  color: var(--sm-icone) !important;
+  fill: var(--sm-icone) !important;
 }
 ytd-watch-metadata segmented-like-dislike-button-view-model .ytSpecButtonShapeNextSegmentedStart { border-right: none !important; }
 ytd-watch-metadata segmented-like-dislike-button-view-model .ytSpecButtonShapeNextSegmentedStart::after { background: var(--sm-violet) !important; }
@@ -1575,7 +1630,9 @@ ytd-text-inline-expander, #description.ytd-watch-metadata:hover {
 ytd-menu-popup-renderer, ytd-multi-page-menu-renderer, tp-yt-paper-dialog,
 yt-sheet-view-model, .ytSheetViewModelContextual {
   background: #000000 !important;
-  border: 2px solid var(--sm-carte-bord) !important;
+  border: 2px solid var(--sm-bouton-bord) !important;
+  border-radius: var(--sm-r-menu) !important;
+  box-shadow: 0 5px 0 var(--sm-violet) !important;
 }
 
 /* ===== Sélection et barres de défilement ===== */
@@ -2638,7 +2695,9 @@ a[data-e2e="nav-profile"] button { background-color: var(--sm-violet) !important
 /* ===== Gmail : mails non lus surlignés (complète ton thème Gmail) ===== */
 @-moz-document domain("mail.google.com") {
 tr.zA.zE, tr.zA.zE > td { background-color: var(--sm-nonlu-fond) !important; }
-  tr.zA.zE > td:first-child { box-shadow: inset 4px 0 0 var(--sm-violet) !important; }
+  tr.zA.zE.zE { outline: 2px solid var(--sm-bouton-bord) !important; outline-offset: -3px; border-radius: 12px !important; box-shadow: 0 4px 0 var(--sm-violet) !important; position: relative; z-index: 1; }
+  tr.zA.zE > td:first-child { border-radius: 12px 0 0 12px !important; }
+  tr.zA.zE > td:last-child { border-radius: 0 12px 12px 0 !important; }
   tr.zA.zE :is(.bog, .yW span, .y2) { color: var(--sm-texte) !important; }
 }
 
@@ -4236,7 +4295,7 @@ html:root{--bs-border-color:var(--sm-ligne)!important;--bs-border-color-transluc
 #region-main li.activity{border-top-color:var(--sm-ligne)!important}
 }
 @-moz-document domain("mail.google.com") {
-.aDG{background-color:var(--sm-violet)!important;color:#fff!important;border-color:var(--sm-violet)!important}
+.aDG{background-color:var(--sm-etiquette-fond)!important;color:var(--sm-etiquette-texte)!important;border:2px solid #000!important;border-radius:4px 10px 10px 4px!important;font-family:var(--sm-etroite)!important;font-weight:800!important;rotate:7deg;box-shadow:2px 2px 0 #000!important}
 }
 @-moz-document domain("youtube.com") {
 html body .ytBadgeShapeText{color:var(--sm-texte)!important}
