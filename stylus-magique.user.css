@@ -42,7 +42,7 @@
   --sm-lien-survol: var(--sm-lien);
   --sm-lien-survol-fond: color-mix(in srgb, var(--sm-bleu) 38%, #000);
   --sm-lien-vu: var(--sm-violet-vif);
-  --sm-lien-menu: var(--sm-texte);
+  --sm-lien-menu: var(--sm-titre);
   --sm-bouton-fond: var(--sm-violet-fonce);
   --sm-bouton-bord: color-mix(in srgb, var(--sm-violet-vif) 50%, var(--sm-violet));
   --sm-carte-bord: color-mix(in srgb, var(--sm-violet-vif) 32%, transparent);
@@ -2537,16 +2537,12 @@ body.dark {
     --WDS-systems-bubble-surface-incoming-RGB: 26, 0, 38 !important;
     --WDS-systems-bubble-surface-outgoing-RGB: 97, 0, 137 !important;
   }
-  /* Discussions avec un message non lu : ligne surlignée, texte blanc gras, pastille rouge */
-  #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) [data-testid="cell-frame-container"] {
-    background-color: var(--sm-nonlu-fond) !important;
-    box-shadow: inset 4px 0 0 var(--sm-violet) !important;
-    border-radius: 12px !important;
-  }
+  /* Discussions avec un message non lu : en relief, texte aqua gras, compteur en étiquette */
+  #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) [data-testid="cell-frame-container"] { background-color: var(--sm-nonlu-fond) !important; outline: 2px solid var(--sm-bouton-bord) !important; outline-offset: -2px; box-shadow: 0 4px 0 var(--sm-violet) !important; border-radius: 12px !important; }
   #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) [data-testid="cell-frame-title"] span { color: var(--sm-titre) !important; font-weight: 700 !important; }
   #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) [data-testid="cell-frame-secondary"] span { color: var(--sm-texte) !important; }
   #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) :is([data-testid="chat-list-timestamp"], [data-testid="chat-list-timestamp"] *) { color: var(--sm-texte) !important; font-weight: 700 !important; }
-  #pane-side [data-testid="icon-unread-count"] { background-color: var(--sm-rouge) !important; color: var(--sm-texte) !important; font-weight: 700 !important; }
+  #pane-side [data-testid="icon-unread-count"] { background-color: var(--sm-etiquette-fond) !important; color: var(--sm-etiquette-texte) !important; border: 2px solid #000 !important; border-radius: 4px 10px 10px 4px !important; font-family: var(--sm-etroite) !important; font-weight: 800 !important; rotate: 7deg; box-shadow: 2px 2px 0 #000 !important; }
   /* Illustration de l'accueil : vert remplacé par le violet */
   [data-testid="intro_panel_v2_title_card"] svg [fill="rgb(37,211,102)"] { fill: var(--sm-violet-vif) !important; }
   [data-testid="intro_panel_v2_title_card"] svg [fill="rgb(230,255,218)"] { fill: var(--sm-icone) !important; }
@@ -2565,14 +2561,9 @@ body.dark {
   }
   /* Le décor derrière ton Bitmoji (montgolfières) laisse place au noir */
   img[src*="bitmoji.com/3d/background"] { visibility: hidden !important; }
-  /* Snaps et chats non lus (« Nouveau… ») : ligne surlignée, texte blanc gras */
-  [role="listitem"]:has(:is(.T1NBV, .tGtEY, .CVJAS, .xndUg, .y2oqI, .hYfJx, .DClo3, .aafQF)),
-  [role="listitem"]:has(:is(.T1NBV, .tGtEY, .CVJAS, .xndUg, .y2oqI, .hYfJx, .DClo3, .aafQF)) > [role="button"] {
-    background-color: var(--sm-violet-moyen) !important;
-    border-radius: 12px !important;
-  }
-  [role="listitem"]:has(:is(.T1NBV, .tGtEY, .CVJAS, .xndUg, .y2oqI, .hYfJx, .DClo3, .aafQF)) { box-shadow: inset 4px 0 0 var(--sm-violet) !important; }
-  [role="listitem"] :is(.T1NBV, .tGtEY, .CVJAS, .xndUg, .y2oqI, .hYfJx, .DClo3, .aafQF) { color: var(--sm-texte) !important; font-weight: 700 !important; }
+  /* Snaps et chats non lus (« Nouveau… ») : en relief, texte aqua gras */
+  [role="listitem"]:has(:is(.T1NBV, .tGtEY, .CVJAS, .xndUg, .y2oqI, .hYfJx, .DClo3, .aafQF)) > [role="button"] { background-color: var(--sm-nonlu-fond) !important; outline: 2px solid var(--sm-bouton-bord) !important; outline-offset: -2px; box-shadow: 0 4px 0 var(--sm-violet) !important; border-radius: 12px !important; }
+  [role="listitem"] :is(.T1NBV, .tGtEY, .CVJAS, .xndUg, .y2oqI, .hYfJx, .DClo3, .aafQF) { color: var(--sm-titre) !important; font-weight: 700 !important; }
 }
 /* ===== Instagram (fil, profils et messages) ===== */
 @-moz-document domain("instagram.com") {
@@ -2599,16 +2590,13 @@ body.dark {
     --ig-toast-prism-background-color: rgba(20, 0, 30, .95) !important;
     --overlay-alpha-80: rgba(0, 0, 0, .7) !important;
   }
-  /* Contour violet autour de la zone « Votre message… » */
+  /* Zone « Votre message… » : bord bleu, rouge quand tu tapes */
   div:has(> div > div > div > div > [data-lexical-editor="true"]) { border-color: var(--sm-champ-bord) !important; }
-  /* Conversations non lues : ligne surlignée, texte blanc, point rouge */
-  :is([aria-label="Liste des discussions"], [aria-label="Thread list"]) div[role="button"]:has(span[data-visualcompletion="ignore"]) {
-    background-color: var(--sm-violet-moyen) !important;
-    box-shadow: inset 4px 0 0 var(--sm-violet) !important;
-    border-radius: 12px !important;
-  }
-  :is([aria-label="Liste des discussions"], [aria-label="Thread list"]) div[role="button"]:has(span[data-visualcompletion="ignore"]) span { color: var(--sm-texte) !important; }
-  :is([aria-label="Liste des discussions"], [aria-label="Thread list"]) div[role="button"] span[data-visualcompletion="ignore"] { background-color: var(--sm-rouge) !important; }
+  div:has(> div > div > div > div > [data-lexical-editor="true"]):focus-within { border-color: var(--sm-champ-actif) !important; }
+  /* Conversations non lues : en relief, texte aqua, point violet clair */
+  :is([aria-label="Liste des discussions"], [aria-label="Thread list"]) div[role="button"]:has(span[data-visualcompletion="ignore"]) { background-color: var(--sm-nonlu-fond) !important; outline: 2px solid var(--sm-bouton-bord) !important; outline-offset: -2px; box-shadow: 0 4px 0 var(--sm-violet) !important; border-radius: 12px !important; }
+  :is([aria-label="Liste des discussions"], [aria-label="Thread list"]) div[role="button"]:has(span[data-visualcompletion="ignore"]) span { color: var(--sm-titre) !important; }
+  :is([aria-label="Liste des discussions"], [aria-label="Thread list"]) div[role="button"] span[data-visualcompletion="ignore"] { background-color: var(--sm-violet-vif) !important; }
 }
 /* ===== TikTok ===== */
 @-moz-document domain("tiktok.com") {
@@ -2674,7 +2662,7 @@ a[data-e2e="nav-profile"] button { background-color: var(--sm-violet) !important
     --brand-500: var(--sm-violet) !important; --brand-500-hsl: 282.5 100% 26.9% !important;
     --brand-560: var(--sm-violet) !important; --brand-560-hsl: 280.3 100% 23.9% !important;
     --brand-600: var(--sm-violet) !important; --brand-600-hsl: 282 100% 21% !important;
-    --brand-experiment: var(--sm-violet) !important; --text-brand: var(--sm-violet) !important; --text-link: var(--sm-lien) !important;
+    --brand-experiment: var(--sm-violet) !important; --text-brand: var(--sm-violet-vif) !important; --text-link: var(--sm-lien) !important;
     --background-brand: var(--sm-violet) !important; --blurple-50: var(--sm-violet) !important;
     --control-primary-background-default: var(--sm-violet) !important; --control-primary-background-hover: var(--sm-violet) !important;
     --control-primary-background-active: var(--sm-actif-fond) !important;
@@ -2684,8 +2672,45 @@ a[data-e2e="nav-profile"] button { background-color: var(--sm-violet) !important
     --mention-background: color-mix(in srgb, var(--sm-violet) 45%, transparent) !important; --mention-foreground: var(--sm-texte) !important;
     --border-subtle: var(--sm-ligne) !important; --border-muted: var(--sm-violet-fonce) !important; --border-normal: var(--sm-ligne) !important; --border-strong: var(--sm-violet) !important;
   }
-  /* Zone de saisie des messages bordée de violet */
+  /* Zone de saisie des messages : bord bleu, rouge quand tu tapes */
   :is([class^="channelTextArea_"], [class*=" channelTextArea_"]) { border: 2px solid var(--sm-champ-bord) !important; background-clip: padding-box !important; }
+  :is([class^="channelTextArea_"], [class*=" channelTextArea_"]):focus-within { border-color: var(--sm-champ-actif) !important; }
+  :root { --channels-default: var(--sm-lien-menu) !important; --channel-icon: var(--sm-icone) !important; }
+  /* Petits titres (Messages privés, En ligne — 14…) : majuscules larges ; les grands restent en Gloock */
+  :is(h2, h3)[class*="body-"], :is(h2, h3)[class*="eyebrow"] {
+    font-family: var(--sm-etroite) !important; font-stretch: 112% !important; font-weight: 800 !important;
+    font-size: .74rem !important; letter-spacing: .07em !important; text-transform: uppercase !important; color: var(--sm-violet-vif) !important;
+  }
+  /* Noms dans les menus : aqua ; rubrique en cours : violet foncé et barre à gauche */
+  [class*="privateChannels_"] [class*="name_"], [class*="privateChannels_"] [class*="name_"] * { color: var(--sm-lien-menu) !important; }
+  [class*="interactiveSelected_"] {
+    background-color: var(--sm-actif-fond) !important;
+    box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
+    border-radius: 0 8px 8px 0 !important;
+  }
+  /* Salons non lus : en relief */
+  li[class*="containerDefault_"]:has([class*="modeUnread_"]) [class*="link_"] { background-color: var(--sm-nonlu-fond) !important; outline: 2px solid var(--sm-bouton-bord) !important; outline-offset: -2px; box-shadow: 0 4px 0 var(--sm-violet) !important; border-radius: 12px !important; }
+  [class*="modeUnread_"] [class*="name_"] { color: var(--sm-titre) !important; font-weight: 700 !important; }
+  /* Mentions (pastilles rouges) : étiquettes de bijoutier */
+  [class*="numberBadge_"] { background-color: var(--sm-etiquette-fond) !important; color: var(--sm-etiquette-texte) !important; border: 2px solid #000 !important; border-radius: 4px 10px 10px 4px !important; font-family: var(--sm-etroite) !important; font-weight: 800 !important; rotate: 7deg; box-shadow: 2px 2px 0 #000 !important; }
+  /* Onglets En ligne / Tous / En attente : plats, l'actif en relief ; « Ajouter » en violet plein */
+  [class*="tabBar_"] [class*="item_"] { border: 2px solid transparent !important; border-radius: var(--sm-r-bouton) !important; background-clip: padding-box !important; }
+  [class*="tabBar_"] [class*="item_"][class*="selected_"] {
+    background-color: var(--sm-bouton-fond) !important; border-color: var(--sm-bouton-bord) !important;
+    box-shadow: 0 4px 0 var(--sm-violet) !important; color: var(--sm-titre) !important;
+  }
+  [class*="tabBar_"] [class*="addFriend_"] {
+    background-color: var(--sm-violet) !important; color: #fff !important;
+    border-color: color-mix(in srgb, var(--sm-violet-vif) 60%, var(--sm-violet)) !important;
+    box-shadow: 0 4px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important;
+  }
+  /* Boutons pleins : en relief, penchent au survol */
+  button[class*="lookFilled_"] {
+    border: 2px solid var(--sm-bouton-bord) !important; border-radius: var(--sm-r-bouton) !important; background-clip: padding-box !important;
+    box-shadow: 0 4px 0 var(--sm-violet) !important;
+    transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
+  }
+  button[class*="lookFilled_"]:hover { translate: 0 -3px; rotate: -3deg; box-shadow: -4px 7px 0 var(--sm-violet) !important; }
   /* Liens dans les messages : blancs soulignés de violet */
   [class*="markup"] a[class*="anchor"] {
     text-decoration: underline !important; text-decoration-color: var(--sm-lien-trait) !important;
