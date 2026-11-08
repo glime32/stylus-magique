@@ -1,0 +1,217 @@
+/* magique-pdfjs.css : calque « Stylus magique » pour le lecteur PDF.js (extension « PDF Viewer » non empaquetée).
+   Pages sombres en cartes violettes sur fond noir, barre cachée qui revient quand la souris monte,
+   icônes violet clair, numéro de page et zoom en pastilles noires, page en cours violet foncé avec la barre,
+   mots trouvés en violet.
+   Chargé juste après viewer.css, mis à jour tout seul depuis github.com/glime32/stylus-magique (pdfjs/install.sh). */
+
+:root,
+:root:where(:not(.is-light)),
+#outerContainer {
+  --pm-texte: #ebebeb;
+  --pm-pale: #969696;
+  --pm-titre: #c5f9fc;
+  --pm-violet: #610089;
+  --pm-violet-vif: #d980ff;
+  --pm-violet-pale: #f1dcff;
+  --pm-violet-fonce: #14001e;
+  --pm-violet-moyen: #2a003b;
+  --pm-surface: #0a0010;
+  --pm-rouge: #ff3b3b;
+  --pm-bord: color-mix(in srgb, var(--pm-violet-vif) 50%, var(--pm-violet));
+  --pm-actif: color-mix(in srgb, var(--pm-violet) 35%, #000);
+
+  --body-bg-color: #000000 !important;
+  --main-color: var(--pm-texte) !important;
+  --scrollbar-color: var(--pm-violet) !important;
+  --scrollbar-bg-color: #000000 !important;
+
+  --toolbar-icon-opacity: 1 !important;
+  --doorhanger-icon-opacity: 1 !important;
+  --toolbar-icon-bg-color: var(--pm-violet-vif) !important;
+  --toolbar-icon-hover-bg-color: var(--pm-violet-pale) !important;
+  --toolbar-bg-color: #000000 !important;
+  --toolbar-border-color: var(--pm-violet) !important;
+  --button-hover-color: var(--pm-violet-fonce) !important;
+  --button-hover-text-color: var(--pm-violet-pale) !important;
+  --toggled-btn-color: var(--pm-violet-vif) !important;
+  --toggled-btn-text-color: var(--pm-violet-vif) !important;
+  --toggled-btn-bg-color: var(--pm-actif) !important;
+  --toggled-hover-active-btn-color: var(--pm-actif) !important;
+
+  --field-color: var(--pm-texte) !important;
+  --field-bg-color: #000000 !important;
+  --field-border-color: var(--pm-violet) !important;
+  --dropdown-btn-bg-color: #000000 !important;
+  --dropdown-btn-border: 2px solid var(--pm-violet) !important;
+
+  --doorhanger-bg-color: var(--pm-surface) !important;
+  --doorhanger-border-color: var(--pm-violet) !important;
+  --doorhanger-hover-color: var(--pm-violet-pale) !important;
+  --doorhanger-hover-bg-color: var(--pm-violet-fonce) !important;
+  --doorhanger-separator-color: var(--pm-violet-moyen) !important;
+  --separator-color: var(--pm-violet-moyen) !important;
+
+  --sidebar-narrow-bg-color: #000000 !important;
+  --sidebar-toolbar-bg-color: #000000 !important;
+  --treeitem-color: var(--pm-texte) !important;
+  --treeitem-bg-color: var(--pm-violet-fonce) !important;
+  --treeitem-hover-color: var(--pm-violet-pale) !important;
+  --treeitem-selected-color: var(--pm-titre) !important;
+  --treeitem-selected-bg-color: color-mix(in srgb, var(--pm-violet) 30%, #000) !important;
+  --thumbnail-hover-color: var(--pm-violet-fonce) !important;
+  --thumbnail-selected-color: color-mix(in srgb, var(--pm-violet) 60%, #000) !important;
+
+  --progressBar-color: var(--pm-violet) !important;
+  --progressBar-bg-color: var(--pm-violet-fonce) !important;
+  --progressBar-blend-color: var(--pm-violet) !important;
+
+  /* pages en cartes : bord violet 2 px, ombre dure dessous, 22 px entre deux pages */
+  --page-border: 2px solid var(--pm-bord) !important;
+  --page-margin: 22px auto !important;
+}
+
+/* ---------- les pages : sombres, en cartes, sur fond noir ---------- */
+#outerContainer #viewerContainer { background-color: #000000 !important; }
+#outerContainer .pdfViewer .page {
+  background-color: #000000 !important;
+  border: 2px solid var(--pm-bord) !important; /* passe devant le bord rouge ajouté à la main dans viewer.css */
+  border-radius: 4px !important;
+  box-shadow: 0 7px 0 var(--pm-violet) !important;
+}
+/* la page est dessinée comme une image : on l'inverse (blanc → noir, noir → blanc) en gardant les teintes */
+#outerContainer .pdfViewer .page .canvasWrapper > canvas,
+#outerContainer .thumbnailImage {
+  filter: invert(1) hue-rotate(180deg) !important;
+}
+
+/* ---------- mots trouvés (Ctrl+F) et texte sélectionné : violet ---------- */
+#outerContainer .textLayer .highlight {
+  --highlight-bg-color: rgb(97 0 137 / 0.55) !important;
+  --highlight-selected-bg-color: rgb(217 128 255 / 0.38) !important;
+  border-radius: 3px !important;
+}
+#outerContainer .textLayer .highlight.selected { outline: 2px solid var(--pm-violet-vif) !important; outline-offset: 1px !important; }
+#outerContainer .textLayer ::selection { background: rgb(97 0 137 / 0.6) !important; }
+/* « Occurrence 1 sur 3 » : violet foncé au lieu du bloc gris clair */
+#outerContainer #findbar #findResultsCount {
+  background-color: var(--pm-violet-fonce) !important;
+  color: var(--pm-violet-pale) !important;
+  border-radius: 8px !important;
+  padding: 3px 8px !important;
+}
+
+/* ---------- barre du haut ---------- */
+#outerContainer #toolbarContainer {
+  background-color: #000000 !important;
+  border-bottom: 2px solid var(--pm-violet) !important;
+  box-shadow: none !important;
+}
+#outerContainer #toolbarViewer { background: transparent !important; }
+#outerContainer :is(.splitToolbarButtonSeparator, .verticalToolbarSeparator) {
+  border-color: var(--pm-violet-moyen) !important;
+  background-color: var(--pm-violet-moyen) !important;
+}
+#outerContainer :is(.toolbarLabel, #numPages) { color: var(--pm-pale) !important; }
+
+/* boutons-icônes : icône violet clair ; fond violet foncé au survol et quand l'outil est actif */
+#outerContainer .toolbarButton {
+  border-radius: 9px !important;
+  background-color: transparent !important;
+  outline: none !important;
+}
+#outerContainer .toolbarButton::before,
+#outerContainer .dropdownToolbarButton::after {
+  background-color: var(--pm-violet-vif) !important;
+  opacity: 1 !important;
+}
+#outerContainer .toolbarButton:is(:hover, :focus-visible) { background-color: var(--pm-violet-fonce) !important; }
+#outerContainer .toolbarButton:is(:hover, :focus-visible)::before,
+#outerContainer .dropdownToolbarButton:is(:hover, :focus-within)::after { background-color: var(--pm-violet-pale) !important; }
+#outerContainer .toolbarButton:is(.toggled, [aria-expanded="true"], [aria-pressed="true"]) { background-color: var(--pm-actif) !important; }
+#outerContainer .toolbarButton:is(.toggled, [aria-expanded="true"], [aria-pressed="true"])::before { background-color: var(--pm-violet-vif) !important; }
+#outerContainer .toolbarButton:is([disabled], [disabled="disabled"])::before { opacity: 0.35 !important; }
+#outerContainer .toolbarButton:focus-visible { outline: 3px solid var(--pm-rouge) !important; outline-offset: -1px !important; }
+
+/* numéro de page et zoom : pastilles noires, bord violet 2 px, rouge au survol et quand on tape */
+#outerContainer .toolbarField,
+#outerContainer .dropdownToolbarButton {
+  background-color: #000000 !important;
+  color: var(--pm-texte) !important;
+  border: 2px solid var(--pm-violet) !important;
+  border-radius: 999px !important;
+  background-clip: padding-box !important;
+  box-shadow: none !important;
+  outline: none !important;
+  caret-color: var(--pm-rouge) !important;
+}
+#outerContainer .toolbarField { text-align: center !important; }
+#outerContainer .dropdownToolbarButton > select {
+  background-color: transparent !important;
+  color: var(--pm-texte) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  outline: none !important;
+}
+#outerContainer .dropdownToolbarButton > select > option { background-color: var(--pm-surface) !important; color: var(--pm-texte) !important; }
+#outerContainer :is(.toolbarField, .dropdownToolbarButton):hover,
+#outerContainer :is(.toolbarField:focus, .dropdownToolbarButton:focus-within) { border-color: var(--pm-rouge) !important; }
+
+/* menus (», recherche, outils d'annotation) : fond violet très foncé, anneau violet */
+#outerContainer :is(.doorHanger, .doorHangerRight, .editorParamsToolbar, #secondaryToolbar, #findbar, .dropdownToolbarButton menu, [role="menu"]) {
+  background-color: var(--pm-surface) !important;
+  border: 0 !important;
+  outline: 2px solid var(--pm-violet) !important;
+  outline-offset: -2px !important;
+  border-radius: 14px !important;
+  box-shadow: none !important;
+}
+#outerContainer :is(.doorHanger, .doorHangerRight, .editorParamsToolbar)::before,
+#outerContainer :is(.doorHanger, .doorHangerRight, .editorParamsToolbar)::after { display: none !important; } /* petites flèches */
+#outerContainer #secondaryToolbar .toolbarButton { border-radius: 10px !important; color: var(--pm-texte) !important; }
+
+/* ---------- barre cachée : revient dès que la souris approche du haut ---------- */
+#outerContainer #toolbarContainer {
+  position: fixed !important;
+  inset: 0 0 auto 0 !important;
+  z-index: 9999 !important;
+  transform: translateY(-100%) !important;
+  transition: transform 0.18s ease 0.35s !important; /* se cache 0,35 s après la sortie */
+}
+/* zone de survol invisible de 48 px + fine ligne violette qui montre où est la barre */
+#outerContainer #toolbarContainer::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 100% 0 auto 0 !important;
+  height: 48px !important;
+  pointer-events: auto !important;
+  background: linear-gradient(var(--pm-violet), var(--pm-violet)) top / 100% 2px no-repeat !important;
+}
+#outerContainer #toolbarContainer:is(:hover, :focus-within),
+#outerContainer #toolbarContainer:has([aria-expanded="true"], .doorHanger:not(.hidden), .doorHangerRight:not(.hidden)),
+#outerContainer:has(#secondaryToolbar:not(.hidden), #findbar:not(.hidden), .editorParamsToolbar:not(.hidden)) #toolbarContainer {
+  transform: none !important;
+  transition-delay: 0s !important;
+}
+/* barre ouverte : la bordure du bas suffit, la zone rétrécit (moins de clics bloqués sur la page) */
+#outerContainer #toolbarContainer:is(:hover, :focus-within)::after,
+#outerContainer #toolbarContainer:has([aria-expanded="true"], .doorHanger:not(.hidden), .doorHangerRight:not(.hidden))::after,
+#outerContainer:has(#secondaryToolbar:not(.hidden), #findbar:not(.hidden), .editorParamsToolbar:not(.hidden)) #toolbarContainer::after {
+  height: 24px !important;
+  background: none !important;
+}
+
+/* ---------- volet de gauche : miniatures et sommaire ---------- */
+#outerContainer #sidebarContainer,
+#outerContainer #sidebarContent,
+#outerContainer #toolbarSidebar { background-color: #000000 !important; }
+#outerContainer #sidebarContent { box-shadow: inset -2px 0 0 var(--pm-violet-moyen) !important; }
+
+/* page en cours : cadre violet foncé et barre violet vif à gauche */
+#outerContainer .thumbnail { border-radius: 8px !important; }
+#outerContainer .thumbnail.selected {
+  border-color: var(--thumbnail-selected-color) !important;
+  box-shadow: -4px 0 0 var(--pm-violet-vif) !important;
+}
+#outerContainer .treeItem > a { border-radius: 0 8px 8px 0 !important; }
+#outerContainer .treeItem > a:hover { background-color: var(--pm-violet-fonce) !important; }
+#outerContainer .treeItem.selected > a { box-shadow: inset 3px 0 0 var(--pm-violet-vif) !important; }
