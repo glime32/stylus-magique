@@ -1042,6 +1042,10 @@ form[role="search"] [role="option"][aria-selected="true"] {
 
 /* ===== Onglets Principale / Promotions / Réseaux sociaux : plats, l'actif en relief ===== */
 .aKh [role="tab"], .aRz [role="tab"] {
+  box-sizing: border-box !important;
+  height: calc(100% - 10px) !important;
+  margin-block: 3px 7px !important;
+  align-self: flex-start !important;
   background-color: transparent !important;
   border: 2px solid transparent !important;
   border-radius: var(--sm-r-bouton) !important;
@@ -1060,6 +1064,11 @@ form[role="search"] [role="option"][aria-selected="true"] {
   box-shadow: 0 4px 0 var(--sm-violet) !important;
 }
 [role="tab"][aria-selected="true"]::before { display: none !important; }
+.aKh [role="tab"][aria-selected="true"] .aKz, .aRz [role="tab"][aria-selected="true"] .aKz { color: var(--sm-titre) !important; }
+
+/* Ni logo Gmail, ni bouton des outils de saisie (« Fr ») */
+header a[aria-label="Gmail"], header a[title="Gmail"], header a[href$="#inbox"]:has(img) { display: none !important; }
+div.J-Jw:has(> a.d-Na-JX-I) { display: none !important; }
 .aKh [role="tab"][aria-selected="true"] .aKz,
 .aRz [role="tab"][aria-selected="true"] .aKz {
   font-weight: 700 !important;
