@@ -3767,7 +3767,9 @@ mw-conversation-container,mws-messages-list,mws-message-compose,.compose-contain
 html body mws-message-part-content.enable-bg-color:not(.outgoing,[class*=outgoing]):not(#z){background-color:var(--sm-violet-fonce)!important}
 html body :is(div.input-box,mws-message-send-button.floating-button):not(#z){background-color:var(--sm-champ-fond)!important}
 html body div.input-box:not(#z){border:2px solid var(--sm-champ-bord)!important;background-clip:padding-box!important}
-html body div.input-box:focus-within:not(#z){border-color:var(--sm-violet-vif)!important}
+html body div.input-box:focus-within:not(#z){border-color:var(--sm-champ-actif)!important}
+html body mws-conversation-list-item a:is(.unread,[data-e2e-is-unread=true]):not(#z){background-color:var(--sm-nonlu-fond)!important;outline:2px solid var(--sm-bouton-bord)!important;outline-offset:-2px;box-shadow:0 4px 0 var(--sm-violet)!important;border-radius:12px!important}
+html body mws-conversation-list-item a:is(.unread,[data-e2e-is-unread=true]) :is(.name,.snippet-text,h2,h3):not(#z){color:var(--sm-titre)!important;font-weight:700!important}
 html body div.input:not(#z){background-color:transparent!important}
 html body button.new-msg-indicator:not(#z){background-color:var(--sm-violet)!important;color:#fff!important}
 html body mw-conversation-container button.mdc-button:not(#z){background-color:var(--sm-violet-moyen)!important}
@@ -4389,7 +4391,7 @@ div.tombstone-message-part a,div.tombstone-message-part [role=button],div.tombst
 mw-settings-container,mw-settings-container .settings,mws-settings{background-color:#000!important}
 h2.section-title{color:var(--sm-titre)!important}
 .mat-mdc-slide-toggle{--mat-slide-toggle-selected-handle-color:var(--sm-texte)!important;--mat-slide-toggle-selected-hover-handle-color:var(--sm-texte)!important;--mat-slide-toggle-selected-focus-handle-color:var(--sm-texte)!important;--mat-slide-toggle-selected-pressed-handle-color:var(--sm-texte)!important;--mat-slide-toggle-selected-track-color:var(--sm-actif-fond)!important;--mat-slide-toggle-selected-hover-track-color:var(--sm-survol)!important;--mat-slide-toggle-selected-focus-track-color:var(--sm-rouge)!important;--mat-slide-toggle-selected-pressed-track-color:var(--sm-actif-fond)!important;--mat-slide-toggle-selected-icon-color:var(--sm-actif-fond)!important;--mat-slide-toggle-unselected-track-color:var(--sm-actif-fond)!important;--mat-slide-toggle-unselected-hover-track-color:var(--sm-survol)!important;--mat-slide-toggle-unselected-focus-track-color:var(--sm-actif-fond)!important}
-.mat-mdc-radio-button{--mat-radio-checked-ring-color:var(--sm-rouge)!important;--mat-radio-selected-icon-color:#ffffff!important;--mat-radio-selected-hover-icon-color:#ffffff!important;--mat-radio-selected-focus-icon-color:#ffffff!important;--mat-radio-selected-pressed-icon-color:#ffffff!important;--mdc-radio-selected-icon-color:#ffffff!important;--mdc-radio-selected-hover-icon-color:#ffffff!important;--mdc-radio-selected-focus-icon-color:#ffffff!important}
+.mat-mdc-radio-button{--mat-radio-checked-ring-color:var(--sm-violet-vif)!important;--mat-radio-selected-icon-color:#ffffff!important;--mat-radio-selected-hover-icon-color:#ffffff!important;--mat-radio-selected-focus-icon-color:#ffffff!important;--mat-radio-selected-pressed-icon-color:#ffffff!important;--mdc-radio-selected-icon-color:#ffffff!important;--mdc-radio-selected-hover-icon-color:#ffffff!important;--mdc-radio-selected-focus-icon-color:#ffffff!important}
 .mdc-switch.mdc-switch--selected .mdc-switch__track::after{background:var(--sm-actif-fond)!important;border-color:var(--sm-violet)!important}
 .mdc-switch.mdc-switch--selected .mdc-switch__handle::after{background:#fff!important}
 .mdc-switch.mdc-switch--selected .mdc-switch__icon{fill:var(--sm-violet-vif)!important}
