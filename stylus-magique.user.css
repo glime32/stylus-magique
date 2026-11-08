@@ -608,7 +608,6 @@ form[data-testid="search-form"] button[aria-label*="earch"] {
 /* Contour de focus bien visible */
 input:focus, form:focus-within {
   outline: none !important;
-  box-shadow: 0 0 0 2px var(--sm-violet-vif) !important;
   border-color: var(--sm-champ-actif) !important;
 }
 
@@ -618,11 +617,11 @@ a:visited { color: var(--sm-lien-vu) !important; }
 a:hover { color: var(--sm-lien-survol) !important; }
 a:not(:has(img,svg,video,picture)):hover{background-color:var(--sm-lien-survol-fond)!important;border-radius:4px}
 
-/* ===== Texte rouge : onglets, filtres, recherches associées ===== */
+/* ===== Onglets, filtres, recherches associées : couleur des menus ===== */
 a[href^="/?q="], a[href^="/?q="] *,
 button[aria-haspopup], button[aria-haspopup] *,
 button[aria-expanded], button[aria-expanded] * {
-  color: var(--sm-rouge) !important;
+  color: var(--sm-lien-menu) !important;
 }
 
 /* ===== Cartes et menus ===== */
@@ -632,19 +631,29 @@ button[aria-expanded], button[aria-expanded] * {
   border-color: var(--sm-carte-bord) !important;
 }
 
-/* ===== Bouton Plus de résultats (rouge) ===== */
+/* ===== Bouton Plus de résultats : en relief ===== */
 .result--more, .result--more *,
 #more-results, #more-results *,
 a[id*="more" i], button[id*="more" i],
 [data-testid*="more" i], [data-testid*="more" i] *,
 [class*="more-results" i], [class*="more-results" i] *,
 [class*="result--more" i], [class*="result--more" i] * {
-  background-color: var(--sm-rouge) !important;
-  color: #ffffff !important;
+  background-color: transparent !important;
+  color: var(--sm-titre) !important;
   border: none !important;
 }
-.result--more__btn:hover, .result--more a:hover, .result--more button:hover {
+.result--more__btn, .result--more a, .result--more button, #more-results, button[id*="more" i] {
   background-color: var(--sm-bouton-fond) !important;
+  border: 2px solid var(--sm-bouton-bord) !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background-clip: padding-box !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
+}
+.result--more__btn:hover, .result--more a:hover, .result--more button:hover, #more-results:hover, button[id*="more" i]:hover {
+  translate: 0 -3px;
+  rotate: -3deg;
+  box-shadow: -4px 7px 0 var(--sm-violet) !important;
 }
 
 /* ===== Favicons sans fond ===== */
@@ -782,10 +791,10 @@ html body #react-duckbar li:has(.dropdown--settings) {
 }
 html body #react-duckbar li:has(.dropdown--settings) button {
   background: transparent !important;
-  color: var(--sm-rouge) !important;
+  color: var(--sm-lien-menu) !important;
 }
 html body #react-duckbar li:has(.dropdown--settings) svg {
-  color: var(--sm-rouge) !important;
+  color: var(--sm-icone) !important;
 }
 
 @keyframes ddg-filtres-scroll {
@@ -803,9 +812,9 @@ html body #react-duckbar li:has(.dropdown--settings) svg {
    et autour du bouton loupe. */
 html body form[data-testid="search-form"] [data-testid="search-form-input-wrapper"] {
   /* 2px : à 1.59x un trait de 1px paraît plus fin dans les arrondis que sur les côtés droits */
-  border: 2px solid #610089 !important;
+  border: 2px solid var(--sm-champ-bord) !important;
   border-radius: 999px !important;
-  background-color: #000000 !important;
+  background-color: var(--sm-champ-fond) !important;
   box-shadow: none !important;
 }
 html body [data-testid="search-form-input-wrapper"] div {
@@ -825,8 +834,8 @@ html body form[data-testid="search-form"]:focus-within {
 }
 /* Contour de focus arrondi, sur la barre elle-même */
 html body form[data-testid="search-form"] [data-testid="search-form-input-wrapper"]:focus-within {
-  border-color: var(--sm-violet-vif) !important;
-  box-shadow: 0 0 0 2px var(--sm-violet-vif) !important;
+  border-color: var(--sm-champ-actif) !important;
+  box-shadow: none !important;
 }
 
 /* Propositions de recherche : un seul panneau noir arrondi, sans cadre carré
@@ -867,19 +876,19 @@ html body article a:visited:hover * {
   color: #8fbcff !important;
 }
 
-/* Menu ≡ en haut à droite : rouge comme les filtres, et sur la même ligne */
+/* Menu ≡ en haut à droite : icône violet clair, sur la même ligne que les filtres */
 html body #header-hamburger-menu-btn {
   translate: 0 1.5px !important;
 }
 html body #header-hamburger-menu-btn,
 html body #header-hamburger-menu-btn svg,
 html body #header-hamburger-menu-btn path {
-  color: var(--sm-rouge) !important;
+  color: var(--sm-icone) !important;
 }
 html body #header-hamburger-menu-btn:hover,
 html body #header-hamburger-menu-btn:hover svg,
 html body #header-hamburger-menu-btn:hover path {
-  color: var(--sm-rouge-vif) !important;
+  color: var(--sm-titre) !important;
 }
 
 /* Bandeau « Protection. Confidentialité. Tranquillité d'esprit. » (compare-privacy) : caché */
@@ -4717,5 +4726,88 @@ gem-nav-list-item:is(.selected, [aria-current="page"]) a {
   background-color: var(--sm-actif-fond) !important;
   box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
   border-radius: 0 999px 999px 0 !important;
+}
+}
+
+/*@@ wikipedia-magique @@*/
+@-moz-document domain("wikipedia.org"), domain("wiktionary.org"), domain("wikibooks.org"), domain("wikiversity.org"), domain("wikisource.org"), domain("wikiquote.org"), domain("wikivoyage.org"), domain("wikinews.org"), domain("wikidata.org"), domain("wikimedia.org"), domain("mediawiki.org") {
+/* Sommaire, Apparence, Outils : petites majuscules larges */
+.vector-pinnable-header-label, .vector-menu-heading-label, .vector-toc-title {
+  color: var(--sm-violet-vif) !important;
+  font-family: var(--sm-etroite) !important;
+  font-stretch: 112% !important;
+  font-weight: 800 !important;
+  font-size: .74rem !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+/* Onglets Article / Discussion / Lire / Modifier : plats, l'actif en relief */
+.vector-menu-tabs .mw-list-item a { border: 2px solid transparent !important; border-radius: var(--sm-r-bouton) !important; }
+.vector-menu-tabs .mw-list-item.selected a {
+  padding-inline: 8px !important;
+  border-color: var(--sm-bouton-bord) !important;
+  background-color: var(--sm-bouton-fond) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  color: var(--sm-titre) !important;
+}
+.vector-menu-tabs .mw-list-item.selected a::after, .vector-menu-tabs .mw-list-item.selected::after { display: none !important; }
+.vector-menu-tabs .mw-list-item.selected { border-bottom: 0 !important; background: none !important; }
+/* Rubrique en cours dans le sommaire : violet foncé et barre à gauche */
+.vector-toc .vector-toc-list-item-active > .vector-toc-link {
+  background-color: var(--sm-actif-fond) !important;
+  box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
+  border-radius: 0 6px 6px 0 !important;
+  color: var(--sm-titre) !important;
+}
+}
+
+/*@@ github-magique @@*/
+@-moz-document domain("github.com") {
+/* Onglets (Code, Issues, Pull requests…) : plats, l'actif en relief */
+:is(.UnderlineNav-item, a[class*="UnderlineItem"]) { border: 2px solid transparent !important; border-radius: var(--sm-r-bouton) !important; }
+:is(.UnderlineNav-item, a[class*="UnderlineItem"]):is(.selected, [aria-current]:not([aria-current="false"])) {
+  border-color: var(--sm-bouton-bord) !important;
+  background-color: var(--sm-bouton-fond) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  color: var(--sm-titre) !important;
+}
+:is(.UnderlineNav-item, a[class*="UnderlineItem"]):is(.selected, [aria-current]:not([aria-current="false"]))::after { display: none !important; }
+/* Boutons : en relief, penchent au survol ; le principal en violet plein */
+:is(.btn, .Button, [data-component="Button"]):not(.btn-octicon, .btn-link, .Button--invisible, .Button--iconOnly, [data-variant="invisible"], [data-variant="link"]) {
+  border: 2px solid var(--sm-bouton-bord) !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background-color: var(--sm-bouton-fond) !important;
+  background-clip: padding-box !important;
+  color: var(--sm-titre) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
+}
+:is(.btn-primary, .Button--primary, [data-component="Button"][data-variant="primary"]) {
+  background-color: var(--sm-violet) !important;
+  border-color: color-mix(in srgb, var(--sm-violet-vif) 60%, var(--sm-violet)) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important;
+}
+:is(.btn, .Button, [data-component="Button"]):not(.btn-octicon, .btn-link, .Button--invisible, .Button--iconOnly, [data-variant="invisible"], [data-variant="link"]):hover {
+  translate: 0 -3px;
+  rotate: -3deg;
+  box-shadow: -4px 7px 0 var(--sm-violet) !important;
+}
+:is(.btn-danger, .Button--danger, [data-component="Button"][data-variant="danger"]) {
+  color: var(--sm-rouge-vif) !important;
+  border-color: color-mix(in srgb, var(--sm-rouge-vif) 50%, var(--sm-rouge-fonce)) !important;
+  box-shadow: 0 4px 0 var(--sm-rouge-fonce) !important;
+}
+/* Sujets, compteurs, « Public » : étiquettes de bijoutier */
+:is(a.topic-tag, a[class*="TopicTag"], .Counter:not(:empty), [data-component="CounterLabel"]:not(:empty), .Label, [data-component="Label"], .IssueLabel) {
+  padding: 1px 8px 1px 6px !important;
+  border: 2px solid #000 !important;
+  border-radius: 4px 10px 10px 4px !important;
+  background: var(--sm-etiquette-fond) !important;
+  color: var(--sm-etiquette-texte) !important;
+  font-family: var(--sm-etroite) !important;
+  font-weight: 800 !important;
+  rotate: 5deg;
+  box-shadow: 2px 2px 0 #000 !important;
 }
 }
