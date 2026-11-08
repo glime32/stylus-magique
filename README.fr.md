@@ -35,7 +35,7 @@ Le style de ma page [Nouvel onglet](https://github.com/glime32/nouvel-onglet-cou
 
    Le volet est un style à part : on le coupe dans Stylus si on n'en veut plus. Les deux fichiers ont un `@updateURL` qui pointe ici, chaque modification poussée arrive toute seule.
 
-3. Le lecteur PDF (facultatif). Stylus ne peut pas styler une extension, alors `pdfjs/magique-pdfjs.css` s'ajoute dans une copie non empaquetée de l'extension « PDF Viewer » (PDF.js) : pages sombres à bord rouge sur fond violet, comme dans Xournal, barre du haut cachée qui revient quand la souris monte, icônes violet clair, numéro de page et zoom en pastilles, page en cours violet foncé avec la barre, mots trouvés en violet.
+3. Le lecteur PDF (facultatif). Stylus ne peut pas styler une extension, alors `pdfjs/magique-pdfjs.css` s'ajoute dans une copie non empaquetée de l'extension « PDF Viewer » (PDF.js) : pages sombres à bord rouge sur fond violet, comme dans Xournal, barre du haut en capsule cachée, qui sort quand la souris arrive dans le haut de la page, icônes violet clair, numéro de page et zoom en pastilles, page en cours violet foncé avec la barre, mots trouvés en violet.
 
    ```bash
    curl -fsSL https://raw.githubusercontent.com/glime32/stylus-magique/main/pdfjs/install.sh | bash

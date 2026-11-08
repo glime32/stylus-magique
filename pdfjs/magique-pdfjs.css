@@ -19,6 +19,7 @@
   --pm-rouge: #ff3b3b;
   --pm-bord: color-mix(in srgb, var(--pm-violet-vif) 50%, var(--pm-violet));
   --pm-actif: color-mix(in srgb, var(--pm-violet) 35%, #000);
+  --pm-haut: 44px; /* place de la capsule sous le bord de l'écran */
 
   --body-bg-color: #000000 !important;
   --main-color: var(--pm-texte) !important;
@@ -94,7 +95,7 @@
 #outerContainer .textLayer ::selection { background: rgb(97 0 137 / 0.6) !important; }
 /* recherche ouverte : les pages descendent sous la barre, sinon le mot trouvé tombe derrière
    (viewer.css met les pages tout en haut de l'écran) */
-#outerContainer:has(#findbar:not(.hidden)) #viewerContainer { top: 76px !important; }
+#outerContainer:has(#findbar:not(.hidden)) #viewerContainer { top: 90px !important; }
 /* « Occurrence 1 sur 3 » : violet foncé au lieu du bloc gris clair */
 #outerContainer #findbar #findResultsCount {
   background-color: var(--pm-violet-fonce) !important;
@@ -103,12 +104,15 @@
   padding: 3px 8px !important;
 }
 
-/* ---------- barre du haut ---------- */
+/* ---------- barre du haut : capsule noire, bord violet, ombre dure ---------- */
 #outerContainer #toolbarContainer {
   background-color: #000000 !important;
-  border-bottom: 2px solid var(--pm-violet) !important;
-  box-shadow: none !important;
+  border: 2px solid var(--pm-bord) !important;
+  border-radius: 14px !important;
+  background-clip: padding-box !important;
+  box-shadow: 4px 4px 0 #000000 !important;
 }
+#outerContainer #toolbarViewer { border-radius: 12px !important; }
 #outerContainer #toolbarViewer { background: transparent !important; }
 #outerContainer :is(.splitToolbarButtonSeparator, .verticalToolbarSeparator) {
   border-color: var(--pm-violet-moyen) !important;
@@ -171,23 +175,39 @@
 #outerContainer :is(.doorHanger, .doorHangerRight, .editorParamsToolbar)::before,
 #outerContainer :is(.doorHanger, .doorHangerRight, .editorParamsToolbar)::after { display: none !important; } /* petites flèches */
 #outerContainer #secondaryToolbar .toolbarButton { border-radius: 10px !important; color: var(--pm-texte) !important; }
+/* ils s'ouvrent sous la capsule (le lecteur les met à 32 px du haut, sous l'ancienne barre) */
+#outerContainer :is(#findbar, #secondaryToolbar, .editorParamsToolbar) { top: calc(var(--pm-haut) + var(--toolbar-height) + 10px) !important; }
+#outerContainer #findbar { inset-inline-start: calc(7% + 64px) !important; }
+#outerContainer :is(#secondaryToolbar, .editorParamsToolbar) { inset-inline-end: calc(7% + 4px) !important; }
 
-/* ---------- barre cachée : revient dès que la souris approche du haut ---------- */
+/* ---------- capsule cachée : elle sort quand la souris arrive dans le haut de la page ----------
+   Elle se pose à 44 px du bord : le bord lui-même sert déjà à la barre d'Helium, cachée elle aussi. */
 #outerContainer #toolbarContainer {
   position: fixed !important;
-  inset: 0 0 auto 0 !important;
+  inset: var(--pm-haut) 7% auto 7% !important;
+  width: auto !important;
   z-index: 9999 !important;
-  transform: translateY(-100%) !important;
-  transition: transform 0.18s ease 0.35s !important; /* se cache 0,35 s après la sortie */
+  transform: translateY(calc(-100% - var(--pm-haut) - 8px)) !important; /* rangée au-dessus de l'écran */
+  transition: transform 0.22s cubic-bezier(.2, .9, .25, 1) 0.35s !important; /* se range 0,35 s après la sortie */
 }
-/* zone de survol invisible de 48 px + fine ligne violette qui montre où est la barre */
+/* zone de survol invisible : les 88 px du haut de la page, sur toute la largeur,
+   avec une fine ligne violette qui montre où est la capsule */
 #outerContainer #toolbarContainer::after {
   content: "" !important;
   position: absolute !important;
-  inset: 100% 0 auto 0 !important;
-  height: 48px !important;
+  inset: 100% -20vw auto -20vw !important;
+  height: 96px !important;
   pointer-events: auto !important;
-  background: linear-gradient(var(--pm-violet), var(--pm-violet)) top / 100% 2px no-repeat !important;
+  background: linear-gradient(var(--pm-violet-vif), var(--pm-violet-vif)) 0 8px / 100% 2px no-repeat !important;
+  opacity: 0.6;
+}
+/* capsule sortie : on garde la main sur l'espace entre le bord et la capsule, sinon elle repart */
+#outerContainer #toolbarContainer::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: auto -20vw 100% -20vw !important;
+  height: calc(var(--pm-haut) + 8px) !important;
+  pointer-events: auto !important;
 }
 #outerContainer #toolbarContainer:is(:hover, :focus-within),
 #outerContainer #toolbarContainer:has([aria-expanded="true"], .doorHanger:not(.hidden), .doorHangerRight:not(.hidden)),
