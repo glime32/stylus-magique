@@ -4783,3 +4783,40 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
 /* Place pour l'ombre et la carte qui penche dans les rangées qui défilent */
 .scrollBarStyled:has(> .as-carte) { padding-block: 10px 14px !important; }
 }
+
+/*@@ chess-magique @@*/
+@-moz-document domain("chess.com") {
+/* Boutons : le principal (Commencer la partie…) en violet plein, les autres en relief ; tous penchent au survol */
+:is([class*="cc-button-primary"], [class*="cc-button-secondary"]) {
+  border: 2px solid var(--sm-bouton-bord) !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background: var(--sm-bouton-fond) !important;
+  background-clip: padding-box !important;
+  color: var(--sm-titre) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
+}
+[class*="cc-button-primary"] {
+  background: var(--sm-violet) !important;
+  border-color: color-mix(in srgb, var(--sm-violet-vif) 60%, var(--sm-violet)) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important;
+}
+:is([class*="cc-button-primary"], [class*="cc-button-secondary"]):hover {
+  translate: 0 -3px;
+  rotate: -3deg;
+  box-shadow: -4px 7px 0 var(--sm-violet) !important;
+}
+/* Menu de gauche : aqua */
+.sidebar-link-desktop-wrapper a, .sidebar-link-desktop-wrapper a * { color: var(--sm-lien-menu) !important; }
+/* Petits titres (Vos parties, Problème du jour…) : majuscules larges */
+:is(.cc-aside-header-name, .play-online-quick-links-quick-start) > [class*="cc-heading-xx-small"] {
+  color: var(--sm-violet-vif) !important;
+  font-family: var(--sm-etroite) !important;
+  font-stretch: 112% !important;
+  font-weight: 800 !important;
+  font-size: .76rem !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+}
