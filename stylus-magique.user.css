@@ -2943,9 +2943,11 @@ table.hatching{background-image:repeating-linear-gradient(45deg,transparent 0 10
 .eventText,.eventText *{color:var(--sm-texte)!important}
 div:has(>.event:not([style*="#FFFFFF" i])) .eventText,div:has(>.event:not([style*="#FFFFFF" i])) .eventText *{color:#000!important;font-weight:600}
 .x-btn,.x-btn td{background-image:none!important}
-.x-btn{background:#000!important;border:2px solid var(--sm-bouton-bord)!important;border-radius:6px!important;background-clip:padding-box!important}
-.x-btn button,.x-btn-text,.x-btn em{color:var(--sm-texte)!important}
-.x-btn-over,.x-btn-pressed,.x-btn-click,.x-btn-menu-active{background:var(--sm-violet)!important}
+.x-btn{background:var(--sm-bouton-fond)!important;border:2px solid var(--sm-bouton-bord)!important;border-radius:var(--sm-r-bouton)!important;background-clip:padding-box!important;box-shadow:0 4px 0 var(--sm-violet)!important;transition:translate .3s var(--sm-snap),rotate .3s var(--sm-snap),box-shadow .3s var(--sm-snap)!important}
+.x-btn button,.x-btn-text,.x-btn em{color:var(--sm-titre)!important}
+.x-btn-over{translate:0 -3px;rotate:-3deg;box-shadow:-4px 7px 0 var(--sm-violet)!important}
+.x-btn-pressed,.x-btn-click,.x-btn-menu-active{background:var(--sm-violet)!important}
+.x-btn-pressed :is(button,.x-btn-text,em){color:#fff!important}
 input,textarea,select,.x-form-field,.x-form-text,.x-form-field-wrap{background:var(--sm-champ-fond)!important;background-image:none!important;color:var(--sm-texte)!important;border-color:var(--sm-champ-bord)!important}
 .x-form-trigger{filter:invert(1) hue-rotate(180deg)}
 .x-shadow{display:none!important}
@@ -4384,8 +4386,11 @@ img.ajn[src*="profile_mask"],img[src*="profile_mask"]{filter:invert(1)!important
 
 /*@@ google-messages3 @@*/
 @-moz-document domain("messages.google.com") {
-mws-message-part-content.outgoing,mws-message-part-content.outgoing *:not(a){color:var(--sm-lien)!important}
-mws-message-part-content.outgoing a{color:var(--sm-lien)!important}
+mws-message-part-content.outgoing,mws-message-part-content.outgoing *:not(a){color:#fff!important}
+mws-message-part-content.outgoing a{color:#fff!important;text-decoration:underline 2px color-mix(in srgb,#fff 55%,transparent)!important;text-underline-offset:3px}
+#gm-recherche input:not(#z){background:var(--sm-champ-fond)!important;border-color:var(--sm-champ-bord)!important;border-radius:var(--sm-r-champ)!important}
+#gm-recherche input:focus:not(#z){border-color:var(--sm-champ-actif)!important}
+mws-conversation-list-item a:is(.selected,[aria-selected=true],[aria-current=page],[aria-current=true]):not(#z){background-color:var(--sm-actif-fond)!important;box-shadow:inset 3px 0 0 var(--sm-violet-vif)!important}
 div.tombstone-message-part{background-color:var(--sm-surface)!important;border:2px solid var(--sm-ligne)!important;background-clip:padding-box!important;color:#cfc8d8!important}
 div.tombstone-message-part a,div.tombstone-message-part [role=button],div.tombstone-message-part button{color:var(--sm-lien)!important}
 mw-settings-container,mw-settings-container .settings,mws-settings{background-color:#000!important}
@@ -4577,6 +4582,17 @@ nav.navbar .navbar-brand:not(#z), nav.navbar .navbar-brand:not(#z) * { color: va
   border-color: var(--sm-violet-vif) !important;
   box-shadow: 6px 9px 0 var(--sm-violet) !important;
 }
+/* Nom des cours sur les cartes : Gloock aqua, sans souligné */
+.course-card a.coursename:not(#z):not(#y), .course-card a.coursename:not(#z):not(#y) *,
+.dashboard-card a.coursename:not(#z):not(#y), .dashboard-card a.coursename:not(#z):not(#y) * {
+  color: var(--sm-titre) !important;
+  font-family: var(--sm-serif) !important;
+  font-weight: 400 !important;
+  font-size: 1.12rem !important;
+  line-height: 1.2 !important;
+  text-decoration: none !important;
+}
+.course-card a.coursename:not(#z):not(#y):hover { background: none !important; }
 /* Boutons : en relief, penchent au survol ; le principal en violet plein */
 .btn:is(.btn-primary, .btn-secondary, [class*="btn-outline-"]):not(#z) {
   border: 2px solid var(--sm-bouton-bord) !important;
@@ -4603,4 +4619,103 @@ nav.navbar .navbar-brand:not(#z), nav.navbar .navbar-brand:not(#z) * { color: va
 }
 .courseindex .courseindex-item.pageitem a { color: var(--sm-titre) !important; }
 .courseindex .courseindex-item:not(.pageitem):hover { background-color: var(--sm-survol) !important; }
+}
+
+/*@@ claude-magique @@*/
+@-moz-document domain("claude.ai") {
+/* Menu de gauche : aqua ; page en cours en violet foncé avec la barre */
+aside a, aside a span { color: var(--sm-lien-menu) !important; }
+aside a[aria-current="page"] {
+  background-color: var(--sm-actif-fond) !important;
+  box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
+  border-radius: 0 8px 8px 0 !important;
+}
+aside a[aria-current="page"], aside a[aria-current="page"] * { color: var(--sm-titre) !important; }
+/* Épinglés, Récents… : petites majuscules larges */
+aside h3, aside h3 * {
+  color: var(--sm-violet-vif) !important;
+  font-family: var(--sm-etroite) !important;
+  font-stretch: 112% !important;
+  font-weight: 800 !important;
+  font-size: .7rem !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+/* Cartes (artéfacts, projets) : en relief, penchent au survol */
+:has(> .cds-card-body) {
+  border: 2px solid var(--sm-carte-bord) !important;
+  border-radius: var(--sm-r-carte) !important;
+  box-shadow: 0 5px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap), border-color .2s !important;
+}
+:has(> .cds-card-body):hover {
+  translate: 0 -5px;
+  rotate: -1.5deg;
+  border-color: var(--sm-violet-vif) !important;
+  box-shadow: 6px 9px 0 var(--sm-violet) !important;
+}
+}
+
+/*@@ keep-magique @@*/
+@-moz-document domain("keep.google.com") {
+/* Épinglées, Autres : petites majuscules larges */
+.neVct-LS81yb-tJHJj {
+  color: var(--sm-violet-vif) !important;
+  font-family: var(--sm-etroite) !important;
+  font-stretch: 112% !important;
+  font-weight: 800 !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+/* Menu de gauche : aqua ; rubrique en cours en violet foncé avec la barre */
+[role="tab"].PvRhvb-ibnC6b, [role="tab"].PvRhvb-ibnC6b * { color: var(--sm-lien-menu) !important; }
+[role="tab"].PvRhvb-ibnC6b.gk6SMd {
+  background-color: var(--sm-actif-fond) !important;
+  box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
+  border-radius: 0 999px 999px 0 !important;
+}
+/* Notes : cartes en relief, penchent au survol */
+.IZ65Hb-n0tgWb {
+  border: 2px solid var(--sm-carte-bord) !important;
+  border-radius: var(--sm-r-carte) !important;
+  box-shadow: 0 5px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap), border-color .2s !important;
+}
+.IZ65Hb-n0tgWb:hover {
+  translate: 0 -5px;
+  rotate: -1.5deg;
+  border-color: var(--sm-violet-vif) !important;
+  box-shadow: 6px 9px 0 var(--sm-violet) !important;
+}
+/* Champs (recherche, « Créer une note… ») : bord bleu, rouge quand tu tapes */
+form:has(input[role="combobox"]), .IZ65Hb-qJTHM-haAclf .IZ65Hb-n0tgWb {
+  border: 2px solid var(--sm-champ-bord) !important;
+  border-radius: var(--sm-r-champ) !important;
+  box-shadow: none !important;
+  rotate: none !important;
+  translate: none !important;
+}
+form:has(input[role="combobox"]):focus-within, .IZ65Hb-qJTHM-haAclf .IZ65Hb-n0tgWb:focus-within { border-color: var(--sm-champ-actif) !important; }
+}
+
+/*@@ gemini-magique @@*/
+@-moz-document domain("gemini.google.com") {
+/* Notebooks, Toutes… : petites majuscules larges */
+.expandable-section-title {
+  color: var(--sm-violet-vif) !important;
+  font-family: var(--sm-etroite) !important;
+  font-stretch: 112% !important;
+  font-weight: 800 !important;
+  font-size: .7rem !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+/* Menu de gauche : aqua ; rubrique en cours en violet foncé avec la barre */
+a.gem-nav-list-item, a.gem-nav-list-item .title-text, gem-nav-list-item .conversation-title { color: var(--sm-lien-menu) !important; }
+a.gem-nav-list-item:is(.mdc-list-item--activated, .mdc-list-item--selected, [aria-current="page"], .selected),
+gem-nav-list-item:is(.selected, [aria-current="page"]) a {
+  background-color: var(--sm-actif-fond) !important;
+  box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
+  border-radius: 0 999px 999px 0 !important;
+}
 }
