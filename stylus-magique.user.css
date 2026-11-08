@@ -4523,3 +4523,82 @@ html body :is(#leftmenuinner a.active, #leftmenuinnerinner a.active, a.ga-nav.ac
 @-moz-document domain("deepl.com") {
 html body div.Container.Layout:not(#z#z){background-color:#000!important}
 }
+
+/*@@ moodle-magique @@*/
+@-moz-document domain("moodle.umontpellier.fr") {
+/* Barre du haut : nom du site aqua ; onglets plats, l'actif en relief */
+nav.navbar .navbar-brand:not(#z), nav.navbar .navbar-brand:not(#z) * { color: var(--sm-titre) !important; }
+.primary-navigation .nav-link, .moremenu .nav-link { color: var(--sm-lien-menu) !important; }
+.primary-navigation .nav-link.active, .moremenu .nav-link.active, .secondary-navigation .nav-link.active {
+  align-self: center;
+  height: auto !important;
+  padding-block: 4px !important;
+  border: 2px solid var(--sm-bouton-bord) !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background-color: var(--sm-bouton-fond) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  color: var(--sm-titre) !important;
+}
+/* Pastille des notifications : étiquette de bijoutier */
+.count-container {
+  padding: 0 6px !important;
+  border: 2px solid #000 !important;
+  border-radius: 4px 10px 10px 4px !important;
+  background-color: var(--sm-etiquette-fond) !important;
+  color: var(--sm-etiquette-texte) !important;
+  font-family: var(--sm-etroite) !important;
+  font-weight: 800 !important;
+  rotate: 7deg;
+  box-shadow: 2px 2px 0 #000 !important;
+}
+/* Titres des blocs (Vue d'ensemble des cours…) : petites majuscules larges */
+.block .card-title, .block .card-title * {
+  color: var(--sm-violet-vif) !important;
+  font-family: var(--sm-etroite) !important;
+  font-stretch: 112% !important;
+  font-weight: 800 !important;
+  font-size: .78rem !important;
+  letter-spacing: .07em !important;
+  text-transform: uppercase !important;
+}
+/* Cartes des cours : en relief, penchent au survol */
+.course-card:not(#z), .dashboard-card:not(#z) {
+  border: 2px solid var(--sm-carte-bord) !important;
+  border-radius: var(--sm-r-carte) !important;
+  overflow: hidden;
+  box-shadow: 0 5px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap), border-color .2s !important;
+}
+.course-card:not(#z):hover, .dashboard-card:not(#z):hover {
+  translate: 0 -5px;
+  rotate: -1.5deg;
+  border-color: var(--sm-violet-vif) !important;
+  box-shadow: 6px 9px 0 var(--sm-violet) !important;
+}
+/* Boutons : en relief, penchent au survol ; le principal en violet plein */
+.btn:is(.btn-primary, .btn-secondary, [class*="btn-outline-"]):not(#z) {
+  border: 2px solid var(--sm-bouton-bord) !important;
+  border-radius: var(--sm-r-bouton) !important;
+  background-color: var(--sm-bouton-fond) !important;
+  background-clip: padding-box !important;
+  color: var(--sm-titre) !important;
+  box-shadow: 0 4px 0 var(--sm-violet) !important;
+  transition: translate .3s var(--sm-snap), rotate .3s var(--sm-snap), box-shadow .3s var(--sm-snap) !important;
+}
+.btn.btn-primary:not(#z) {
+  background-color: var(--sm-violet) !important;
+  border-color: color-mix(in srgb, var(--sm-violet-vif) 60%, var(--sm-violet)) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important;
+}
+.btn:is(.btn-primary, .btn-secondary, [class*="btn-outline-"]):not(#z):hover { translate: 0 -3px; rotate: -3deg; box-shadow: -4px 7px 0 var(--sm-violet) !important; }
+/* Sommaire du cours : texte aqua, page en cours en violet foncé avec la barre */
+.courseindex a, .courseindex .courseindex-link { color: var(--sm-lien-menu) !important; }
+.courseindex .courseindex-item.pageitem {
+  background-color: var(--sm-actif-fond) !important;
+  box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important;
+  border-radius: 0 8px 8px 0 !important;
+}
+.courseindex .courseindex-item.pageitem a { color: var(--sm-titre) !important; }
+.courseindex .courseindex-item:not(.pageitem):hover { background-color: var(--sm-survol) !important; }
+}
