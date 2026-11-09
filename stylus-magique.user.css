@@ -4870,7 +4870,7 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
 }
 
 /*@@ etoiles-magique @@*/
-/* (portfolio-joaillerie, voir aussi tools/releve.js) */
+/* (portfolio-joaillerie ; relevé : tools/releve.js) */
 /* Les étoiles du portfolio.
    ✦ dans un carré violet devant la rubrique en cours des menus ; grande étoile au coin des boutons
    principaux et des cartes, environ 1 survol sur 3 ; ✦ qui scintille à la place des ronds de chargement. */
@@ -4882,8 +4882,10 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
 :is(h1, h2):has(> :is(a, div, p, span):first-child):not(#z)::before { content: none !important; }
 @container style(--sm-et: oui) {
   :is(h1, h2) > :is(a, div, p, span):first-child::before {
-    content: ""; display: inline-block; width: .5em; height: .5em; margin: 0 .38em 0 0; vertical-align: .04em;
-    background: var(--sm-violet-vif); clip-path: var(--sm-etoile); transition: rotate .45s var(--sm-snap), scale .45s var(--sm-snap);
+    content: "" !important; display: inline-block !important; position: static !important; float: none !important;
+    width: .5em !important; height: .5em !important; margin: 0 .38em 0 0 !important; padding: 0 !important; border: 0 !important;
+    vertical-align: .04em !important; opacity: 1 !important; visibility: visible !important; mask: none !important;
+    background: var(--sm-violet-vif) !important; clip-path: var(--sm-etoile) !important; transition: rotate .45s var(--sm-snap), scale .45s var(--sm-snap);
   }
   :is(h1, h2):hover > :is(a, div, p, span):first-child::before { rotate: 45deg; scale: 1.15; }
 }
@@ -4894,6 +4896,8 @@ ytd-guide-entry-renderer[active] yt-formatted-string.title::before,
 .vector-toc .vector-toc-list-item-active > .vector-toc-link .vector-toc-text::before,
 .courseindex .courseindex-item.pageitem .courseindex-link::before,
 [class*="interactiveSelected_"] [class*="name_"]:not([class*="name_"] *)::before,
+[class*="modeSelected_"] a[aria-current="page"] [class*="name_"]:not([class*="name_"] *)::before,
+a[data-component="NavList.Item"][aria-current]:not([aria-current="false"]) [data-component="ActionList.Item.Label"]::before,
 a.gem-nav-list-item:is(.mdc-list-item--activated, [aria-current="page"], .is-active) :is(.title-text, .conversation-title)::before,
 [role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc::before,
 aside a[aria-current="page"] .dframe-fade-label > span:first-child::before,
@@ -4926,6 +4930,7 @@ nav :is(a, button):is([aria-current]:not([aria-current="false"]), [data-active])
   aside a[aria-current="page"]:hover .dframe-fade-label > span:first-child)::before { rotate: -8deg; }
 /* Keep : le carré prend la place de l'écart après l'icône (20 px), le nom reste aligné */
 [role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc { margin-left: -2px !important; }
+a[data-component="NavList.Item"][aria-current]:not([aria-current="false"]) [data-component="ActionList.Item.Label"] { display: flex !important; align-items: center; } /* GitHub : le nom contient un bloc */
 [role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc::before { width: 17px !important; height: 17px !important; margin-right: 5px !important; }
 .aim .TO.nZ .qj { margin-right: 8px !important; } /* Gmail : un peu de place pour le carré */
 /* YouTube : le carré prend la place de la marge de l'icône (24 px), le nom reste aligné avec les autres rubriques */
@@ -4955,6 +4960,7 @@ ytd-multi-page-menu-renderer #header, ytd-multi-page-menu-renderer ytd-simple-me
   button[data-variant="primary"], a[data-variant="primary"], .s-btn__primary, .tempo-btn-primary,
   .fr-btn:not([class*="fr-btn--secondary"], [class*="fr-btn--tertiary"], [class*="fr-btn--close"], .fr-search-bar .fr-btn, .fr-header .fr-btn)):hover::after { scale: 1; rotate: 0deg; animation-play-state: paused; }
 .dashboard-card { --sm-e8-x: -44px; --sm-e8-y: 10px; } /* Moodle : la carte coupe ce qui dépasse, l'étoile se pose dans le coin */
+.as-carte { --sm-e8-x: -44px; --sm-e8-y: calc(100% - 44px); } /* anime-sama : pareil, en bas à droite (le haut a le bouton « … ») */
 /* GitHub met son propre ancrage sur ses boutons : l'étoile se place alors par rapport au bouton lui-même */
 :is(button, a)[data-variant="primary"], .btn-primary:not(.dropdown-toggle) { position: relative; }
 [class*="cc-button-primary"] { overflow: visible !important; } /* chess.com : le bouton coupait l'étoile */
@@ -5083,4 +5089,14 @@ h1:not(#z) { --sm-et: non !important; }
 @-moz-document domain("trends.google.com") {
 /* bandeau d'accueil : dégradé blanc retiré, les vagues restent sur le noir */
 div.bxwGjd { background-image: none !important; }
+}
+@-moz-document url-prefix("https://soundcloud.com/n/embeds/") {
+/* petits modules intégrés de la colonne de droite (Artist tools…) */
+:is(h1, h2):not(#z)::before { content: none !important; }
+:is(h1, h2):not(#z) { --sm-et: non !important; }
+}
+@-moz-document domain("amazon.fr"), domain("amazon.com") {
+/* titres des fiches produits dans les résultats : pas d'étoile */
+:is(.s-result-item, [data-component-type="s-search-result"], [data-cel-widget^="search_result"]) :is(h1, h2):not(#z)::before { content: none !important; }
+:is(.s-result-item, [data-component-type="s-search-result"], [data-cel-widget^="search_result"]) :is(h1, h2):not(#z) { --sm-et: non !important; }
 }
