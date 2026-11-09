@@ -122,8 +122,8 @@ body :not(svg,svg *,a,a *,button,button *,[role=button],[role=button] *,[role=ta
 body :is(h1,h2,h3,h4,h5,h6),body :is(h1,h2,h3,h4,h5,h6) :not(a,a *){color:var(--sm-titre)!important}
 body :is(h1,h2){font-family:var(--sm-serif)!important;font-weight:400!important;letter-spacing:0!important}
 /* ✦ devant les gros titres, elle tourne au survol */
-body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *)::before{content:""!important;display:inline-block!important;position:static!important;flex:none!important;width:.5em!important;height:.5em!important;margin:0 .38em 0 0!important;padding:0!important;border:0!important;vertical-align:.04em!important;opacity:1!important;background:var(--sm-violet-vif)!important;clip-path:var(--sm-etoile)!important;transition:rotate .45s var(--sm-snap),scale .45s var(--sm-snap)}
-body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *):hover::before{rotate:45deg;scale:1.15}
+body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i])::before{content:""!important;display:inline-block!important;position:static!important;flex:none!important;width:.5em!important;height:.5em!important;margin:0 .38em 0 0!important;padding:0!important;border:0!important;vertical-align:.04em!important;opacity:1!important;background:var(--sm-violet-vif)!important;clip-path:var(--sm-etoile)!important;transition:rotate .45s var(--sm-snap),scale .45s var(--sm-snap)}
+body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i]):hover::before{rotate:45deg;scale:1.15}
 body :is(th,legend,h6,label[for]:not(:has(input,select,textarea))){font-family:var(--sm-etroite)!important;font-stretch:112%;font-variation-settings:"wdth" 112;font-weight:800!important;font-size:.74rem!important;letter-spacing:.07em!important;text-transform:uppercase!important;color:var(--sm-bleu-vif)!important}
 body :is(small,figcaption,time,[class*=muted i],[class*=secondary i]:not(button,a)){color:var(--sm-pale)!important}
 
@@ -153,11 +153,11 @@ body [role=tab]{background-color:transparent!important;border:2px solid transpar
 body [role=tab]:is([aria-selected=true],[aria-current]:not([aria-current=false])){background-color:var(--sm-bouton-fond)!important;border-color:var(--sm-bouton-bord)!important;box-shadow:0 4px 0 var(--sm-violet)!important;color:var(--sm-titre)!important}
 body :is(a,li)[aria-current]:not([aria-current=false],[role=tab]){background-color:var(--sm-actif-fond)!important;box-shadow:inset 3px 0 0 var(--sm-violet-vif)!important;color:var(--sm-titre)!important}
 /* ✦ en carré à gauche de la rubrique en cours ; grande étoile au coin des boutons principaux, environ 1 survol sur 3 (voir etoiles-magique) */
-body :is(a,li)[aria-current]:not([aria-current=false],[role=tab])::before{content:"";display:inline-block;flex:none;box-sizing:border-box;width:max(1.3em,17px);height:max(1.3em,17px);margin:0 max(.55em,8px) 0 0;vertical-align:middle;border:max(.2em,3px) solid var(--sm-violet);border-radius:max(.42em,6px);outline:2px solid color-mix(in srgb,var(--sm-texte) 55%,transparent);background:var(--sm-tuile);transition:rotate .45s var(--sm-snap)}
+body :is(:is(a,li)[aria-current]:not([aria-current=false],[role=tab]),:is(nav,[role=navigation]) li.active > a):not([aria-label],[class*=logo i],:has(> :is(svg,img,picture):only-child),:empty)::before{content:"";display:inline-block;flex:none;box-sizing:border-box;width:max(1.3em,17px);height:max(1.3em,17px);margin:0 max(.55em,8px) 0 0;vertical-align:middle;border:max(.2em,3px) solid var(--sm-violet);border-radius:max(.42em,6px);outline:2px solid color-mix(in srgb,var(--sm-texte) 55%,transparent);background:var(--sm-tuile);transition:rotate .45s var(--sm-snap)}
 body :is(a,li)[aria-current]:not([aria-current=false],[role=tab]):hover::before{rotate:-8deg}
-body :is(button[type=submit],:is(button,a)[class*=primary i]){anchor-name:--sm-e8;anchor-scope:--sm-e8}
-body :is(button[type=submit],:is(button,a)[class*=primary i])::after{content:""!important;position:absolute!important;position-anchor:--sm-e8;left:calc(anchor(right,100%) - 18px)!important;top:calc(anchor(top,0px) - 18px)!important;right:auto!important;bottom:auto!important;width:34px!important;height:34px!important;margin:0!important;padding:0!important;border:0!important;z-index:5;pointer-events:none!important;background:radial-gradient(circle,#fff 0 6%,var(--sm-titre) 20%,var(--sm-bleu-vif) 52%,var(--sm-bleu) 80%)!important;clip-path:var(--sm-etoile8)!important;opacity:0;scale:0;rotate:-60deg;transition:scale .4s var(--sm-snap),rotate .6s var(--sm-snap);animation:sm-parfois 1.3s steps(1,end) infinite}
-body :is(button[type=submit],:is(button,a)[class*=primary i]):hover::after{scale:1;rotate:0deg;animation-play-state:paused}
+body :is(button[type=submit],:is(button,a):is([class*=btn-primary i],[class*=button-primary i],[class*=button--primary i],[class*=btn--primary i],[class*=primary-button i],[class*=primarybutton i],[class*=containedPrimary])):not([aria-label],[title],:empty,:has(> :is(svg,img,i):only-child)){anchor-name:--sm-e8;anchor-scope:--sm-e8}
+body :is(button[type=submit],:is(button,a):is([class*=btn-primary i],[class*=button-primary i],[class*=button--primary i],[class*=btn--primary i],[class*=primary-button i],[class*=primarybutton i],[class*=containedPrimary])):not([aria-label],[title],:empty,:has(> :is(svg,img,i):only-child))::after{content:""!important;position:absolute!important;position-anchor:--sm-e8;left:calc(anchor(right,100%) - 18px)!important;top:calc(anchor(top,0px) - 18px)!important;right:auto!important;bottom:auto!important;width:34px!important;height:34px!important;margin:0!important;padding:0!important;border:0!important;z-index:5;pointer-events:none!important;background:radial-gradient(circle,#fff 0 6%,var(--sm-titre) 20%,var(--sm-bleu-vif) 52%,var(--sm-bleu) 80%)!important;clip-path:var(--sm-etoile8)!important;opacity:0;scale:0;rotate:-60deg;transition:scale .4s var(--sm-snap),rotate .6s var(--sm-snap);animation:sm-parfois 1.3s steps(1,end) infinite}
+body :is(button[type=submit],:is(button,a):is([class*=btn-primary i],[class*=button-primary i],[class*=button--primary i],[class*=btn--primary i],[class*=primary-button i],[class*=primarybutton i],[class*=containedPrimary])):not([aria-label],[title],:empty,:has(> :is(svg,img,i):only-child)):hover::after{scale:1;rotate:0deg;animation-play-state:paused}
 
 body :is(input:not([type=checkbox],[type=radio],[type=range],[type=color],[type=image],[type=submit],[type=button],[type=reset],[type=file]),textarea,select){background-color:var(--sm-champ-fond)!important;color:var(--sm-texte)!important;border:2px solid var(--sm-champ-bord)!important;border-radius:var(--sm-r-champ)!important;background-clip:padding-box!important}
 body :is(input:not([type=checkbox],[type=radio],[type=range],[type=color],[type=image],[type=submit],[type=button],[type=reset],[type=file]),textarea,select):focus{border-color:var(--sm-champ-actif)!important;outline:none!important}
@@ -240,8 +240,8 @@ footer{display:none!important}
   url-prefix("https://www.google.com/travel"), url-prefix("https://www.google.com/finance"), url-prefix("https://www.google.com/shopping"), url-prefix("https://www.google.com/maps"), url-prefix("https://www.google.fr/maps"), url-prefix("https://maps.google.com") {
 :is(h1,h2){font-family:var(--sm-serif)!important;font-weight:400!important;letter-spacing:0!important}
 /* ✦ devant les gros titres, elle tourne au survol */
-:is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *)::before{content:""!important;display:inline-block!important;position:static!important;flex:none!important;width:.5em!important;height:.5em!important;margin:0 .38em 0 0!important;padding:0!important;border:0!important;vertical-align:.04em!important;opacity:1!important;background:var(--sm-violet-vif)!important;clip-path:var(--sm-etoile)!important;transition:rotate .45s var(--sm-snap),scale .45s var(--sm-snap)}
-:is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *):hover::before{rotate:45deg;scale:1.15}
+:is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i])::before{content:""!important;display:inline-block!important;position:static!important;flex:none!important;width:.5em!important;height:.5em!important;margin:0 .38em 0 0!important;padding:0!important;border:0!important;vertical-align:.04em!important;opacity:1!important;background:var(--sm-violet-vif)!important;clip-path:var(--sm-etoile)!important;transition:rotate .45s var(--sm-snap),scale .45s var(--sm-snap)}
+:is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i]):hover::before{rotate:45deg;scale:1.15}
 }
 
 /*@@ soundcloud oled @@*/
@@ -4879,7 +4879,13 @@ ytd-guide-entry-renderer[active] yt-formatted-string.title::before,
 [class*="interactiveSelected_"] [class*="name_"]:not([class*="name_"] *)::before,
 a.gem-nav-list-item:is(.mdc-list-item--activated, [aria-current="page"], .is-active) :is(.title-text, .conversation-title)::before,
 [role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc::before,
-aside a[aria-current="page"] .dframe-fade-label > span:first-child::before {
+aside a[aria-current="page"] .dframe-fade-label > span:first-child::before,
+.v-navigation-drawer .v-list-item--active .v-list-item__title::before,
+.left-sidebar li[aria-current="true"] > a.s-block-link::before,
+.left-sidebar__content a[aria-current="page"]::before,
+.sidebar ol.chapter a.active::before,
+a.gl-nav-item[aria-current="page"] .gl-nav-item-label > span::before,
+nav :is(a, button):is([aria-current]:not([aria-current="false"]), [data-active]) .text-fade-truncate::before {
   content: "" !important; display: inline-block !important; flex: none; box-sizing: border-box;
   width: max(1.3em, 17px); height: max(1.3em, 17px); margin: 0 max(.55em, 8px) 0 0; vertical-align: middle;
   border: max(.2em, 3px) solid var(--sm-violet); border-radius: max(.42em, 6px);
@@ -4906,9 +4912,9 @@ ytd-multi-page-menu-renderer #header, ytd-multi-page-menu-renderer ytd-simple-me
    elle est accrochée au coin par ancrage (la mise en page du bouton ne bouge pas) ;
    son tirage tourne en boucle et se fige au moment où la souris arrive */
 :is(.T-I.T-I-KE.L3, .btn-primary:not(.dropdown-toggle), [class*="cc-button-primary"], .dashboard-card, .as-carte,
-  button[data-variant="primary"], a[data-variant="primary"]) { anchor-name: --sm-e8; anchor-scope: --sm-e8; }
+  button[data-variant="primary"], a[data-variant="primary"], .s-btn__primary, .tempo-btn-primary) { anchor-name: --sm-e8; anchor-scope: --sm-e8; }
 :is(.T-I.T-I-KE.L3, .btn-primary:not(.dropdown-toggle), [class*="cc-button-primary"], .dashboard-card, .as-carte,
-  button[data-variant="primary"], a[data-variant="primary"])::after {
+  button[data-variant="primary"], a[data-variant="primary"], .s-btn__primary, .tempo-btn-primary)::after {
   content: "" !important; position: absolute !important; position-anchor: --sm-e8;
   left: calc(anchor(right, 100%) + var(--sm-e8-x, -18px)) !important; top: calc(anchor(top, 0px) + var(--sm-e8-y, -18px)) !important;
   right: auto !important; bottom: auto !important; width: 34px !important; height: 34px !important;
@@ -4919,7 +4925,7 @@ ytd-multi-page-menu-renderer #header, ytd-multi-page-menu-renderer ytd-simple-me
   animation: sm-parfois 1.3s steps(1, end) infinite;
 }
 :is(.T-I.T-I-KE.L3, .btn-primary:not(.dropdown-toggle), [class*="cc-button-primary"], .dashboard-card, .as-carte,
-  button[data-variant="primary"], a[data-variant="primary"]):hover::after { scale: 1; rotate: 0deg; animation-play-state: paused; }
+  button[data-variant="primary"], a[data-variant="primary"], .s-btn__primary, .tempo-btn-primary):hover::after { scale: 1; rotate: 0deg; animation-play-state: paused; }
 .dashboard-card { --sm-e8-x: -44px; --sm-e8-y: 10px; } /* Moodle : la carte coupe ce qui dépasse, l'étoile se pose dans le coin */
 /* GitHub met son propre ancrage sur ses boutons : l'étoile se place alors par rapport au bouton lui-même */
 :is(button, a)[data-variant="primary"], .btn-primary:not(.dropdown-toggle) { position: relative; }
@@ -4975,4 +4981,18 @@ div[class^="spinner_"] > div[class^="inner_"] > *, .mdc-circular-progress--indet
 mws-typing-indicators :is(.dot, [class*="dot"]):not(svg, svg *) {
   border-radius: 0 !important; clip-path: var(--sm-etoile) !important; background-color: var(--sm-violet-vif) !important;
 }
+}
+
+/*@@ etoiles-exceptions @@*/
+/* petits titres qui ne sont pas de gros titres : pas d'étoile */
+@-moz-document domain("bbs.archlinux.org") {
+:is(.blocktable, .blockform, .blockpost, .block) > h2:not(#z)::before { content: none !important; }
+}
+@-moz-document domain("calendar.google.com") {
+/* en-têtes de jours et titres invisibles : pas de gros titre ici */
+:is(h1, h2):not(#z)::before { content: none !important; }
+}
+@-moz-document domain("chunkbase.com") {
+/* petits titres de colonnes (News, Recent) : pas d'étoile */
+:is(h1, h2):is([class*="title" i], [class*="header" i]):not(#z)::before, aside :is(h1, h2):not(#z)::before { content: none !important; }
 }
