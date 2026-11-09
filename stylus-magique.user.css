@@ -4860,7 +4860,7 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
 }
 
 /*@@ etoiles-magique @@*/
-/* (portfolio-joaillerie) */
+/* (portfolio-joaillerie, voir aussi tools/releve.js) */
 /* Les étoiles du portfolio.
    ✦ dans un carré violet devant la rubrique en cours des menus ; grande étoile au coin des boutons
    principaux et des cartes, environ 1 survol sur 3 ; ✦ qui scintille à la place des ronds de chargement. */
