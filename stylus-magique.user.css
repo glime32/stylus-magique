@@ -122,6 +122,7 @@ body :not(svg,svg *,a,a *,button,button *,[role=button],[role=button] *,[role=ta
 body :is(h1,h2,h3,h4,h5,h6),body :is(h1,h2,h3,h4,h5,h6) :not(a,a *){color:var(--sm-titre)!important}
 body :is(h1,h2){font-family:var(--sm-serif)!important;font-weight:400!important;letter-spacing:0!important}
 /* ✦ devant les gros titres, elle tourne au survol */
+body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i],.accordion-header,:has(> button:first-child)){--sm-et:oui}
 body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i],.accordion-header,:has(> button:first-child))::before{content:""!important;display:inline-block!important;position:static!important;flex:none!important;width:.5em!important;height:.5em!important;margin:0 .38em 0 0!important;padding:0!important;border:0!important;vertical-align:.04em!important;opacity:1!important;background:var(--sm-violet-vif)!important;clip-path:var(--sm-etoile)!important;transition:rotate .45s var(--sm-snap),scale .45s var(--sm-snap)}
 body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i],.accordion-header,:has(> button:first-child)):hover::before{rotate:45deg;scale:1.15}
 body :is(th,legend,h6,label[for]:not(:has(input,select,textarea))){font-family:var(--sm-etroite)!important;font-stretch:112%;font-variation-settings:"wdth" 112;font-weight:800!important;font-size:.74rem!important;letter-spacing:.07em!important;text-transform:uppercase!important;color:var(--sm-bleu-vif)!important}
@@ -240,6 +241,7 @@ footer{display:none!important}
   url-prefix("https://www.google.com/travel"), url-prefix("https://www.google.com/finance"), url-prefix("https://www.google.com/shopping"), url-prefix("https://www.google.com/maps"), url-prefix("https://www.google.fr/maps"), url-prefix("https://maps.google.com") {
 :is(h1,h2){font-family:var(--sm-serif)!important;font-weight:400!important;letter-spacing:0!important}
 /* ✦ devant les gros titres, elle tourne au survol */
+:is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i],.accordion-header,:has(> button:first-child)){--sm-et:oui}
 :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i],.accordion-header,:has(> button:first-child))::before{content:""!important;display:inline-block!important;position:static!important;flex:none!important;width:.5em!important;height:.5em!important;margin:0 .38em 0 0!important;padding:0!important;border:0!important;vertical-align:.04em!important;opacity:1!important;background:var(--sm-violet-vif)!important;clip-path:var(--sm-etoile)!important;transition:rotate .45s var(--sm-snap),scale .45s var(--sm-snap)}
 :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i],.accordion-header,:has(> button:first-child)):hover::before{rotate:45deg;scale:1.15}
 }
@@ -2597,30 +2599,37 @@ body.dark {
 @-moz-document regexp("https://www\\.tiktok\\.com/(foryou)?([?#].*)?") {
 a[data-e2e="nav-foryou"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-foryou"] button * { color: var(--sm-lien-menu) !important; }
+  a[data-e2e="nav-foryou"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/explore") {
 a[data-e2e="nav-explore"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-explore"] button * { color: var(--sm-lien-menu) !important; }
+  a[data-e2e="nav-explore"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/following") {
 a[data-e2e="nav-following"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-following"] button * { color: var(--sm-lien-menu) !important; }
+  a[data-e2e="nav-following"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/friends") {
 a[data-e2e="nav-friends"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-friends"] button * { color: var(--sm-lien-menu) !important; }
+  a[data-e2e="nav-friends"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/shortdrama") {
 a[data-e2e="nav-short-drama"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-short-drama"] button * { color: var(--sm-lien-menu) !important; }
+  a[data-e2e="nav-short-drama"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/live") {
 a[data-e2e="nav-live"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-live"] button * { color: var(--sm-lien-menu) !important; }
+  a[data-e2e="nav-live"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/@glime32") {
 a[data-e2e="nav-profile"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-profile"] button * { color: var(--sm-lien-menu) !important; }
+  a[data-e2e="nav-profile"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
 }
 /* ===== Discord (navigateur) ===== */
 @-moz-document domain("discord.com") {
@@ -2658,6 +2667,7 @@ a[data-e2e="nav-profile"] button { background-color: var(--sm-violet) !important
   }
   /* ce sont des petits titres : pas d'étoile ✦ */
   :is(h2, h3):is([class*="body-"], [class*="eyebrow"]):not(#z)::before { content: none !important; }
+  :is(h2, h3):is([class*="body-"], [class*="eyebrow"]):not(#z) { --sm-et: non !important; }
   /* Noms dans les menus : aqua ; rubrique en cours : violet foncé et barre à gauche */
   [class*="privateChannels_"] [class*="name_"], [class*="privateChannels_"] [class*="name_"] * { color: var(--sm-lien-menu) !important; }
   [class*="interactiveSelected_"] {
@@ -4868,8 +4878,15 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
 @keyframes sm-parfois { 0% { opacity: 0; } 66.7% { opacity: 1; } }
 @keyframes sm-scintille { 0%, 100% { opacity: 1; scale: 1; } 50% { opacity: .45; scale: .78; } }
 
-/* titre dont le texte est dans un bloc (lien de résultat de recherche…) : l'étoile flotte à gauche au lieu de passer au-dessus */
-:is(h1, h2):has(> :is(a, div, p, span):first-child):not(#z)::before { float: left !important; margin: .32em .38em 0 0 !important; }
+/* titre dont le texte est dans un bloc (lien de résultat de recherche…) : l'étoile va dans ce bloc, devant le texte, et suit son alignement */
+:is(h1, h2):has(> :is(a, div, p, span):first-child):not(#z)::before { content: none !important; }
+@container style(--sm-et: oui) {
+  :is(h1, h2) > :is(a, div, p, span):first-child::before {
+    content: ""; display: inline-block; width: .5em; height: .5em; margin: 0 .38em 0 0; vertical-align: .04em;
+    background: var(--sm-violet-vif); clip-path: var(--sm-etoile); transition: rotate .45s var(--sm-snap), scale .45s var(--sm-snap);
+  }
+  :is(h1, h2):hover > :is(a, div, p, span):first-child::before { rotate: 45deg; scale: 1.15; }
+}
 
 /* ✦ en carré, à gauche du nom de la rubrique en cours */
 .aim .TO.nZ span.nU::before,
@@ -4891,6 +4908,7 @@ a.uTwgne[aria-current="page"] .XL4gNd::before,
 a.F1QCd-yXBf7b-yrbHlf-ibnC6b[aria-current="page"] [class*="JDc08b-V67aGc-bN97Pc"]::before,
 a.playground-link.active .nav-item-main-text::before, a.active > .nav-item-main-text::before,
 a.MyGDhe[aria-current="page"]::before,
+.aqdrmf-rymPhb-ibnC6b:is([aria-current]:not([aria-current="false"]), [class*="-gk6SMd"]) .aqdrmf-rymPhb-fpDzbe-fmcmS::before,
 :is(.fr-nav__link, .fr-sidemenu__link)[aria-current]:not([aria-current="false"])::before,
 nav :is(a, button):is([aria-current]:not([aria-current="false"]), [data-active]) .text-fade-truncate::before {
   content: "" !important; display: inline-block !important; flex: none; box-sizing: border-box;
@@ -4997,34 +5015,42 @@ mws-typing-indicators :is(.dot, [class*="dot"]):not(svg, svg *) {
 /* petits titres qui ne sont pas de gros titres : pas d'étoile */
 @-moz-document domain("bbs.archlinux.org") {
 :is(.blocktable, .blockform, .blockpost, .block) > h2:not(#z)::before { content: none !important; }
+:is(.blocktable, .blockform, .blockpost, .block) > h2:not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("calendar.google.com") {
 /* en-têtes de jours et titres invisibles : pas de gros titre ici */
 :is(h1, h2):not(#z)::before { content: none !important; }
+:is(h1, h2):not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("chunkbase.com") {
 /* petits titres de colonnes (News, Recent) : pas d'étoile */
 :is(h1, h2):is([class*="title" i], [class*="header" i]):not(#z)::before, aside :is(h1, h2):not(#z)::before { content: none !important; }
+:is(h1, h2):is([class*="title" i], [class*="header" i]):not(#z), aside :is(h1, h2):not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("linkedin.com") {
 /* chaque publication a un titre caché pour les lecteurs d'écran : pas d'étoile sur les h2 */
 h2:not(#z)::before { content: none !important; }
+h2:not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("letterboxd.com") {
 /* petits titres de rubriques */
 :is(.section-heading, .section-heading *, [class*="heading" i]):is(h1, h2):not(#z)::before { content: none !important; }
+:is(.section-heading, .section-heading *, [class*="heading" i]):is(h1, h2):not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("lichess.org") {
 /* petits titres des boîtes de l'accueil */
 :is(.lobby__box, .lobby__side, .lobby__tournaments-simuls, [class*="lobby__"]) :is(h1, h2):not(#z)::before { content: none !important; }
+:is(.lobby__box, .lobby__side, .lobby__tournaments-simuls, [class*="lobby__"]) :is(h1, h2):not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("one.google.com") {
 /* titres des petites cartes */
 h2:not(#z)::before { content: none !important; }
+h2:not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("onlinegdb.com") {
 /* le h1 est une petite phrase en haut de page */
 h1:not(#z)::before { content: none !important; }
+h1:not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("perplexity.ai") {
 /* le titre d'accueil est une grille (texte animé) : l'étoile va dans la même case, à gauche du texte */
@@ -5033,15 +5059,28 @@ h1:not(#z)::before { grid-area: 1 / 1 !important; justify-self: start !important
 @-moz-document domain("photos.google.com") {
 /* dates et petits titres de la galerie */
 h2:not(#z)::before { content: none !important; }
+h2:not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("regex101.com") {
 /* en-têtes de panneaux de l'appli */
 :is(h1, h2):not(#z)::before { content: none !important; }
+:is(h1, h2):not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("twitch.tv") {
 /* titres des petites cartes (jeux, catégories) : pas d'étoile, seulement sur les titres de rubriques */
 a :is(h1, h2):not(#z)::before { content: none !important; }
+a :is(h1, h2):not(#z) { --sm-et: non !important; }
 }
 @-moz-document domain("temu.com") {
 h1:not(#z)::before { content: none !important; }
+h1:not(#z) { --sm-et: non !important; }
+}
+@-moz-document domain("translate.google.com") {
+/* titres des cadres (« Texte source »…) : pas d'étoile */
+:is(h1, h2):not(#z)::before { content: none !important; }
+:is(h1, h2):not(#z) { --sm-et: non !important; }
+}
+@-moz-document domain("trends.google.com") {
+/* bandeau d'accueil : dégradé blanc retiré, les vagues restent sur le noir */
+div.bxwGjd { background-image: none !important; }
 }
