@@ -4870,7 +4870,7 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
 }
 
 /*@@ etoiles-magique @@*/
-/* (portfolio-joaillerie ; relevé : tools/releve.js) */
+/* (portfolio-joaillerie ; script de relevé : tools/releve.js) */
 /* Les étoiles du portfolio.
    ✦ dans un carré violet devant la rubrique en cours des menus ; grande étoile au coin des boutons
    principaux et des cartes, environ 1 survol sur 3 ; ✦ qui scintille à la place des ronds de chargement. */
@@ -4889,6 +4889,15 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
   }
   :is(h1, h2):hover > :is(a, div, p):first-child::before { rotate: 45deg; scale: 1.15; }
 }
+
+/* titre des vidéos YouTube : la pastille de SponsorBlock (une image) ne doit pas l'exclure, et le texte est dans un bloc */
+h1.ytd-watch-metadata:not(#z) { display: flex !important; align-items: center; }
+h1.ytd-watch-metadata:not(#z)::before {
+  content: "" !important; display: inline-block !important; flex: none !important; width: .5em !important; height: .5em !important;
+  margin: 0 .38em 0 0 !important; background: var(--sm-violet-vif) !important; clip-path: var(--sm-etoile) !important;
+  transition: rotate .45s var(--sm-snap), scale .45s var(--sm-snap);
+}
+h1.ytd-watch-metadata:not(#z):hover::before { rotate: 45deg; scale: 1.15; }
 
 /* ✦ en carré, à gauche du nom de la rubrique en cours */
 .aim .TO.nZ span.nU::before,
