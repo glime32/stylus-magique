@@ -5122,3 +5122,18 @@ div.bxwGjd { background-image: none !important; }
 /* l'ombre en relief des boutons (J'aime, Partager…) mordait sur le cadre de la description */
 ytd-watch-metadata #bottom-row { margin-top: 10px !important; }
 }
+@-moz-document domain("web.whatsapp.com") {
+/* « en train d'écrire » : les 3 points (animation Lottie) deviennent 3 ✦ qui grossissent l'une après l'autre */
+[data-testid="typing-indicator"] .x17z2i9w.x17rw0jw { position: relative !important; width: 34px !important; }
+[data-testid="typing-indicator"] .x17z2i9w.x17rw0jw > * { visibility: hidden !important; }
+[data-testid="typing-indicator"] .x17z2i9w.x17rw0jw::before {
+  content: ""; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d980ff' d='M12 0c.75 6.6 5.4 11.25 12 12-6.6.75-11.25 5.4-12 12-.75-6.6-5.4-11.25-12-12C6.6 11.25 11.25 6.6 12 0z'/%3E%3C/svg%3E") left center / 7px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d980ff' d='M12 0c.75 6.6 5.4 11.25 12 12-6.6.75-11.25 5.4-12 12-.75-6.6-5.4-11.25-12-12C6.6 11.25 11.25 6.6 12 0z'/%3E%3C/svg%3E") center / 7px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d980ff' d='M12 0c.75 6.6 5.4 11.25 12 12-6.6.75-11.25 5.4-12 12-.75-6.6-5.4-11.25-12-12C6.6 11.25 11.25 6.6 12 0z'/%3E%3C/svg%3E") right center / 7px no-repeat;
+  animation: sm-trois-etoiles 1.2s ease-in-out infinite;
+}
+@keyframes sm-trois-etoiles {
+  0%, 100% { background-size: 10px, 7px, 7px; }
+  33% { background-size: 7px, 10px, 7px; }
+  66% { background-size: 7px, 7px, 10px; }
+}
+}
