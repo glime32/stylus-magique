@@ -1116,7 +1116,7 @@ tr.zA:hover, tr.zA:hover > td {
   background-color: var(--sm-survol) !important;
   box-shadow: none !important; /* plus de traits violets entre les cases (case à cocher, étoile…) */
 }
-tr.zA.zE.zE:hover { box-shadow: 0 4px 0 var(--sm-violet) !important; }
+tr.zA.zE.zE:hover { box-shadow: inset 3px 0 0 var(--sm-violet-vif) !important; }
 tr.zA.x7, tr.zA.x7 td, tr.zA.btb, tr.zA.btb td {
   background-color: var(--sm-violet-moyen) !important;
 }
@@ -2706,13 +2706,11 @@ a[data-e2e="nav-profile"] button { background-color: var(--sm-violet) !important
     text-decoration-thickness: 2px !important; text-underline-offset: 3px !important;
   }
 }
-/* ===== Gmail : mails non lus surlignés (complète ton thème Gmail) ===== */
+/* ===== Gmail : mails non lus : texte en gras, expéditeur aqua, fine barre violet vif à gauche ===== */
 @-moz-document domain("mail.google.com") {
-tr.zA.zE, tr.zA.zE > td { background-color: var(--sm-nonlu-fond) !important; }
-  tr.zA.zE.zE { outline: 2px solid var(--sm-bouton-bord) !important; outline-offset: -3px; border-radius: 12px !important; box-shadow: 0 4px 0 var(--sm-violet) !important; position: relative; z-index: 1; }
-  tr.zA.zE > td:first-child { border-radius: 12px 0 0 12px !important; }
-  tr.zA.zE > td:last-child { border-radius: 0 12px 12px 0 !important; }
-  tr.zA.zE :is(.bog, .yW span, .y2) { color: var(--sm-texte) !important; }
+  tr.zA.zE.zE { box-shadow: inset 3px 0 0 var(--sm-violet-vif), inset 0 -1px 0 #14001e !important; }
+  tr.zA.zE :is(.yW, .yW span) { color: var(--sm-titre) !important; }
+  tr.zA.zE :is(.bog, .y2) { color: var(--sm-texte) !important; }
 }
 
 /*@@ reddit @@*/
@@ -5119,4 +5117,8 @@ div.bxwGjd { background-image: none !important; }
   content: ""; position: fixed; left: 50%; top: 50%; width: 88px; height: 88px; translate: -50% -50%;
   background: var(--sm-violet-vif); clip-path: var(--sm-etoile); animation: sm-scintille 1.4s ease-in-out infinite;
 }
+}
+@-moz-document domain("youtube.com") {
+/* l'ombre en relief des boutons (J'aime, Partager…) mordait sur le cadre de la description */
+ytd-watch-metadata #bottom-row { margin-top: 10px !important; }
 }
