@@ -5100,3 +5100,12 @@ div.bxwGjd { background-image: none !important; }
 :is(.s-result-item, [data-component-type="s-search-result"], [data-cel-widget^="search_result"]) :is(h1, h2):not(#z)::before { content: none !important; }
 :is(.s-result-item, [data-component-type="s-search-result"], [data-cel-widget^="search_result"]) :is(h1, h2):not(#z) { --sm-et: non !important; }
 }
+@-moz-document domain("messages.google.com") {
+/* écran de démarrage : fond noir, ✦ qui scintille à la place du logo à bulles */
+#loader { background: #000 !important; }
+#loader > * { visibility: hidden !important; }
+#loader::after {
+  content: ""; position: fixed; left: 50%; top: 50%; width: 88px; height: 88px; translate: -50% -50%;
+  background: var(--sm-violet-vif); clip-path: var(--sm-etoile); animation: sm-scintille 1.4s ease-in-out infinite;
+}
+}
