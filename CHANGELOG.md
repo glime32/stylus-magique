@@ -3,6 +3,14 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## 1.2.0 · Salons · 9 novembre 2026
+
+Nouveau :
+- Instagram : 3 ✦ violet clair à la place des 3 points « en train d'écrire », elles gardent leur rebond.
+
+Changé :
+- Discord : plus de # devant les salons textuels ; dans les salons vocaux, le haut-parleur passe juste après le nom.
+
 ## 1.1.0 · Les étoiles · 9 novembre 2026
 
 Nouveau :

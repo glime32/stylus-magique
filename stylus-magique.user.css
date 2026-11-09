@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.1.0
+@version        1.2.0
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -5141,4 +5141,19 @@ ytd-watch-metadata #bottom-row { margin-top: 10px !important; }
 /* titre dont le texte est dans un span en bloc (nom du compte en haut des messages) : l'étoile reste à gauche, le nom n'est plus coupé */
 :is(h1, h2):has(> span:first-child) { display: flex !important; align-items: center; }
 :is(h1, h2):has(> span:first-child) > span:first-child { min-width: 0; }
+}
+@-moz-document domain("instagram.com") {
+/* « en train d'écrire » : les 3 points deviennent 3 ✦ qui gardent leur rebond */
+.xwnhzmj.x51ohtg.xqu0tyb {
+  width: 8px !important; height: 8px !important; margin-inline: 1px !important;
+  border-radius: 0 !important; clip-path: var(--sm-etoile) !important; background-color: var(--sm-violet-vif) !important;
+}
+}
+@-moz-document domain("discord.com") {
+/* salons textuels sans # ; salons vocaux : le haut-parleur passe juste après le nom */
+[class*="linkTop_"] > [class*="iconContainer_"]:is([aria-label^="Texte"], [aria-label^="Text "]) { display: none !important; }
+[class*="linkTop_"]:has(> [class*="iconContainer_"]:is([aria-label^="Vocal"], [aria-label^="Voice"])) > [class*="name_"] { flex: 0 1 auto !important; min-width: 0; }
+[class*="linkTop_"] > [class*="iconContainer_"]:is([aria-label^="Vocal"], [aria-label^="Voice"]) { order: 1; margin: 0 0 0 6px !important; }
+[class*="linkTop_"]:has(> [class*="iconContainer_"]:is([aria-label^="Vocal"], [aria-label^="Voice"])) > :not([class*="iconContainer_"], [class*="name_"]) { order: 2; }
+[class*="linkTop_"]:has(> [class*="iconContainer_"]:is([aria-label^="Vocal"], [aria-label^="Voice"])) > [class*="children_"] { margin-left: auto !important; }
 }
