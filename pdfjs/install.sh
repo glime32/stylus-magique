@@ -43,7 +43,13 @@ cat > "$MAJ" <<EOF
 # Met à jour le style Stylus magique du lecteur PDF.js ($WEB)
 set -eu
 WEB="$WEB"
-curl -fsSL --retry 2 "$URL" -o "\$WEB/magique-pdfjs.css.tmp"
+code=0
+curl -fsSL --max-time 20 "$URL" -o "\$WEB/magique-pdfjs.css.tmp" || code=\$?
+case \$code in
+  0) ;;
+  5|6|7|28|35|52|56) rm -f "\$WEB/magique-pdfjs.css.tmp"; echo "pas de réseau : prochain tour" >&2; exit 0 ;;
+  *) rm -f "\$WEB/magique-pdfjs.css.tmp"; exit "\$code" ;;
+esac
 mv -f "\$WEB/magique-pdfjs.css.tmp" "\$WEB/magique-pdfjs.css"
 if ! grep -q 'magique-pdfjs.css' "\$WEB/viewer.html"; then
   sed -i '0,/href="viewer.css"[^>]*>/s//&\n    <link rel="stylesheet" href="magique-pdfjs.css" \/>/' "\$WEB/viewer.html"
