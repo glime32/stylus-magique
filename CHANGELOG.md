@@ -3,6 +3,11 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## 1.2.2 · Démarrage · 9 novembre 2026
+
+Corrigé :
+- WhatsApp : l'écran de démarrage était blanc (il s'affiche avant que le thème sombre soit chargé). Il est noir, avec une ✦ qui scintille à la place du logo et une barre violette.
+
 ## 1.2.1 · Compteur · 9 novembre 2026
 
 Corrigé :

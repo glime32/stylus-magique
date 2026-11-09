@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.2.1
+@version        1.2.2
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -5156,4 +5156,21 @@ ytd-watch-metadata #bottom-row { margin-top: 10px !important; }
 [class*="linkTop_"] > [class*="iconContainer_"]:is([aria-label^="Vocal"], [aria-label^="Voice"]) { order: 1; margin: 0 0 0 6px !important; }
 [class*="linkTop_"]:has(> [class*="iconContainer_"]:is([aria-label^="Vocal"], [aria-label^="Voice"])) > :not([class*="iconContainer_"], [class*="name_"]) { order: 2; }
 [class*="linkTop_"]:has(> [class*="iconContainer_"]:is([aria-label^="Vocal"], [aria-label^="Voice"])) > [class*="children_"] { margin-left: auto !important; }
+}
+@-moz-document domain("web.whatsapp.com") {
+/* écran de démarrage, affiché avant que le thème sombre soit chargé (il était blanc) :
+   fond noir, ✦ qui scintille à la place du logo, barre violette */
+html, body { background-color: #000 !important; }
+[data-testid="wa-web-loading-screen"] { background-color: #000 !important; color: var(--sm-texte) !important; }
+[data-testid="wa-web-loading-screen"] > div { color: var(--sm-texte) !important; }
+[data-testid="wa-web-loading-screen"] > div:not(:first-child, :has(progress)):has(svg) { color: var(--sm-pale) !important; }
+[data-testid="wa-web-loading-screen"] > div:first-child { position: relative; min-height: 88px; }
+[data-testid="wa-web-loading-screen"] > div:first-child > * { visibility: hidden !important; }
+[data-testid="wa-web-loading-screen"] > div:first-child::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 88px; height: 88px; translate: -50% -50%;
+  background: var(--sm-violet-vif); clip-path: var(--sm-etoile); animation: sm-scintille 1.4s ease-in-out infinite;
+}
+[data-testid="wa-web-loading-screen"] progress { background-color: var(--sm-violet-moyen) !important; }
+[data-testid="wa-web-loading-screen"] progress::-webkit-progress-bar { background-color: var(--sm-violet-moyen) !important; }
+[data-testid="wa-web-loading-screen"] progress::-webkit-progress-value { background-color: var(--sm-violet) !important; }
 }
