@@ -68,9 +68,8 @@
   --sm-snap: cubic-bezier(.2, .9, .25, 1);
   --sm-etoile: shape(from 50% 0%, curve to 100% 50% with 53.125% 27.5% / 72.5% 46.875%, curve to 50% 100% with 72.5% 53.125% / 53.125% 72.5%, curve to 0% 50% with 46.875% 72.5% / 27.5% 53.125%, curve to 50% 0% with 27.5% 46.875% / 46.875% 27.5%, close); /* la ✦ du portfolio, dessinée en CSS */
   --sm-etoile8: polygon(50% 3%, 54.2% 39.8%, 68.4% 31.6%, 60.2% 45.8%, 97% 50%, 60.2% 54.2%, 68.4% 68.4%, 54.2% 60.2%, 50% 97%, 45.8% 60.2%, 31.6% 68.4%, 39.8% 54.2%, 3% 50%, 39.8% 45.8%, 31.6% 31.6%, 45.8% 39.8%); /* la grande étoile à 8 branches */
-  /* carré violet avec la ✦ aqua : quatre ronds violets grignotent un carré aqua */
-  --sm-tuile: radial-gradient(50% 50% at 0 0, var(--sm-violet) 99%, #0000) padding-box no-repeat, radial-gradient(50% 50% at 100% 0, var(--sm-violet) 99%, #0000) padding-box no-repeat,
-    radial-gradient(50% 50% at 0 100%, var(--sm-violet) 99%, #0000) padding-box no-repeat, radial-gradient(50% 50% at 100% 100%, var(--sm-violet) 99%, #0000) padding-box no-repeat, var(--sm-titre) padding-box;
+  /* carré violet avec la ✦ aqua du portfolio au centre */
+  --sm-tuile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23c5f9fc' d='M12 0c.75 6.6 5.4 11.25 12 12-6.6.75-11.25 5.4-12 12-.75-6.6-5.4-11.25-12-12C6.6 11.25 11.25 6.6 12 0z'/%3E%3C/svg%3E") center / 50% no-repeat var(--sm-violet);
 }
 
 ::selection { background: var(--sm-violet) !important; color: #fff !important; }
@@ -154,7 +153,7 @@ body [role=tab]{background-color:transparent!important;border:2px solid transpar
 body [role=tab]:is([aria-selected=true],[aria-current]:not([aria-current=false])){background-color:var(--sm-bouton-fond)!important;border-color:var(--sm-bouton-bord)!important;box-shadow:0 4px 0 var(--sm-violet)!important;color:var(--sm-titre)!important}
 body :is(a,li)[aria-current]:not([aria-current=false],[role=tab]){background-color:var(--sm-actif-fond)!important;box-shadow:inset 3px 0 0 var(--sm-violet-vif)!important;color:var(--sm-titre)!important}
 /* ✦ en carré à gauche de la rubrique en cours ; grande étoile au coin des boutons principaux, environ 1 survol sur 3 (voir etoiles-magique) */
-body :is(:is(a,li)[aria-current]:not([aria-current=false],[role=tab]),:is(nav,[role=navigation]) li.active > a):not([aria-label],[class*=logo i],:has(> :is(svg,img,picture):only-child),:empty)::before{content:"";display:inline-block;flex:none;box-sizing:border-box;width:max(1.3em,17px);height:max(1.3em,17px);margin:0 max(.55em,8px) 0 0;vertical-align:middle;border:max(.2em,3px) solid var(--sm-violet);border-radius:max(.42em,6px);outline:2px solid color-mix(in srgb,var(--sm-texte) 55%,transparent);background:var(--sm-tuile);transition:rotate .45s var(--sm-snap)}
+body :is(:is(a,li)[aria-current]:not([aria-current=false],[role=tab]),:is(nav,[role=navigation]) li.active > a):not([aria-label],[class*=logo i],:has(> :is(svg,img,picture):only-child),:empty)::before{content:"";display:inline-block;flex:none;box-sizing:border-box;width:24px;height:24px;margin:0 9px 0 0;vertical-align:middle;border:2px solid color-mix(in srgb,var(--sm-texte) 55%,transparent);border-radius:7px;background:var(--sm-tuile);transition:rotate .45s var(--sm-snap)}
 body :is(a,li)[aria-current]:not([aria-current=false],[role=tab]):hover::before{rotate:-8deg}
 body :is(button[type=submit],:is(button,a):is([class*=btn-primary i],[class*=button-primary i],[class*=button--primary i],[class*=btn--primary i],[class*=primary-button i],[class*=primarybutton i],[class*=containedPrimary])):not([aria-label],[title],:empty,:has(> :is(svg,img,i):only-child),[class*=search i],[class*=toggle i],:is(form[role=search],[role=search],[class*=search i],header,[role=banner]) *){anchor-name:--sm-e8;anchor-scope:--sm-e8}
 body :is(button[type=submit],:is(button,a):is([class*=btn-primary i],[class*=button-primary i],[class*=button--primary i],[class*=btn--primary i],[class*=primary-button i],[class*=primarybutton i],[class*=containedPrimary])):not([aria-label],[title],:empty,:has(> :is(svg,img,i):only-child),[class*=search i],[class*=toggle i],:is(form[role=search],[role=search],[class*=search i],header,[role=banner]) *)::after{content:""!important;position:absolute!important;position-anchor:--sm-e8;left:calc(anchor(right,100%) - 18px)!important;top:calc(anchor(top,0px) - 18px)!important;right:auto!important;bottom:auto!important;width:34px!important;height:34px!important;margin:0!important;padding:0!important;border:0!important;z-index:5;pointer-events:none!important;background:radial-gradient(circle,#fff 0 6%,var(--sm-titre) 20%,var(--sm-bleu-vif) 52%,var(--sm-bleu) 80%)!important;clip-path:var(--sm-etoile8)!important;opacity:0;scale:0;rotate:-60deg;transition:scale .4s var(--sm-snap),rotate .6s var(--sm-snap);animation:sm-parfois 1.3s steps(1,end) infinite}
@@ -2520,6 +2519,9 @@ body.dark {
   #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) [data-testid="cell-frame-secondary"] span { color: var(--sm-texte) !important; }
   #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) :is([data-testid="chat-list-timestamp"], [data-testid="chat-list-timestamp"] *) { color: var(--sm-texte) !important; font-weight: 700 !important; }
   #pane-side [data-testid="icon-unread-count"] { background-color: var(--sm-etiquette-fond) !important; color: var(--sm-etiquette-texte) !important; border: 2px solid #000 !important; border-radius: 4px 10px 10px 4px !important; font-family: var(--sm-etroite) !important; font-weight: 800 !important; rotate: 7deg; box-shadow: 2px 2px 0 #000 !important; }
+  #pane-side [data-testid="icon-unread-count"] * { color: var(--sm-etiquette-texte) !important; }
+  #pane-side [data-testid="icon-unread-count"] { display: inline-flex !important; align-items: center; gap: 4px; padding-inline: 6px 8px !important; }
+  #pane-side [data-testid="icon-unread-count"]::before { content: ""; width: 7px; height: 7px; flex: none; background: var(--sm-etiquette-texte); clip-path: var(--sm-etoile); }
   /* Illustration de l'accueil : vert remplacé par le violet */
   [data-testid="intro_panel_v2_title_card"] svg [fill="rgb(37,211,102)"] { fill: var(--sm-violet-vif) !important; }
   [data-testid="intro_panel_v2_title_card"] svg [fill="rgb(230,255,218)"] { fill: var(--sm-icone) !important; }
@@ -2599,37 +2601,37 @@ body.dark {
 @-moz-document regexp("https://www\\.tiktok\\.com/(foryou)?([?#].*)?") {
 a[data-e2e="nav-foryou"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-foryou"] button * { color: var(--sm-lien-menu) !important; }
-  a[data-e2e="nav-foryou"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
+  a[data-e2e="nav-foryou"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 24px; height: 24px; margin: 0 9px 0 0; vertical-align: middle; border: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); border-radius: 7px; background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/explore") {
 a[data-e2e="nav-explore"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-explore"] button * { color: var(--sm-lien-menu) !important; }
-  a[data-e2e="nav-explore"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
+  a[data-e2e="nav-explore"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 24px; height: 24px; margin: 0 9px 0 0; vertical-align: middle; border: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); border-radius: 7px; background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/following") {
 a[data-e2e="nav-following"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-following"] button * { color: var(--sm-lien-menu) !important; }
-  a[data-e2e="nav-following"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
+  a[data-e2e="nav-following"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 24px; height: 24px; margin: 0 9px 0 0; vertical-align: middle; border: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); border-radius: 7px; background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/friends") {
 a[data-e2e="nav-friends"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-friends"] button * { color: var(--sm-lien-menu) !important; }
-  a[data-e2e="nav-friends"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
+  a[data-e2e="nav-friends"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 24px; height: 24px; margin: 0 9px 0 0; vertical-align: middle; border: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); border-radius: 7px; background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/shortdrama") {
 a[data-e2e="nav-short-drama"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-short-drama"] button * { color: var(--sm-lien-menu) !important; }
-  a[data-e2e="nav-short-drama"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
+  a[data-e2e="nav-short-drama"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 24px; height: 24px; margin: 0 9px 0 0; vertical-align: middle; border: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); border-radius: 7px; background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/live") {
 a[data-e2e="nav-live"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-live"] button * { color: var(--sm-lien-menu) !important; }
-  a[data-e2e="nav-live"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
+  a[data-e2e="nav-live"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 24px; height: 24px; margin: 0 9px 0 0; vertical-align: middle; border: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); border-radius: 7px; background: var(--sm-tuile); }
 }
 @-moz-document url-prefix("https://www.tiktok.com/@glime32") {
 a[data-e2e="nav-profile"] button { background-color: var(--sm-violet) !important; color: #ffffff !important; border-radius: 10px !important; --tux-colorPrimary: var(--sm-texte) !important; --ui-text-primary-display: var(--sm-texte) !important; --tux-v2-color-ui-text-primary-display: var(--sm-texte) !important; }
   a[data-e2e="nav-profile"] button * { color: var(--sm-lien-menu) !important; }
-  a[data-e2e="nav-profile"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 17px; height: 17px; margin: 0 8px 0 0; vertical-align: middle; border: 3px solid var(--sm-violet); border-radius: 6px; outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); background: var(--sm-tuile); }
+  a[data-e2e="nav-profile"] .TUXButton-label::before { content: "" !important; display: inline-block !important; box-sizing: border-box; width: 24px; height: 24px; margin: 0 9px 0 0; vertical-align: middle; border: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); border-radius: 7px; background: var(--sm-tuile); }
 }
 /* ===== Discord (navigateur) ===== */
 @-moz-document domain("discord.com") {
@@ -4925,9 +4927,8 @@ a.MyGDhe[aria-current="page"]::before,
 :is(.fr-nav__link, .fr-sidemenu__link)[aria-current]:not([aria-current="false"])::before,
 nav :is(a, button):is([aria-current]:not([aria-current="false"]), [data-active]) .text-fade-truncate::before {
   content: "" !important; display: inline-block !important; flex: none; box-sizing: border-box;
-  width: max(1.3em, 17px); height: max(1.3em, 17px); margin: 0 max(.55em, 8px) 0 0; vertical-align: middle;
-  border: max(.2em, 3px) solid var(--sm-violet); border-radius: max(.42em, 6px);
-  outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent);
+  width: 24px; height: 24px; margin: 0 9px 0 0; vertical-align: middle;
+  border: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent); border-radius: 7px;
   background: var(--sm-tuile); transition: rotate .45s var(--sm-snap);
 }
 :is(.aim .TO.nZ:hover span.nU, ytd-guide-entry-renderer[active]:hover yt-formatted-string.title,
@@ -4938,13 +4939,14 @@ nav :is(a, button):is([aria-current]:not([aria-current="false"]), [data-active])
   [role="tab"].PvRhvb-ibnC6b.gk6SMd:hover .PvRhvb-ibnC6b-V67aGc,
   aside a[aria-current="page"]:hover .dframe-fade-label > span:first-child)::before { rotate: -8deg; }
 /* Keep : le carré prend la place de l'écart après l'icône (20 px), le nom reste aligné */
-[role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc { margin-left: -2px !important; }
+[role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc { margin-left: -4px !important; }
 a[data-component="NavList.Item"][aria-current]:not([aria-current="false"]) [data-component="ActionList.Item.Label"] { display: flex !important; align-items: center; } /* GitHub : le nom contient un bloc */
-[role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc::before { width: 17px !important; height: 17px !important; margin-right: 5px !important; }
+[role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc::before { width: 20px !important; height: 20px !important; margin-right: 4px !important; }
 .aim .TO.nZ .qj { margin-right: 8px !important; } /* Gmail : un peu de place pour le carré */
+.aim .TO.nZ span.nU::before { width: 20px !important; height: 20px !important; margin-right: 7px !important; }
 /* YouTube : le carré prend la place de la marge de l'icône (24 px), le nom reste aligné avec les autres rubriques */
-ytd-guide-entry-renderer[active] yt-icon.guide-icon { margin-right: 2px !important; }
-ytd-guide-entry-renderer[active] yt-formatted-string.title::before { width: 17px !important; height: 17px !important; margin-right: 5px !important; }
+ytd-guide-entry-renderer[active] yt-icon.guide-icon { margin-right: 0 !important; }
+ytd-guide-entry-renderer[active] yt-formatted-string.title::before { width: 20px !important; height: 20px !important; margin-right: 4px !important; }
 ytd-multi-page-menu-renderer #header, ytd-multi-page-menu-renderer ytd-simple-menu-header-renderer { background-color: #000 !important; } /* menu des notifications : bandeau noir */
 
 /* grande étoile au coin des boutons principaux et des cartes, environ 1 survol sur 3 :
