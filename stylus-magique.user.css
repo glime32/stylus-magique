@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.2.0
+@version        1.2.1
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -2519,7 +2519,7 @@ body.dark {
   #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) [data-testid="cell-frame-secondary"] span { color: var(--sm-texte) !important; }
   #pane-side div[role="row"]:has([data-testid="icon-unread-count"]) :is([data-testid="chat-list-timestamp"], [data-testid="chat-list-timestamp"] *) { color: var(--sm-texte) !important; font-weight: 700 !important; }
   #pane-side [data-testid="icon-unread-count"] { background-color: var(--sm-etiquette-fond) !important; color: var(--sm-etiquette-texte) !important; border: 2px solid #000 !important; border-radius: 4px 10px 10px 4px !important; font-family: var(--sm-etroite) !important; font-weight: 800 !important; rotate: 7deg; box-shadow: 2px 2px 0 #000 !important; }
-  #pane-side [data-testid="icon-unread-count"] * { color: var(--sm-etiquette-texte) !important; }
+  #pane-side [data-testid="icon-unread-count"]:not(#z) * { color: var(--sm-etiquette-texte) !important; }
   #pane-side [data-testid="icon-unread-count"] { display: inline-flex !important; align-items: center; gap: 4px; padding-inline: 6px 8px !important; }
   #pane-side [data-testid="icon-unread-count"]::before { content: ""; width: 7px; height: 7px; flex: none; background: var(--sm-etiquette-texte); clip-path: var(--sm-etoile); }
   /* Illustration de l'accueil : vert remplacé par le violet */

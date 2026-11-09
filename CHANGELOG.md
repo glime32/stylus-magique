@@ -3,6 +3,11 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## 1.2.1 · Compteur · 9 novembre 2026
+
+Corrigé :
+- WhatsApp : le nombre de messages non lus était blanc sur l'étiquette claire, donc invisible ; il est maintenant foncé.
+
 ## 1.2.0 · Salons · 9 novembre 2026
 
 Nouveau :
