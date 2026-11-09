@@ -2656,6 +2656,8 @@ a[data-e2e="nav-profile"] button { background-color: var(--sm-violet) !important
     font-family: var(--sm-etroite) !important; font-stretch: 112% !important; font-weight: 800 !important;
     font-size: .74rem !important; letter-spacing: .07em !important; text-transform: uppercase !important; color: var(--sm-violet-vif) !important;
   }
+  /* ce sont des petits titres : pas d'étoile ✦ */
+  :is(h2, h3):is([class*="body-"], [class*="eyebrow"]):not(#z)::before { content: none !important; }
   /* Noms dans les menus : aqua ; rubrique en cours : violet foncé et barre à gauche */
   [class*="privateChannels_"] [class*="name_"], [class*="privateChannels_"] [class*="name_"] * { color: var(--sm-lien-menu) !important; }
   [class*="interactiveSelected_"] {
@@ -4866,12 +4868,18 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
 @keyframes sm-parfois { 0% { opacity: 0; } 66.7% { opacity: 1; } }
 @keyframes sm-scintille { 0%, 100% { opacity: 1; scale: 1; } 50% { opacity: .45; scale: .78; } }
 
+/* titre dont le texte est dans un bloc (lien de résultat de recherche…) : l'étoile flotte à gauche au lieu de passer au-dessus */
+:is(h1, h2):has(> :is(a, div, p):first-child):not(#z)::before { float: left !important; margin: .32em .38em 0 0 !important; }
+
 /* ✦ en carré, à gauche du nom de la rubrique en cours */
 .aim .TO.nZ span.nU::before,
 ytd-guide-entry-renderer[active] yt-formatted-string.title::before,
 .vector-toc .vector-toc-list-item-active > .vector-toc-link .vector-toc-text::before,
 .courseindex .courseindex-item.pageitem .courseindex-link::before,
-[class*="interactiveSelected_"] [class*="name_"]:not([class*="name_"] *)::before {
+[class*="interactiveSelected_"] [class*="name_"]:not([class*="name_"] *)::before,
+a.gem-nav-list-item:is(.mdc-list-item--activated, [aria-current="page"], .is-active) :is(.title-text, .conversation-title)::before,
+[role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc::before,
+aside a[aria-current="page"] .dframe-fade-label > span:first-child::before {
   content: "" !important; display: inline-block !important; flex: none; box-sizing: border-box;
   width: max(1.3em, 17px); height: max(1.3em, 17px); margin: 0 max(.55em, 8px) 0 0; vertical-align: middle;
   border: max(.2em, 3px) solid var(--sm-violet); border-radius: max(.42em, 6px);
@@ -4881,7 +4889,13 @@ ytd-guide-entry-renderer[active] yt-formatted-string.title::before,
 :is(.aim .TO.nZ:hover span.nU, ytd-guide-entry-renderer[active]:hover yt-formatted-string.title,
   .vector-toc .vector-toc-list-item-active > .vector-toc-link:hover .vector-toc-text,
   .courseindex .courseindex-item.pageitem:hover .courseindex-link,
-  [class*="interactiveSelected_"]:hover [class*="name_"]:not([class*="name_"] *))::before { rotate: -8deg; }
+  [class*="interactiveSelected_"]:hover [class*="name_"]:not([class*="name_"] *),
+  a.gem-nav-list-item:is(.mdc-list-item--activated, [aria-current="page"], .is-active):hover :is(.title-text, .conversation-title),
+  [role="tab"].PvRhvb-ibnC6b.gk6SMd:hover .PvRhvb-ibnC6b-V67aGc,
+  aside a[aria-current="page"]:hover .dframe-fade-label > span:first-child)::before { rotate: -8deg; }
+/* Keep : le carré prend la place de l'écart après l'icône (20 px), le nom reste aligné */
+[role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc { margin-left: -2px !important; }
+[role="tab"].PvRhvb-ibnC6b.gk6SMd .PvRhvb-ibnC6b-V67aGc::before { width: 17px !important; height: 17px !important; margin-right: 5px !important; }
 .aim .TO.nZ .qj { margin-right: 8px !important; } /* Gmail : un peu de place pour le carré */
 /* YouTube : le carré prend la place de la marge de l'icône (24 px), le nom reste aligné avec les autres rubriques */
 ytd-guide-entry-renderer[active] yt-icon.guide-icon { margin-right: 2px !important; }
@@ -4907,6 +4921,9 @@ ytd-multi-page-menu-renderer #header, ytd-multi-page-menu-renderer ytd-simple-me
 :is(.T-I.T-I-KE.L3, .btn-primary:not(.dropdown-toggle), [class*="cc-button-primary"], .dashboard-card, .as-carte,
   button[data-variant="primary"], a[data-variant="primary"]):hover::after { scale: 1; rotate: 0deg; animation-play-state: paused; }
 .dashboard-card { --sm-e8-x: -44px; --sm-e8-y: 10px; } /* Moodle : la carte coupe ce qui dépasse, l'étoile se pose dans le coin */
+/* GitHub met son propre ancrage sur ses boutons : l'étoile se place alors par rapport au bouton lui-même */
+:is(button, a)[data-variant="primary"], .btn-primary:not(.dropdown-toggle) { position: relative; }
+[class*="cc-button-primary"] { overflow: visible !important; } /* chess.com : le bouton coupait l'étoile */
 
 /* ✦ qui scintille à la place des ronds de chargement (YouTube) */
 :is(tp-yt-paper-spinner, tp-yt-paper-spinner-lite)[active] > *, .ytp-spinner .ytp-spinner-container { visibility: hidden !important; }
@@ -4936,6 +4953,18 @@ div[class^="spinner_"] > div[class^="inner_"] > *, .mdc-circular-progress--indet
   content: "" !important; display: inline-block; width: 1em; height: 1em;
   background: var(--sm-violet-vif); clip-path: var(--sm-etoile);
 }
+
+/* écrans de chargement : une grande ✦ qui scintille à la place du logo */
+#loading img, ._apdl ._aw0k > *, video[class^="spinner_"] { visibility: hidden !important; } /* Gmail, WhatsApp, Discord */
+#loading .msg { display: none !important; } /* plus de logo Gmail du tout */
+#loading div:has(> img), ._apdl ._aw0k { position: relative; animation: none !important; }
+#loading div:has(> img)::before, ._apdl ._aw0k::before, :is(div[class^="container_"], div[class^="content_"]):has(> video[class^="spinner_"])::before {
+  content: ""; position: absolute; left: 50%; top: 50%; width: 88px; height: 88px; translate: -50% -50%; z-index: 1;
+  background: var(--sm-violet-vif); clip-path: var(--sm-etoile);
+  animation: sm-scintille 1.4s ease-in-out infinite;
+}
+:is(div[class^="container_"], div[class^="content_"]):has(> video[class^="spinner_"]) { position: relative; }
+:is(div[class^="container_"], div[class^="content_"]):has(> video[class^="spinner_"])::before { top: calc(var(--sm-v, 100px)); width: 120px; height: 120px; }
 
 /* « en train d'écrire » : les 3 points deviennent 3 ✦ (Discord : ils gardent leur pulsation) */
 [class*="typing_"] [class*="dots_"] > [class*="dot_"] {
