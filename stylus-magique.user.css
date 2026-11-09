@@ -66,6 +66,11 @@
   --sm-serif: Gloock, "DejaVu Serif", Georgia, serif;
   --sm-etroite: Archivo, ui-sans-serif, sans-serif;
   --sm-snap: cubic-bezier(.2, .9, .25, 1);
+  --sm-etoile: shape(from 50% 0%, curve to 100% 50% with 53.125% 27.5% / 72.5% 46.875%, curve to 50% 100% with 72.5% 53.125% / 53.125% 72.5%, curve to 0% 50% with 46.875% 72.5% / 27.5% 53.125%, curve to 50% 0% with 27.5% 46.875% / 46.875% 27.5%, close); /* la ✦ du portfolio, dessinée en CSS */
+  --sm-etoile8: polygon(50% 3%, 54.2% 39.8%, 68.4% 31.6%, 60.2% 45.8%, 97% 50%, 60.2% 54.2%, 68.4% 68.4%, 54.2% 60.2%, 50% 97%, 45.8% 60.2%, 31.6% 68.4%, 39.8% 54.2%, 3% 50%, 39.8% 45.8%, 31.6% 31.6%, 45.8% 39.8%); /* la grande étoile à 8 branches */
+  /* carré violet avec la ✦ aqua : quatre ronds violets grignotent un carré aqua */
+  --sm-tuile: radial-gradient(50% 50% at 0 0, var(--sm-violet) 99%, #0000) padding-box no-repeat, radial-gradient(50% 50% at 100% 0, var(--sm-violet) 99%, #0000) padding-box no-repeat,
+    radial-gradient(50% 50% at 0 100%, var(--sm-violet) 99%, #0000) padding-box no-repeat, radial-gradient(50% 50% at 100% 100%, var(--sm-violet) 99%, #0000) padding-box no-repeat, var(--sm-titre) padding-box;
 }
 
 ::selection { background: var(--sm-violet) !important; color: #fff !important; }
@@ -116,6 +121,9 @@ body :not(img,video,canvas,svg,svg *,picture,iframe,embed,object,[style*="backgr
 body :not(svg,svg *,a,a *,button,button *,[role=button],[role=button] *,[role=tab],[role=tab] *,mark,code,pre,input,textarea){color:var(--sm-texte)!important}
 body :is(h1,h2,h3,h4,h5,h6),body :is(h1,h2,h3,h4,h5,h6) :not(a,a *){color:var(--sm-titre)!important}
 body :is(h1,h2){font-family:var(--sm-serif)!important;font-weight:400!important;letter-spacing:0!important}
+/* ✦ devant les gros titres, elle tourne au survol */
+body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *)::before{content:""!important;display:inline-block!important;position:static!important;flex:none!important;width:.5em!important;height:.5em!important;margin:0 .38em 0 0!important;padding:0!important;border:0!important;vertical-align:.04em!important;opacity:1!important;background:var(--sm-violet-vif)!important;clip-path:var(--sm-etoile)!important;transition:rotate .45s var(--sm-snap),scale .45s var(--sm-snap)}
+body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *):hover::before{rotate:45deg;scale:1.15}
 body :is(th,legend,h6,label[for]:not(:has(input,select,textarea))){font-family:var(--sm-etroite)!important;font-stretch:112%;font-variation-settings:"wdth" 112;font-weight:800!important;font-size:.74rem!important;letter-spacing:.07em!important;text-transform:uppercase!important;color:var(--sm-bleu-vif)!important}
 body :is(small,figcaption,time,[class*=muted i],[class*=secondary i]:not(button,a)){color:var(--sm-pale)!important}
 
@@ -144,13 +152,20 @@ body :is([role=alert],[class*=error i]:not(:has(*))){color:var(--sm-rouge-vif)!i
 body [role=tab]{background-color:transparent!important;border:2px solid transparent!important;border-radius:var(--sm-r-bouton)!important;box-shadow:none!important;color:var(--sm-pale)!important;background-clip:padding-box!important}
 body [role=tab]:is([aria-selected=true],[aria-current]:not([aria-current=false])){background-color:var(--sm-bouton-fond)!important;border-color:var(--sm-bouton-bord)!important;box-shadow:0 4px 0 var(--sm-violet)!important;color:var(--sm-titre)!important}
 body :is(a,li)[aria-current]:not([aria-current=false],[role=tab]){background-color:var(--sm-actif-fond)!important;box-shadow:inset 3px 0 0 var(--sm-violet-vif)!important;color:var(--sm-titre)!important}
+/* ✦ en carré à gauche de la rubrique en cours ; grande étoile au coin des boutons principaux, environ 1 survol sur 3 (voir etoiles-magique) */
+body :is(a,li)[aria-current]:not([aria-current=false],[role=tab])::before{content:"";display:inline-block;flex:none;box-sizing:border-box;width:max(1.3em,17px);height:max(1.3em,17px);margin:0 max(.55em,8px) 0 0;vertical-align:middle;border:max(.2em,3px) solid var(--sm-violet);border-radius:max(.42em,6px);outline:2px solid color-mix(in srgb,var(--sm-texte) 55%,transparent);background:var(--sm-tuile);transition:rotate .45s var(--sm-snap)}
+body :is(a,li)[aria-current]:not([aria-current=false],[role=tab]):hover::before{rotate:-8deg}
+body :is(button[type=submit],:is(button,a)[class*=primary i]){anchor-name:--sm-e8;anchor-scope:--sm-e8}
+body :is(button[type=submit],:is(button,a)[class*=primary i])::after{content:""!important;position:absolute!important;position-anchor:--sm-e8;left:calc(anchor(right,100%) - 18px)!important;top:calc(anchor(top,0px) - 18px)!important;right:auto!important;bottom:auto!important;width:34px!important;height:34px!important;margin:0!important;padding:0!important;border:0!important;z-index:5;pointer-events:none!important;background:radial-gradient(circle,#fff 0 6%,var(--sm-titre) 20%,var(--sm-bleu-vif) 52%,var(--sm-bleu) 80%)!important;clip-path:var(--sm-etoile8)!important;opacity:0;scale:0;rotate:-60deg;transition:scale .4s var(--sm-snap),rotate .6s var(--sm-snap);animation:sm-parfois 1.3s steps(1,end) infinite}
+body :is(button[type=submit],:is(button,a)[class*=primary i]):hover::after{scale:1;rotate:0deg;animation-play-state:paused}
 
 body :is(input:not([type=checkbox],[type=radio],[type=range],[type=color],[type=image],[type=submit],[type=button],[type=reset],[type=file]),textarea,select){background-color:var(--sm-champ-fond)!important;color:var(--sm-texte)!important;border:2px solid var(--sm-champ-bord)!important;border-radius:var(--sm-r-champ)!important;background-clip:padding-box!important}
 body :is(input:not([type=checkbox],[type=radio],[type=range],[type=color],[type=image],[type=submit],[type=button],[type=reset],[type=file]),textarea,select):focus{border-color:var(--sm-champ-actif)!important;outline:none!important}
 body ::placeholder{color:var(--sm-pale)!important;opacity:1!important}
 
 body :is([class*=badge i],[class*=counter i]):not(:has(*)):not(:empty){display:inline-flex!important;align-items:center;gap:5px;padding:1px 8px 1px 6px!important;border:2px solid #000!important;border-radius:4px 10px 10px 4px!important;background-color:var(--sm-etiquette-fond)!important;color:var(--sm-etiquette-texte)!important;font-weight:800!important;rotate:7deg;box-shadow:2px 2px 0 #000!important}
-body :is([class*=badge i],[class*=counter i]):not(:has(*)):not(:empty)::before{content:"";width:6px;height:6px;flex:none;border-radius:50%;background:var(--sm-etiquette-texte)}
+body :is([class*=badge i],[class*=counter i]):not(:has(*)):not(:empty)::before{content:"";width:8px;height:8px;flex:none;background:var(--sm-etiquette-texte);clip-path:var(--sm-etoile);transition:rotate .45s var(--sm-snap)}
+body :is([class*=badge i],[class*=counter i]):not(:has(*)):not(:empty):hover::before{rotate:45deg}
 
 body :is(code,pre,kbd,samp){background-color:var(--sm-code-fond)!important;color:var(--sm-code-texte)!important;border-radius:6px!important;box-shadow:inset 0 0 0 2px var(--sm-code-bord)!important}
 body :not(pre)>:is(code,kbd,samp){padding:1px 5px!important}
@@ -224,6 +239,9 @@ footer{display:none!important}
   url-prefix("https://www.google.com/search"), url-prefix("https://www.google.fr/search"), url("https://www.google.com/"), url("https://www.google.fr/"), url-prefix("https://www.google.com/?"), url-prefix("https://www.google.com/webhp"),
   url-prefix("https://www.google.com/travel"), url-prefix("https://www.google.com/finance"), url-prefix("https://www.google.com/shopping"), url-prefix("https://www.google.com/maps"), url-prefix("https://www.google.fr/maps"), url-prefix("https://maps.google.com") {
 :is(h1,h2){font-family:var(--sm-serif)!important;font-weight:400!important;letter-spacing:0!important}
+/* ✦ devant les gros titres, elle tourne au survol */
+:is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *)::before{content:""!important;display:inline-block!important;position:static!important;flex:none!important;width:.5em!important;height:.5em!important;margin:0 .38em 0 0!important;padding:0!important;border:0!important;vertical-align:.04em!important;opacity:1!important;background:var(--sm-violet-vif)!important;clip-path:var(--sm-etoile)!important;transition:rotate .45s var(--sm-snap),scale .45s var(--sm-snap)}
+:is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *):hover::before{rotate:45deg;scale:1.15}
 }
 
 /*@@ soundcloud oled @@*/
@@ -1036,7 +1054,8 @@ form[role="search"] [role="option"][aria-selected="true"] {
   rotate: 7deg;
   box-shadow: 2px 2px 0 #000;
 }
-.aim .bsU::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--sm-etiquette-texte); }
+.aim .bsU::before { content: ""; width: 7px; height: 7px; background: var(--sm-etiquette-texte); clip-path: var(--sm-etoile); transition: rotate .45s var(--sm-snap); }
+.aim .TO:hover .bsU::before { rotate: 45deg; }
 /* Titres de sections (Libellés, etc.) */
 .aAv, .aAw, .n3 .aAv { color: var(--sm-violet-vif) !important; font: 800 .74rem/1.4 var(--sm-etroite) !important; font-stretch: 112% !important; letter-spacing: .07em !important; text-transform: uppercase !important; }
 
@@ -4502,8 +4521,11 @@ nav.navbar .navbar-brand:not(#z), nav.navbar .navbar-brand:not(#z) * { color: va
   box-shadow: 0 4px 0 var(--sm-violet) !important;
   color: var(--sm-titre) !important;
 }
+/* sa case devient flexible, sinon l'onglet actif colle en haut de la barre */
+:is(.primary-navigation, .moremenu, .secondary-navigation) .nav-item:has(> .nav-link.active) { display: flex !important; align-items: center !important; }
 /* Pastille des notifications : étiquette de bijoutier */
 .count-container {
+  translate: 9px -8px; /* en haut à droite de la cloche, sans la cacher */
   padding: 0 6px !important;
   border: 2px solid #000 !important;
   border-radius: 4px 10px 10px 4px !important;
@@ -4548,6 +4570,11 @@ nav.navbar .navbar-brand:not(#z), nav.navbar .navbar-brand:not(#z) * { color: va
   line-height: 1.2 !important;
   text-decoration: none !important;
 }
+.course-card a.coursename:not(#z):not(#y)::before, .dashboard-card a.coursename:not(#z):not(#y)::before {
+  content: ""; display: inline-block; width: .5em; height: .5em; margin-right: .38em; vertical-align: .04em;
+  background: var(--sm-violet-vif); clip-path: var(--sm-etoile); transition: rotate .45s var(--sm-snap), scale .45s var(--sm-snap);
+}
+:is(.course-card, .dashboard-card):hover a.coursename:not(#z):not(#y)::before { rotate: 45deg; scale: 1.15; }
 .course-card a.coursename:not(#z):not(#y):hover { background: none !important; }
 /* Boutons : en relief, penchent au survol ; le principal en violet plein */
 .btn:is(.btn-primary, .btn-secondary, [class*="btn-outline-"]):not(#z) {
@@ -4827,5 +4854,96 @@ a.asn-nav-link { color: var(--sm-lien-menu) !important; }
   font-size: .76rem !important;
   letter-spacing: .07em !important;
   text-transform: uppercase !important;
+}
+}
+
+/*@@ etoiles-magique @@*/
+/* (portfolio-joaillerie) */
+/* Les étoiles du portfolio.
+   ✦ dans un carré violet devant la rubrique en cours des menus ; grande étoile au coin des boutons
+   principaux et des cartes, environ 1 survol sur 3 ; ✦ qui scintille à la place des ronds de chargement. */
+@-moz-document url-prefix("http"), url-prefix("file:") {
+@keyframes sm-parfois { 0% { opacity: 0; } 66.7% { opacity: 1; } }
+@keyframes sm-scintille { 0%, 100% { opacity: 1; scale: 1; } 50% { opacity: .45; scale: .78; } }
+
+/* ✦ en carré, à gauche du nom de la rubrique en cours */
+.aim .TO.nZ span.nU::before,
+ytd-guide-entry-renderer[active] yt-formatted-string.title::before,
+.vector-toc .vector-toc-list-item-active > .vector-toc-link .vector-toc-text::before,
+.courseindex .courseindex-item.pageitem .courseindex-link::before,
+[class*="interactiveSelected_"] [class*="name_"]:not([class*="name_"] *)::before {
+  content: "" !important; display: inline-block !important; flex: none; box-sizing: border-box;
+  width: max(1.3em, 17px); height: max(1.3em, 17px); margin: 0 max(.55em, 8px) 0 0; vertical-align: middle;
+  border: max(.2em, 3px) solid var(--sm-violet); border-radius: max(.42em, 6px);
+  outline: 2px solid color-mix(in srgb, var(--sm-texte) 55%, transparent);
+  background: var(--sm-tuile); transition: rotate .45s var(--sm-snap);
+}
+:is(.aim .TO.nZ:hover span.nU, ytd-guide-entry-renderer[active]:hover yt-formatted-string.title,
+  .vector-toc .vector-toc-list-item-active > .vector-toc-link:hover .vector-toc-text,
+  .courseindex .courseindex-item.pageitem:hover .courseindex-link,
+  [class*="interactiveSelected_"]:hover [class*="name_"]:not([class*="name_"] *))::before { rotate: -8deg; }
+.aim .TO.nZ .qj { margin-right: 8px !important; } /* Gmail : un peu de place pour le carré */
+/* YouTube : le carré prend la place de la marge de l'icône (24 px), le nom reste aligné avec les autres rubriques */
+ytd-guide-entry-renderer[active] yt-icon.guide-icon { margin-right: 2px !important; }
+ytd-guide-entry-renderer[active] yt-formatted-string.title::before { width: 17px !important; height: 17px !important; margin-right: 5px !important; }
+ytd-multi-page-menu-renderer #header, ytd-multi-page-menu-renderer ytd-simple-menu-header-renderer { background-color: #000 !important; } /* menu des notifications : bandeau noir */
+
+/* grande étoile au coin des boutons principaux et des cartes, environ 1 survol sur 3 :
+   elle est accrochée au coin par ancrage (la mise en page du bouton ne bouge pas) ;
+   son tirage tourne en boucle et se fige au moment où la souris arrive */
+:is(.T-I.T-I-KE.L3, .btn-primary:not(.dropdown-toggle), [class*="cc-button-primary"], .dashboard-card, .as-carte,
+  button[data-variant="primary"], a[data-variant="primary"]) { anchor-name: --sm-e8; anchor-scope: --sm-e8; }
+:is(.T-I.T-I-KE.L3, .btn-primary:not(.dropdown-toggle), [class*="cc-button-primary"], .dashboard-card, .as-carte,
+  button[data-variant="primary"], a[data-variant="primary"])::after {
+  content: "" !important; position: absolute !important; position-anchor: --sm-e8;
+  left: calc(anchor(right, 100%) + var(--sm-e8-x, -18px)) !important; top: calc(anchor(top, 0px) + var(--sm-e8-y, -18px)) !important;
+  right: auto !important; bottom: auto !important; width: 34px !important; height: 34px !important;
+  margin: 0 !important; padding: 0 !important; border: 0 !important; z-index: 5; pointer-events: none !important;
+  background: radial-gradient(circle, #fff 0 6%, var(--sm-titre) 20%, var(--sm-bleu-vif) 52%, var(--sm-bleu) 80%) !important;
+  clip-path: var(--sm-etoile8) !important; opacity: 0; scale: 0; rotate: -60deg;
+  transition: scale .4s var(--sm-snap), rotate .6s var(--sm-snap);
+  animation: sm-parfois 1.3s steps(1, end) infinite;
+}
+:is(.T-I.T-I-KE.L3, .btn-primary:not(.dropdown-toggle), [class*="cc-button-primary"], .dashboard-card, .as-carte,
+  button[data-variant="primary"], a[data-variant="primary"]):hover::after { scale: 1; rotate: 0deg; animation-play-state: paused; }
+.dashboard-card { --sm-e8-x: -44px; --sm-e8-y: 10px; } /* Moodle : la carte coupe ce qui dépasse, l'étoile se pose dans le coin */
+
+/* ✦ qui scintille à la place des ronds de chargement (YouTube) */
+:is(tp-yt-paper-spinner, tp-yt-paper-spinner-lite)[active] > *, .ytp-spinner .ytp-spinner-container { visibility: hidden !important; }
+:is(tp-yt-paper-spinner, tp-yt-paper-spinner-lite)[active]::before, .ytp-spinner::before {
+  content: ""; position: absolute; inset: 8%; z-index: 1;
+  background: var(--sm-violet-vif); clip-path: var(--sm-etoile);
+  animation: sm-scintille 1.4s ease-in-out infinite;
+}
+:is(tp-yt-paper-spinner, tp-yt-paper-spinner-lite)[active] { position: relative; }
+.ytp-spinner::before { inset: 14%; }
+/* … Discord, Google (Material), Bootstrap */
+div[class^="spinner_"] > div[class^="inner_"] > *, .mdc-circular-progress--indeterminate > *,
+:is(mat-spinner, mat-progress-spinner[mode="indeterminate"]) > * { visibility: hidden !important; }
+:is(div[class^="spinner_"] > div[class^="inner_"], .mdc-circular-progress--indeterminate, mat-spinner, mat-progress-spinner[mode="indeterminate"]) { position: relative; }
+:is(div[class^="spinner_"] > div[class^="inner_"], .mdc-circular-progress--indeterminate, mat-spinner, mat-progress-spinner[mode="indeterminate"])::before {
+  content: ""; position: absolute; inset: 8%; z-index: 1; visibility: visible;
+  background: var(--sm-violet-vif); clip-path: var(--sm-etoile);
+  animation: sm-scintille 1.4s ease-in-out infinite;
+}
+:is(.spinner-border, .spinner-grow) {
+  border: 0 !important; border-radius: 0 !important; background: var(--sm-violet-vif) !important;
+  clip-path: var(--sm-etoile) !important; animation: sm-scintille 1.4s ease-in-out infinite !important;
+}
+/* … Font Awesome (Moodle) : l'icône qui tourne devient une ✦ qui scintille */
+.fa-spin:is(.fa-spinner, .fa-circle-o-notch, .fa-circle-notch) { animation: sm-scintille 1.4s ease-in-out infinite !important; }
+.fa-spin:is(.fa-spinner, .fa-circle-o-notch, .fa-circle-notch)::before {
+  content: "" !important; display: inline-block; width: 1em; height: 1em;
+  background: var(--sm-violet-vif); clip-path: var(--sm-etoile);
+}
+
+/* « en train d'écrire » : les 3 points deviennent 3 ✦ (Discord : ils gardent leur pulsation) */
+[class*="typing_"] [class*="dots_"] > [class*="dot_"] {
+  border-radius: 0 !important; clip-path: var(--sm-etoile) !important;
+  background-color: var(--sm-violet-vif) !important; transform: scale(1.7) !important;
+}
+/* Google Messages : les points de la bulle « en train d'écrire » */
+mws-typing-indicators :is(.dot, [class*="dot"]):not(svg, svg *) {
+  border-radius: 0 !important; clip-path: var(--sm-etoile) !important; background-color: var(--sm-violet-vif) !important;
 }
 }
