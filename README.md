@@ -33,7 +33,7 @@ The look of my [new-tab page](https://github.com/glime32/nouvel-onglet-cours) on
    | `stylus-magique.user.css` | the site styles | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-magique.user.css) |
    | `volet.user.css` | the violet wipe between two pages of the same site | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
 
-   The wipe is a separate style, so it can be switched off on its own. Both files have an `@updateURL` pointing here: every pushed change reaches the browser by itself.
+   The wipe is a separate style, so it can be switched off on its own. Both files have an `@updateURL` pointing here. The `@version` number goes up with every change, otherwise Stylus keeps the old one: see the [release notes](CHANGELOG.md) (in French).
 
 3. The PDF viewer (optional). Stylus can't style an extension, so `pdfjs/magique-pdfjs.css` goes into an unpacked copy of the "PDF Viewer" extension (PDF.js): dark pages with a red border on a violet background, like Xournal, a hidden capsule toolbar that comes out when the mouse reaches the top of the page, light violet icons, page number and zoom as pills, current page in dark violet with the bar, matches in violet.
 

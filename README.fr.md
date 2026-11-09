@@ -33,7 +33,7 @@ Le style de ma page [Nouvel onglet](https://github.com/glime32/nouvel-onglet-cou
    | `stylus-magique.user.css` | le style des sites | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-magique.user.css) |
    | `volet.user.css` | le volet violet entre deux pages d'un même site | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
 
-   Le volet est un style à part : on le coupe dans Stylus si on n'en veut plus. Les deux fichiers ont un `@updateURL` qui pointe ici, chaque modification poussée arrive toute seule.
+   Le volet est un style à part : on le coupe dans Stylus si on n'en veut plus. Les deux fichiers ont un `@updateURL` qui pointe ici. Le numéro `@version` monte à chaque modification, sinon Stylus garde l'ancienne : ce qui change est dans les [notes de version](CHANGELOG.md).
 
 3. Le lecteur PDF (facultatif). Stylus ne peut pas styler une extension, alors `pdfjs/magique-pdfjs.css` s'ajoute dans une copie non empaquetée de l'extension « PDF Viewer » (PDF.js) : pages sombres à bord rouge sur fond violet, comme dans Xournal, barre du haut en capsule cachée, qui sort quand la souris arrive dans le haut de la page, icônes violet clair, numéro de page et zoom en pastilles, page en cours violet foncé avec la barre, mots trouvés en violet.
 

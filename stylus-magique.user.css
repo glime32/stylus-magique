@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.0.0
+@version        1.1.0
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -5136,4 +5136,9 @@ ytd-watch-metadata #bottom-row { margin-top: 10px !important; }
   33% { background-size: 7px, 10px, 7px; }
   66% { background-size: 7px, 7px, 10px; }
 }
+}
+@-moz-document domain("instagram.com") {
+/* titre dont le texte est dans un span en bloc (nom du compte en haut des messages) : l'étoile reste à gauche, le nom n'est plus coupé */
+:is(h1, h2):has(> span:first-child) { display: flex !important; align-items: center; }
+:is(h1, h2):has(> span:first-child) > span:first-child { min-width: 0; }
 }
