@@ -3,6 +3,15 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Lecteur PDF · Languettes · 11 novembre 2026
+
+Changé (`pdfjs/magique-pdfjs.css`, arrive tout seul par le timer) :
+- La barre du haut est coupée en deux languettes accrochées au bord : à gauche le volet, la recherche, les pages et le zoom ; à droite les outils, télécharger, imprimer et ». Le milieu reste libre pour la barre d'Helium.
+- Chaque languette dépasse de quelques pixels et descend seulement quand la souris arrive dans les 40 px du haut de son côté (avant : dès les 88 px du haut, sur toute la largeur).
+- Tout à la même hauteur : boutons de 32 px, numéro de page et zoom en petites pastilles.
+- « Zoom automatique » s'affiche « Auto » (la liste garde les noms complets).
+- Télécharger passe à gauche de l'imprimante.
+
 ## 1.2.2 · Démarrage · 9 novembre 2026
 
 Corrigé :

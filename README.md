@@ -35,7 +35,7 @@ The look of my [new-tab page](https://github.com/glime32/nouvel-onglet-cours) on
 
    The wipe is a separate style, so it can be switched off on its own. Both files have an `@updateURL` pointing here. The `@version` number goes up with every change, otherwise Stylus keeps the old one: see the [release notes](CHANGELOG.md) (in French).
 
-3. The PDF viewer (optional). Stylus can't style an extension, so `pdfjs/magique-pdfjs.css` goes into an unpacked copy of the "PDF Viewer" extension (PDF.js): dark pages with a red border on a violet background, like Xournal, a hidden capsule toolbar that comes out when the mouse reaches the top of the page, light violet icons, page number and zoom as pills, current page in dark violet with the bar, matches in violet.
+3. The PDF viewer (optional). Stylus can't style an extension, so `pdfjs/magique-pdfjs.css` goes into an unpacked copy of the "PDF Viewer" extension (PDF.js): dark pages with a red border on a violet background, like Xournal, the toolbar split into two hidden tabs, left and right, that slide down when the mouse reaches the top 40 px on their side (the middle stays free for the browser's own bar), light violet icons, page number and zoom as pills, current page in dark violet with the bar, matches in violet.
 
    ```bash
    curl -fsSL https://raw.githubusercontent.com/glime32/stylus-magique/main/pdfjs/install.sh | bash

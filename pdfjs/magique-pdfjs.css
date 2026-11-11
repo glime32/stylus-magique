@@ -1,5 +1,5 @@
 /* magique-pdfjs.css : calque « Stylus magique » pour le lecteur PDF.js (extension « PDF Viewer » non empaquetée).
-   Comme Xournal : pages sombres à bord rouge sur fond violet #61008A ; barre cachée qui revient quand la souris monte,
+   Comme Xournal : pages sombres à bord rouge sur fond violet #61008A ; deux languettes en haut (gauche, droite) qui descendent quand la souris monte,
    icônes violet clair, numéro de page et zoom en pastilles noires, page en cours violet foncé avec la barre,
    mots trouvés en violet.
    Chargé juste après viewer.css, mis à jour tout seul depuis github.com/glime32/stylus-magique (pdfjs/install.sh). */
@@ -19,7 +19,6 @@
   --pm-rouge: #ff3b3b;
   --pm-bord: color-mix(in srgb, var(--pm-violet-vif) 50%, var(--pm-violet));
   --pm-actif: color-mix(in srgb, var(--pm-violet) 35%, #000);
-  --pm-haut: 44px; /* place de la capsule sous le bord de l'écran */
 
   --body-bg-color: #000000 !important;
   --main-color: var(--pm-texte) !important;
@@ -95,7 +94,7 @@
 #outerContainer .textLayer ::selection { background: rgb(97 0 137 / 0.6) !important; }
 /* recherche ouverte : les pages descendent sous la barre, sinon le mot trouvé tombe derrière
    (viewer.css met les pages tout en haut de l'écran) */
-#outerContainer:has(#findbar:not(.hidden)) #viewerContainer { top: 90px !important; }
+#outerContainer:has(#findbar:not(.hidden)) #viewerContainer { top: 104px !important; }
 /* « Occurrence 1 sur 3 » : violet foncé au lieu du bloc gris clair */
 #outerContainer #findbar #findResultsCount {
   background-color: var(--pm-violet-fonce) !important;
@@ -104,27 +103,146 @@
   padding: 3px 8px !important;
 }
 
-/* ---------- barre du haut : capsule noire, bord violet, ombre dure ---------- */
+/* ---------- barre du haut : deux languettes accrochées au bord, une à gauche, une à droite ----------
+   Le milieu reste libre pour la barre d'Helium. Chaque languette dépasse de 7 px et descend
+   quand la souris arrive dans les 40 px du haut, de son côté. Le zoom est dans celle de gauche. */
 #outerContainer #toolbarContainer {
+  position: fixed !important;
+  inset: 0 0 auto 0 !important;
+  width: auto !important;
+  height: 0 !important;
+  z-index: 9999 !important;
+  background: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transition: none !important;
+  pointer-events: none !important;
+}
+#outerContainer #toolbarContainer::before,
+#outerContainer #toolbarContainer::after { content: none !important; }
+#outerContainer #toolbarViewer {
+  display: flex !important;
+  align-items: flex-start !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding-inline: 24px !important;
+  background: none !important;
+}
+#outerContainer.sidebarOpen #toolbarViewer { padding-inline-start: calc(var(--sidebar-width) + 24px) !important; }
+
+#outerContainer :is(#toolbarViewerLeft, #toolbarViewerMiddle, #toolbarViewerRight) {
+  position: relative !important;
+  inset: auto !important;
+  float: none !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  height: 48px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+  padding: 8px 6px 6px !important;
   background-color: #000000 !important;
   border: 2px solid var(--pm-bord) !important;
-  border-radius: 14px !important;
-  background-clip: padding-box !important;
+  border-top: 0 !important;
+  border-radius: 0 0 16px 16px !important;
   box-shadow: 4px 4px 0 #000000 !important;
+  pointer-events: auto !important;
+  transform: translateY(calc(-100% + 7px)) !important;
+  transition: transform 0.22s cubic-bezier(.2, .9, .25, 1) 0.35s !important; /* se range 0,35 s après la sortie */
 }
-#outerContainer #toolbarViewer { border-radius: 12px !important; }
-#outerContainer #toolbarViewer { background: transparent !important; }
-#outerContainer :is(.splitToolbarButtonSeparator, .verticalToolbarSeparator) {
-  border-color: var(--pm-violet-moyen) !important;
+#outerContainer :is(#toolbarViewerLeft, #toolbarViewerMiddle, #toolbarViewerRight) > * { float: none !important; }
+/* gauche + zoom = une seule languette en deux morceaux collés */
+#outerContainer #toolbarViewerLeft {
+  order: 1;
+  border-right: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  padding-inline-end: 0 !important;
+}
+#outerContainer #toolbarViewerMiddle {
+  order: 2;
+  border-left: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  padding-inline-start: 0 !important;
+}
+#outerContainer #toolbarViewerRight { order: 3; margin-inline-start: auto !important; }
+
+/* zone de sortie : sous ce qui dépasse, jusqu'à 40 px du haut ; celles des bords vont jusqu'au bord de l'écran */
+#outerContainer :is(#toolbarViewerLeft, #toolbarViewerMiddle, #toolbarViewerRight)::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 100% !important;
+  inset-inline: -2px !important;
+  height: 33px !important;
+  pointer-events: auto !important;
+}
+#outerContainer #toolbarViewerLeft::after { inset-inline-start: -26px !important; }
+#outerContainer #toolbarViewerRight::after { inset-inline-end: -26px !important; }
+
+/* sortie : survol, clavier, numéro de page en train d'être tapé, recherche ou menus ouverts */
+#outerContainer #toolbarViewer:has(> #toolbarViewerLeft:hover, > #toolbarViewerMiddle:hover, > #toolbarViewerLeft :focus-visible, > #toolbarViewerMiddle :focus-visible, #pageNumber:focus) > :is(#toolbarViewerLeft, #toolbarViewerMiddle),
+#outerContainer:has(#findbar:not(.hidden)) :is(#toolbarViewerLeft, #toolbarViewerMiddle),
+#outerContainer #toolbarViewerRight:is(:hover, :has(:focus-visible)),
+#outerContainer:has(#secondaryToolbar:not(.hidden), .editorParamsToolbar:not(.hidden)) #toolbarViewerRight {
+  transform: none !important;
+  transition-delay: 0s !important;
+}
+/* liste du zoom ouverte (navigateurs qui connaissent :open) */
+#outerContainer #toolbarViewer:has(#scaleSelect:open) > :is(#toolbarViewerLeft, #toolbarViewerMiddle) {
+  transform: none !important;
+  transition-delay: 0s !important;
+}
+/* languette sortie : il ne reste qu'une petite marge sous elle */
+#outerContainer #toolbarViewer:has(> #toolbarViewerLeft:hover, > #toolbarViewerMiddle:hover) > :is(#toolbarViewerLeft, #toolbarViewerMiddle)::after,
+#outerContainer #toolbarViewerRight:hover::after { height: 10px !important; }
+
+/* séparateurs : petits traits violet foncé */
+#outerContainer #toolbarViewerLeft .toolbarButtonSpacer,
+#outerContainer #toolbarViewer .splitToolbarButtonSeparator { display: none !important; }
+#outerContainer #toolbarViewer .splitToolbarButton,
+#outerContainer #editorModeButtons { display: flex !important; align-items: center !important; gap: 2px !important; margin: 0 !important; }
+#outerContainer #toolbarViewerLeft > .splitToolbarButton::before,
+#outerContainer #toolbarViewerMiddle::before,
+#outerContainer #toolbarViewer .verticalToolbarSeparator {
+  content: "" !important;
+  display: block !important;
+  flex: none !important;
+  align-self: center !important;
+  width: 2px !important;
+  height: 20px !important;
+  margin: 0 5px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 2px !important;
   background-color: var(--pm-violet-moyen) !important;
 }
-#outerContainer :is(.toolbarLabel, #numPages) { color: var(--pm-pale) !important; }
 
-/* boutons-icônes : icône violet clair ; fond violet foncé au survol et quand l'outil est actif */
+/* à droite : télécharger avant l'imprimante */
+#outerContainer #editorModeButtons { order: 1; }
+#outerContainer #editorModeSeparator { order: 2; }
+#outerContainer #download { order: 3; }
+#outerContainer #print { order: 4; }
+#outerContainer #toolbarViewerRight > .verticalToolbarSeparator:not(#editorModeSeparator) { order: 5; }
+#outerContainer #secondaryToolbarToggle { order: 6; }
+
+/* boutons-icônes : 32 px, icône violet clair ; fond violet foncé au survol et quand l'outil est actif */
 #outerContainer .toolbarButton {
   border-radius: 9px !important;
   background-color: transparent !important;
   outline: none !important;
+}
+#outerContainer #toolbarViewer .toolbarButton {
+  width: 32px !important;
+  height: 32px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: none !important;
+}
+#outerContainer #toolbarViewer .toolbarButton::before {
+  inset: 0 !important;
+  margin: auto !important;
+  width: 18px !important;
+  height: 18px !important;
 }
 #outerContainer .toolbarButton::before,
 #outerContainer .dropdownToolbarButton::after {
@@ -139,7 +257,7 @@
 #outerContainer .toolbarButton:is([disabled], [disabled="disabled"])::before { opacity: 0.35 !important; }
 #outerContainer .toolbarButton:focus-visible { outline: 3px solid var(--pm-rouge) !important; outline-offset: -1px !important; }
 
-/* numéro de page et zoom : pastilles noires, bord violet 2 px, rouge au survol et quand on tape */
+/* numéro de page et zoom : petites pastilles noires, bord violet 2 px, rouge au survol et quand on tape */
 #outerContainer .toolbarField,
 #outerContainer .dropdownToolbarButton {
   background-color: #000000 !important;
@@ -152,14 +270,58 @@
   caret-color: var(--pm-rouge) !important;
 }
 #outerContainer .toolbarField { text-align: center !important; }
+#outerContainer #pageNumber {
+  width: 42px !important;
+  height: 28px !important;
+  box-sizing: border-box !important;
+  margin: 0 0 0 4px !important;
+  padding: 0 !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+}
+#outerContainer #toolbarViewer .loadingInput { display: flex !important; align-items: center !important; }
+#outerContainer #numPages {
+  margin: 0 0 0 6px !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+#outerContainer :is(.toolbarLabel, #numPages) { color: var(--pm-pale) !important; }
+#outerContainer #scaleSelectContainer {
+  position: relative !important;
+  height: 28px !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+  margin: 0 0 0 4px !important;
+}
 #outerContainer .dropdownToolbarButton > select {
+  height: 24px !important;
+  min-width: 0 !important;
+  padding: 0 26px 0 12px !important;
+  font-size: 13px !important;
   background-color: transparent !important;
   color: var(--pm-texte) !important;
   border: 0 !important;
   border-radius: 999px !important;
   outline: none !important;
 }
+#outerContainer .dropdownToolbarButton::after { top: 4px !important; inset-inline-end: 8px !important; }
 #outerContainer .dropdownToolbarButton > select > option { background-color: var(--pm-surface) !important; color: var(--pm-texte) !important; }
+/* « Zoom automatique » devient « Auto » (la liste garde les noms complets) */
+#outerContainer #scaleSelectContainer:has(option[value="auto"]:checked) { width: 72px !important; }
+#outerContainer #scaleSelectContainer:has(option[value="auto"]:checked) > select { width: 100% !important; color: transparent !important; }
+#outerContainer #scaleSelectContainer:has(option[value="auto"]:checked)::before {
+  content: "Auto";
+  position: absolute;
+  inset-inline-start: 12px;
+  top: 50%;
+  translate: 0 -50%;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--pm-texte);
+  pointer-events: none;
+}
 #outerContainer :is(.toolbarField, .dropdownToolbarButton):hover,
 #outerContainer :is(.toolbarField:focus, .dropdownToolbarButton:focus-within) { border-color: var(--pm-rouge) !important; }
 
@@ -175,53 +337,11 @@
 #outerContainer :is(.doorHanger, .doorHangerRight, .editorParamsToolbar)::before,
 #outerContainer :is(.doorHanger, .doorHangerRight, .editorParamsToolbar)::after { display: none !important; } /* petites flèches */
 #outerContainer #secondaryToolbar .toolbarButton { border-radius: 10px !important; color: var(--pm-texte) !important; }
-/* ils s'ouvrent sous la capsule (le lecteur les met à 32 px du haut, sous l'ancienne barre) */
-#outerContainer :is(#findbar, #secondaryToolbar, .editorParamsToolbar) { top: calc(var(--pm-haut) + var(--toolbar-height) + 10px) !important; }
-#outerContainer #findbar { inset-inline-start: calc(7% + 64px) !important; }
-#outerContainer :is(#secondaryToolbar, .editorParamsToolbar) { inset-inline-end: calc(7% + 4px) !important; }
-
-/* ---------- capsule cachée : elle sort quand la souris arrive dans le haut de la page ----------
-   Elle se pose à 44 px du bord : le bord lui-même sert déjà à la barre d'Helium, cachée elle aussi. */
-#outerContainer #toolbarContainer {
-  position: fixed !important;
-  inset: var(--pm-haut) 7% auto 7% !important;
-  width: auto !important;
-  z-index: 9999 !important;
-  transform: translateY(calc(-100% - var(--pm-haut) - 8px)) !important; /* rangée au-dessus de l'écran */
-  transition: transform 0.22s cubic-bezier(.2, .9, .25, 1) 0.35s !important; /* se range 0,35 s après la sortie */
-}
-/* zone de survol invisible : les 88 px du haut de la page, sur toute la largeur,
-   avec une fine ligne violette qui montre où est la capsule */
-#outerContainer #toolbarContainer::after {
-  content: "" !important;
-  position: absolute !important;
-  inset: 100% -20vw auto -20vw !important;
-  height: 96px !important;
-  pointer-events: auto !important;
-  background: linear-gradient(var(--pm-violet-vif), var(--pm-violet-vif)) 0 8px / 100% 2px no-repeat !important;
-  opacity: 0.6;
-}
-/* capsule sortie : on garde la main sur l'espace entre le bord et la capsule, sinon elle repart */
-#outerContainer #toolbarContainer::before {
-  content: "" !important;
-  position: absolute !important;
-  inset: auto -20vw 100% -20vw !important;
-  height: calc(var(--pm-haut) + 8px) !important;
-  pointer-events: auto !important;
-}
-#outerContainer #toolbarContainer:is(:hover, :focus-within),
-#outerContainer #toolbarContainer:has([aria-expanded="true"], .doorHanger:not(.hidden), .doorHangerRight:not(.hidden)),
-#outerContainer:has(#secondaryToolbar:not(.hidden), #findbar:not(.hidden), .editorParamsToolbar:not(.hidden)) #toolbarContainer {
-  transform: none !important;
-  transition-delay: 0s !important;
-}
-/* barre ouverte : la bordure du bas suffit, la zone rétrécit (moins de clics bloqués sur la page) */
-#outerContainer #toolbarContainer:is(:hover, :focus-within)::after,
-#outerContainer #toolbarContainer:has([aria-expanded="true"], .doorHanger:not(.hidden), .doorHangerRight:not(.hidden))::after,
-#outerContainer:has(#secondaryToolbar:not(.hidden), #findbar:not(.hidden), .editorParamsToolbar:not(.hidden)) #toolbarContainer::after {
-  height: 24px !important;
-  background: none !important;
-}
+/* ils s'ouvrent juste sous les languettes */
+#outerContainer :is(#findbar, #secondaryToolbar, .editorParamsToolbar) { top: 56px !important; }
+#outerContainer #findbar { inset-inline-start: 24px !important; }
+#outerContainer.sidebarOpen #findbar { inset-inline-start: calc(var(--sidebar-width) + 24px) !important; }
+#outerContainer :is(#secondaryToolbar, .editorParamsToolbar) { inset-inline-end: 24px !important; }
 
 /* ---------- volet de gauche : miniatures et sommaire ---------- */
 #outerContainer #sidebarContainer,
