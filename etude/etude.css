@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus étude
 @namespace      glime32.stylus-etude
-@version        1.0.1
+@version        1.1.0
 @description    Noir OLED au calme pour travailler : texte gris clair, liens lavande, rien ne bouge, images adoucies, sur les mêmes sites que Stylus magique
 @author         glime32
 @license        MIT
@@ -65,6 +65,19 @@
 :where(img:hover, a:hover img, [role=link]:hover img) { filter: none; }
 }
 
+/*@@ etude-animations @@*/
+@-moz-document url-prefix("http"), url-prefix("file:") {
+@layer etude-animations {
+  *, *::before, *::after { animation-iteration-count: 1 !important; }
+  :is([class*=spin i], [class*=circular i], [role=progressbar], tp-yt-paper-spinner, tp-yt-paper-spinner-lite, mat-spinner, mat-progress-spinner, mat-progress-bar),
+  :is([class*=spin i], [class*=circular i], [role=progressbar], tp-yt-paper-spinner, tp-yt-paper-spinner-lite, mat-spinner, mat-progress-spinner, mat-progress-bar) > *,
+  :is([class*=spin i], [class*=circular i], [role=progressbar], tp-yt-paper-spinner, tp-yt-paper-spinner-lite, mat-spinner, mat-progress-spinner, mat-progress-bar) > * > *,
+  :is([class*=spin i], [class*=circular i], [role=progressbar])::before,
+  :is([class*=spin i], [class*=circular i], [role=progressbar])::after { animation-iteration-count: infinite !important; }
+}
+}
+}
+
 /*@@ etude-youtube @@*/
 @-moz-document domain("youtube.com") {
 ytd-watch-flexy #related,
@@ -80,6 +93,8 @@ yt-tab-shape[tab-title="Shorts"] { display: none !important; }
 ytd-watch-flexy:not(:has(#secondary ytd-playlist-panel-renderer:not([hidden]), #secondary ytd-live-chat-frame:not([hidden]), #secondary #panels ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"])) #secondary { display: none !important; }
 yt-interaction .fill, .ytSpecTouchFeedbackShapeFill { background-color: var(--sm-survol) !important; }
 badge-shape.ytBadgeShapeThumbnailSpecial { background-color: var(--sm-etiquette-fond) !important; color: var(--sm-texte) !important; }
+:is(ytd-thumbnail, yt-thumbnail-view-model, ytd-playlist-thumbnail, yt-collection-thumbnail-view-model) img:not(#z) { filter: grayscale(1) brightness(.7) !important; }
+:is(ytd-rich-item-renderer, ytd-video-renderer, ytd-compact-video-renderer, ytd-grid-video-renderer, ytd-playlist-video-renderer, ytd-playlist-panel-video-renderer, ytd-playlist-renderer, yt-lockup-view-model):hover :is(ytd-thumbnail, yt-thumbnail-view-model, ytd-playlist-thumbnail, yt-collection-thumbnail-view-model) img:not(#z) { filter: none !important; }
 segmented-like-dislike-button-view-model [class*="SegmentedButtonsWrapper"] {
   gap: 0 !important; overflow: hidden;
   border: 2px solid var(--sm-bouton-bord); border-radius: var(--sm-r-bouton); background: var(--sm-bouton-fond);
@@ -93,9 +108,18 @@ segmented-like-dislike-button-view-model dislike-button-view-model button:not(#z
 /*@@ etude-lecture @@*/
 @-moz-document domain("wikipedia.org"), domain("wiktionary.org"), domain("wikibooks.org"), domain("wikiversity.org"), domain("wikisource.org"), domain("wikiquote.org"), domain("wikivoyage.org"), domain("wikinews.org"), domain("mediawiki.org"), domain("wiki.archlinux.org") {
 .mw-parser-output > :is(p, ul > li, ol > li, dl > dd, dl > dt) { line-height: 1.7 !important; }
+#mw-content-text > .mw-parser-output { font-size: 110% !important; }
+html.skin-theme-clientpref-night :is(.mwe-math-fallback-image-inline, .mwe-math-fallback-image-display):not(#z) { filter: invert(1) brightness(.785) !important; }
+@media (prefers-color-scheme: dark) {
+  html.skin-theme-clientpref-os :is(.mwe-math-fallback-image-inline, .mwe-math-fallback-image-display):not(#z) { filter: invert(1) brightness(.785) !important; }
+}
 }
 @-moz-document domain("docs.python.org") {
 div.body :is(p, li, dd):not(table *) { line-height: 1.7 !important; }
+div.body { font-size: 110% !important; }
+}
+@-moz-document domain("moodle.umontpellier.fr") {
+#region-main { font-size: 110% !important; }
 }
 @-moz-document domain("stackoverflow.com"), domain("stackexchange.com"), domain("superuser.com"), domain("askubuntu.com"), domain("serverfault.com"), domain("mathoverflow.net") {
 .s-prose > :is(p, ul, ol, blockquote, h1, h2, h3, h4) { max-width: 80ch; }

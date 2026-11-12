@@ -370,6 +370,9 @@ def couleurs(sel, nom, v, decls, etroite):
         v = VIOLET.sub("var(--sm-bouton-bord)", v)
     elif VIOLET.search(v) and not nom.startswith("--"):
         v = re.sub(r"#610089\b", "var(--sm-violet)", v, flags=re.I)
+    if nom == "filter" and re.search(r"invert\((?:1|100%)\)", v) and "brightness(.785)" not in v \
+            and not re.search(r"img|video|picture|canvas|iframe|background-image", sel):
+        v += " brightness(.785)"
     if nom in ("color", "-webkit-text-fill-color", "fill", "caret-color") or nom.endswith(("-color-text", "-fg", "fgColor-rest")):
         fond_violet = any(d.nom.lower().startswith("background") and VIOLET.search(d.valeur) for d in decls)
         if BLANC.search(v) and not fond_violet:

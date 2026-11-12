@@ -76,9 +76,10 @@ A second theme for long work sessions: switch Stylus magique off and Stylus étu
 - nothing moves: no hard shadow, no tilt, on hover only the border gets lighter;
 - no stars, no jeweller tags, the sites' own fonts;
 - red only for the text caret, errors and danger; the keyboard outline and the field being typed in are lavender;
-- images dimmed to 70 %, normal on hover; counters in small grey pills;
+- images dimmed to 70 %, normal on hover; YouTube thumbnails in grey; formulas and graphs in the text grey; counters in small grey pills;
+- looping animations stop, except loading spinners;
 - YouTube without suggested videos or Shorts (the playlist and the chat stay);
-- more line spacing on Wikipedia, ArchWiki, the Python docs and Stack Exchange.
+- 10 % bigger text and more line spacing on Wikipedia, ArchWiki, the Python docs and Moodle; more line spacing on Stack Exchange.
 
 It is not written by hand: `tools/etude.py` builds it from `stylus-magique.user.css` and `etude/etude.css` (colours and additions), so every site fix made in Magique also reaches Étude. `tools/apercu.py` captures a page with both themes side by side.
 

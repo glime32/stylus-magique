@@ -76,9 +76,10 @@ Un second thème, pour les longues séances de travail : on coupe Stylus magique
 - rien ne bouge : pas d'ombre dure, pas de bascule, au survol seul le bord s'éclaircit ;
 - pas d'étoiles, pas d'étiquettes de bijoutier, les polices des sites ;
 - rouge seulement pour le curseur de texte, les erreurs et le danger ; le contour au clavier et le champ où l'on tape sont lavande ;
-- images assombries à 70 %, normales au survol ; compteurs en petites pastilles grises ;
+- images assombries à 70 %, normales au survol ; miniatures YouTube en gris ; formules et graphiques au gris du texte ; compteurs en petites pastilles grises ;
+- les animations qui tournent en boucle s'arrêtent, sauf les ronds de chargement ;
 - YouTube sans les vidéos proposées ni les Shorts (la playlist et le chat restent) ;
-- lignes plus aérées sur Wikipédia, ArchWiki, la doc Python et Stack Exchange.
+- texte 10 % plus grand et lignes plus aérées sur Wikipédia, ArchWiki, la doc Python et Moodle ; lignes aérées sur Stack Exchange.
 
 Il n'est pas écrit à la main : `tools/etude.py` le fabrique à partir de `stylus-magique.user.css` et d'`etude/etude.css` (couleurs et ajouts), donc chaque correction de site faite dans Magique passe aussi dans Étude. `tools/apercu.py` capture une page avec les deux thèmes côte à côte.
 

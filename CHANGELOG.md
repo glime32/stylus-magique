@@ -3,6 +3,14 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Stylus étude 1.1.0 · Repos des yeux · 12 novembre 2026
+
+Nouveau :
+- Formules de Wikipédia et graphiques de Desmos et GeoGebra au gris du texte (ils étaient blanc pur) ; pareil pour les pages que le thème inverse (sites sans mode sombre, mails HTML de Gmail).
+- YouTube : miniatures en gris, la couleur revient au survol de la vidéo.
+- Les animations qui tournent en boucle sur les sites (bandeaux, cases grises qui clignotent, etc.) s'arrêtent après un tour ; les ronds de chargement continuent.
+- Texte 10 % plus grand sur Wikipédia et les autres wikis, ArchWiki, la doc Python et Moodle.
+
 ## Stylus étude 1.0.1 · J'aime · 12 novembre 2026
 
 Corrigé :
