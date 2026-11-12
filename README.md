@@ -32,6 +32,7 @@ The look of my [new-tab page](https://github.com/glime32/nouvel-onglet-cours) on
    |---|---|---|
    | `stylus-magique.user.css` | the site styles | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-magique.user.css) |
    | `volet.user.css` | the violet wipe between two pages of the same site | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
+   | `stylus-etude.user.css` | the calm version for work (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-etude.user.css) |
 
    The wipe is a separate style, so it can be switched off on its own. Both files have an `@updateURL` pointing here. The `@version` number goes up with every change, otherwise Stylus keeps the old one: see the [release notes](CHANGELOG.md) (in French).
 
@@ -66,6 +67,24 @@ The file has one `@-moz-document` block per site, plus a shared block for sites 
 - **Misc**: claude.ai, ChatGPT, SoundCloud, Spotify, Twitch, chess.com, Lichess, anime-sama, MangaDex, Steam, Amazon, Vinted, Doctolib, SNCF Connect…
 
 Made and tested on [Helium](https://github.com/imputnet/helium) (Chromium) on CachyOS / KDE Plasma.
+
+## Stylus étude
+
+A second theme for long work sessions: switch Stylus magique off and Stylus étude on (never both). Same sites, but:
+
+- light grey text `#C8C8C8`, headings `#EDEDED`, grey lines, lavender links `#B7A6F2`; violet only stays on the main button;
+- nothing moves: no hard shadow, no tilt, on hover only the border gets lighter;
+- no stars, no jeweller tags, the sites' own fonts;
+- red only for the text caret, errors and danger; the keyboard outline and the field being typed in are lavender;
+- images dimmed to 70 %, normal on hover; counters in small grey pills;
+- YouTube without suggested videos or Shorts (the playlist and the chat stay);
+- more line spacing on Wikipedia, ArchWiki, the Python docs and Stack Exchange.
+
+It is not written by hand: `tools/etude.py` builds it from `stylus-magique.user.css` and `etude/etude.css` (colours and additions), so every site fix made in Magique also reaches Étude. `tools/apercu.py` captures a page with both themes side by side.
+
+```bash
+python3 tools/etude.py
+```
 
 ## See also
 

@@ -1,0 +1,95 @@
+/* ==UserStyle==
+@name           Stylus étude
+@namespace      glime32.stylus-etude
+@version        1.0.0
+@description    Noir OLED au calme pour travailler : texte gris clair, liens lavande, rien ne bouge, images adoucies, sur les mêmes sites que Stylus magique
+@author         glime32
+@license        MIT
+@homepageURL    https://github.com/glime32/stylus-magique
+@updateURL      https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-etude.user.css
+@preprocessor   default
+==/UserStyle== */
+
+:root {
+  --sm-texte: #c8c8c8;
+  --sm-pale: #8c8c8c;
+  --sm-titre: #ededed;
+  --sm-violet: #490067;
+  --sm-violet-vif: #b7a6f2;
+  --sm-violet-pale: #d8d8d8;
+  --sm-violet-fonce: #0f0f11;
+  --sm-violet-moyen: #262626;
+  --sm-bleu: #34343a;
+  --sm-bleu-vif: #b7a6f2;
+  --sm-glace: #ededed;
+  --sm-nuit: #0a0a0c;
+  --sm-rouge: #ff3b3b;
+  --sm-rouge-vif: #ff6b6b;
+  --sm-rouge-fonce: #8a1010;
+  --sm-surface: #0a0a0c;
+  --sm-accent: #b7a6f2;
+
+  --sm-ligne: var(--sm-violet-moyen);
+  --sm-icone: var(--sm-texte);
+  --sm-lien: var(--sm-accent);
+  --sm-lien-trait: color-mix(in srgb, var(--sm-lien) 50%, transparent);
+  --sm-lien-survol: var(--sm-lien);
+  --sm-lien-survol-fond: #17131f;
+  --sm-lien-vu: #8f86b5;
+  --sm-lien-menu: var(--sm-titre);
+  --sm-bouton-fond: var(--sm-violet-fonce);
+  --sm-bouton-bord: #3a3a40;
+  --sm-carte-bord: var(--sm-ligne);
+  --sm-champ-fond: var(--sm-nuit);
+  --sm-champ-bord: #34343a;
+  --sm-champ-actif: var(--sm-accent);
+  --sm-fenetre-fond: #000;
+  --sm-survol: #17131f;
+  --sm-actif-fond: #17131f;
+  --sm-nonlu-fond: #0e0c13;
+  --sm-code-fond: var(--sm-nuit);
+  --sm-code-texte: var(--sm-texte);
+  --sm-code-bord: var(--sm-ligne);
+  --sm-etiquette-fond: color-mix(in srgb, var(--sm-texte) 16%, #000);
+  --sm-etiquette-texte: var(--sm-texte);
+
+  --sm-r-bouton: 11px;
+  --sm-r-champ: 10px;
+  --sm-r-carte: 14px;
+  --sm-r-menu: 14px;
+}
+
+/*@@ etude-images @@*/
+@-moz-document url-prefix("http"), url-prefix("file:") {
+:where(img) { filter: brightness(.7); }
+:where(img:hover, a:hover img, [role=link]:hover img) { filter: none; }
+}
+
+/*@@ etude-youtube @@*/
+@-moz-document domain("youtube.com") {
+ytd-watch-flexy #related,
+ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+ytd-rich-shelf-renderer[is-shorts],
+ytd-reel-shelf-renderer,
+grid-shelf-view-model:has(ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2),
+ytd-rich-item-renderer:has(ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2),
+ytd-video-renderer:has(a[href^="/shorts/"]),
+ytd-guide-entry-renderer:has(a[title="Shorts"]),
+ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+yt-tab-shape[tab-title="Shorts"] { display: none !important; }
+ytd-watch-flexy:not(:has(#secondary ytd-playlist-panel-renderer:not([hidden]), #secondary ytd-live-chat-frame:not([hidden]), #secondary #panels ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"])) #secondary { display: none !important; }
+yt-interaction .fill, .ytSpecTouchFeedbackShapeFill { background-color: var(--sm-survol) !important; }
+badge-shape.ytBadgeShapeThumbnailSpecial { background-color: var(--sm-etiquette-fond) !important; color: var(--sm-texte) !important; }
+}
+
+/*@@ etude-lecture @@*/
+@-moz-document domain("wikipedia.org"), domain("wiktionary.org"), domain("wikibooks.org"), domain("wikiversity.org"), domain("wikisource.org"), domain("wikiquote.org"), domain("wikivoyage.org"), domain("wikinews.org"), domain("mediawiki.org"), domain("wiki.archlinux.org") {
+.mw-parser-output > :is(p, ul > li, ol > li, dl > dd, dl > dt) { line-height: 1.7 !important; }
+}
+@-moz-document domain("docs.python.org") {
+div.body :is(p, li, dd):not(table *) { line-height: 1.7 !important; }
+}
+@-moz-document domain("stackoverflow.com"), domain("stackexchange.com"), domain("superuser.com"), domain("askubuntu.com"), domain("serverfault.com"), domain("mathoverflow.net") {
+.s-prose > :is(p, ul, ol, blockquote, h1, h2, h3, h4) { max-width: 80ch; }
+.s-prose :is(p, li):not(table *) { line-height: 1.7 !important; }
+}

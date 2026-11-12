@@ -32,6 +32,7 @@ Le style de ma page [Nouvel onglet](https://github.com/glime32/nouvel-onglet-cou
    |---|---|---|
    | `stylus-magique.user.css` | le style des sites | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-magique.user.css) |
    | `volet.user.css` | le volet violet entre deux pages d'un même site | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
+   | `stylus-etude.user.css` | la version calme pour travailler (voir plus bas) | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-etude.user.css) |
 
    Le volet est un style à part : on le coupe dans Stylus si on n'en veut plus. Les deux fichiers ont un `@updateURL` qui pointe ici. Le numéro `@version` monte à chaque modification, sinon Stylus garde l'ancienne : ce qui change est dans les [notes de version](CHANGELOG.md).
 
@@ -66,6 +67,24 @@ Le fichier contient un bloc `@-moz-document` par site, et un bloc commun pour le
 - **Divers** : claude.ai, ChatGPT, SoundCloud, Spotify, Twitch, chess.com, Lichess, anime-sama, MangaDex, Steam, Amazon, Vinted, Doctolib, SNCF Connect…
 
 Fait et testé sur [Helium](https://github.com/imputnet/helium) (Chromium) sous CachyOS / KDE Plasma.
+
+## Stylus étude
+
+Un second thème, pour les longues séances de travail : on coupe Stylus magique et on allume Stylus étude (jamais les deux à la fois). Mêmes sites, mais :
+
+- texte gris clair `#C8C8C8`, titres `#EDEDED`, traits gris, liens lavande `#B7A6F2` ; le violet ne reste que sur le bouton principal ;
+- rien ne bouge : pas d'ombre dure, pas de bascule, au survol seul le bord s'éclaircit ;
+- pas d'étoiles, pas d'étiquettes de bijoutier, les polices des sites ;
+- rouge seulement pour le curseur de texte, les erreurs et le danger ; le contour au clavier et le champ où l'on tape sont lavande ;
+- images assombries à 70 %, normales au survol ; compteurs en petites pastilles grises ;
+- YouTube sans les vidéos proposées ni les Shorts (la playlist et le chat restent) ;
+- lignes plus aérées sur Wikipédia, ArchWiki, la doc Python et Stack Exchange.
+
+Il n'est pas écrit à la main : `tools/etude.py` le fabrique à partir de `stylus-magique.user.css` et d'`etude/etude.css` (couleurs et ajouts), donc chaque correction de site faite dans Magique passe aussi dans Étude. `tools/apercu.py` capture une page avec les deux thèmes côte à côte.
+
+```bash
+python3 tools/etude.py
+```
 
 ## Voir aussi
 

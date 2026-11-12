@@ -3,6 +3,16 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Stylus étude 1.0.0 · Premier jet · 12 novembre 2026
+
+Nouveau thème `stylus-etude.user.css`, fabriqué à partir de Stylus magique par `tools/etude.py` :
+- couleurs « Encre » : texte gris clair, traits gris, liens lavande, violet seulement sur le bouton principal, icônes grises comme le texte ;
+- plus de relief, de bascule ni d'étoiles ; au survol, seul le bord s'éclaircit ; polices des sites ;
+- rouge seulement pour le curseur de texte, les erreurs et le danger ;
+- images à 70 %, normales au survol ; compteurs en pastilles grises discrètes ;
+- YouTube : plus de vidéos proposées ni de Shorts, la playlist et le chat restent ;
+- interligne 1,7 sur Wikipédia, ArchWiki et la doc Python ; Stack Exchange : 80 caractères par ligne et interligne 1,7.
+
 ## Lecteur PDF · Languettes · 11 novembre 2026
 
 Changé (`pdfjs/magique-pdfjs.css`, arrive tout seul par le timer) :
