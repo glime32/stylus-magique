@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus étude
 @namespace      glime32.stylus-etude
-@version        1.0.0
+@version        1.0.1
 @description    Noir OLED au calme pour travailler : texte gris clair, liens lavande, rien ne bouge, images adoucies, sur les mêmes sites que Stylus magique
 @author         glime32
 @license        MIT
@@ -80,6 +80,14 @@ yt-tab-shape[tab-title="Shorts"] { display: none !important; }
 ytd-watch-flexy:not(:has(#secondary ytd-playlist-panel-renderer:not([hidden]), #secondary ytd-live-chat-frame:not([hidden]), #secondary #panels ytd-engagement-panel-section-list-renderer[visibility="ENGAGEMENT_PANEL_VISIBILITY_EXPANDED"])) #secondary { display: none !important; }
 yt-interaction .fill, .ytSpecTouchFeedbackShapeFill { background-color: var(--sm-survol) !important; }
 badge-shape.ytBadgeShapeThumbnailSpecial { background-color: var(--sm-etiquette-fond) !important; color: var(--sm-texte) !important; }
+segmented-like-dislike-button-view-model [class*="SegmentedButtonsWrapper"] {
+  gap: 0 !important; overflow: hidden;
+  border: 2px solid var(--sm-bouton-bord); border-radius: var(--sm-r-bouton); background: var(--sm-bouton-fond);
+}
+segmented-like-dislike-button-view-model [class*="SegmentedButtonsWrapper"]:hover { border-color: var(--sm-accent); }
+segmented-like-dislike-button-view-model button:not(#z) { margin: 0 !important; border: 0 !important; border-radius: 0 !important; background: transparent !important; }
+segmented-like-dislike-button-view-model button:not(#z)::after { display: none !important; }
+segmented-like-dislike-button-view-model dislike-button-view-model button:not(#z) { box-shadow: inset 1px 0 0 var(--sm-bouton-bord) !important; }
 }
 
 /*@@ etude-lecture @@*/

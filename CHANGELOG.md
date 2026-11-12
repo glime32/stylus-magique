@@ -3,6 +3,11 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Stylus étude 1.0.1 · J'aime · 12 novembre 2026
+
+Corrigé :
+- YouTube : J'aime et Je n'aime pas formaient deux boutons séparés, le bord d'une seule moitié s'allumait au survol. Ils redeviennent une seule pastille grise avec un trait fin au milieu, dont tout le bord s'éclaircit au survol.
+
 ## Stylus étude 1.0.0 · Premier jet · 12 novembre 2026
 
 Nouveau thème `stylus-etude.user.css`, fabriqué à partir de Stylus magique par `tools/etude.py` :
