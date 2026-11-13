@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus étude
 @namespace      glime32.stylus-etude
-@version        1.1.0
+@version        1.1.1
 @description    Noir OLED au calme pour travailler : texte gris clair, liens lavande, rien ne bouge, images adoucies, sur les mêmes sites que Stylus magique
 @author         glime32
 @license        MIT
@@ -66,6 +66,7 @@
 
 ::selection { background: var(--sm-violet) !important; color: #fff !important; }
 :where(:root) { accent-color: var(--sm-violet); caret-color: var(--sm-rouge); }
+:is(input, textarea, [contenteditable]:not([contenteditable=false]), [role=textbox]):not(#z#z), :is([contenteditable]:not([contenteditable=false]), [role=textbox]) *:not(#z#z) { caret-color: var(--sm-rouge) !important; caret-animation: manual !important; }
 :where(:focus-visible:not(input, textarea, select, [contenteditable], [role=textbox])) { outline: 3px solid var(--sm-accent); outline-offset: 2px; }
 :where(html) { scrollbar-color: var(--sm-violet) transparent; }
 :where(body) { scrollbar-color: auto; }
