@@ -3,6 +3,14 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Claude rapide 1.0.0 · Question rapide · 13 novembre 2026
+
+Nouveau style `claude-rapide.user.css`, seulement pour claude.ai ouvert en fenêtre appli (`--app=https://claude.ai/new`) :
+- plus que la zone de texte, centrée sur la page d'accueil, et le choix du modèle à droite ;
+- cachés : barre latérale, barre du haut (incognito, titre, Partager), salutation, artéfacts récents, « Projet », « Auto », trombone, micro, mode vocal, « Claude est une IA et peut commettre des erreurs » ;
+- pas d'étoile devant les titres, rien ne penche au survol, même si Stylus magique est allumé sur claude.ai ;
+- les onglets ne changent pas (`@media (display-mode: standalone)`).
+
 ## Stylus étude 1.1.0 · Repos des yeux · 12 novembre 2026
 
 Nouveau :

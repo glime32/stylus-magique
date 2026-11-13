@@ -33,6 +33,7 @@ Le style de ma page [Nouvel onglet](https://github.com/glime32/nouvel-onglet-cou
    | `stylus-magique.user.css` | le style des sites | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-magique.user.css) |
    | `volet.user.css` | le volet violet entre deux pages d'un même site | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
    | `stylus-etude.user.css` | la version calme pour travailler (voir plus bas) | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-etude.user.css) |
+   | `claude-rapide.user.css` | claude.ai épuré dans une fenêtre appli (voir plus bas) | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/claude-rapide.user.css) |
 
    Le volet est un style à part : on le coupe dans Stylus si on n'en veut plus. Les deux fichiers ont un `@updateURL` qui pointe ici. Le numéro `@version` monte à chaque modification, sinon Stylus garde l'ancienne : ce qui change est dans les [notes de version](CHANGELOG.md).
 
@@ -86,6 +87,12 @@ Il n'est pas écrit à la main : `tools/etude.py` le fabrique à partir de `styl
 ```bash
 python3 tools/etude.py
 ```
+
+## Claude rapide
+
+Pour poser une question vite : claude.ai ouvert dans une fenêtre « appli », sans onglets ni barre d'adresse (`helium-browser --app=https://claude.ai/new`, ça marche aussi avec Chrome ou Chromium). Le style ne laisse que la zone de texte, centrée, et le choix du modèle : plus de barre latérale, de barre du haut, de salutation, d'artéfacts récents, de « Projet », de micro ni de mode vocal, ni la phrase sur les erreurs.
+
+Il ne touche que ces fenêtres : elles répondent `display-mode: standalone`, un onglet répond `browser`, donc claude.ai dans les onglets ne change pas. Les couleurs restent celles du thème allumé (Magique ou Étude), sans étoile devant les titres et sans rien qui penche.
 
 ## Voir aussi
 

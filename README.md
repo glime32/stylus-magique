@@ -33,6 +33,7 @@ The look of my [new-tab page](https://github.com/glime32/nouvel-onglet-cours) on
    | `stylus-magique.user.css` | the site styles | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-magique.user.css) |
    | `volet.user.css` | the violet wipe between two pages of the same site | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
    | `stylus-etude.user.css` | the calm version for work (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-etude.user.css) |
+   | `claude-rapide.user.css` | bare claude.ai in an app window (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/claude-rapide.user.css) |
 
    The wipe is a separate style, so it can be switched off on its own. Both files have an `@updateURL` pointing here. The `@version` number goes up with every change, otherwise Stylus keeps the old one: see the [release notes](CHANGELOG.md) (in French).
 
@@ -86,6 +87,12 @@ It is not written by hand: `tools/etude.py` builds it from `stylus-magique.user.
 ```bash
 python3 tools/etude.py
 ```
+
+## Claude rapide
+
+For a quick question: claude.ai in an "app" window, with no tabs and no address bar (`helium-browser --app=https://claude.ai/new`, Chrome or Chromium work too). The style keeps only the text box, centred, and the model picker: no sidebar, top bar, greeting, recent artifacts, "Project", microphone, voice mode or mistakes notice.
+
+It only touches those windows: they answer `display-mode: standalone` while a tab answers `browser`, so claude.ai in tabs does not change. Colours stay those of the theme that is on (Magique or Étude), without the star before headings and with nothing tilting.
 
 ## See also
 

@@ -1,0 +1,57 @@
+/* ==UserStyle==
+@name           Claude rapide
+@namespace      glime32.stylus-magique
+@version        1.0.0
+@description    claude.ai épuré pour une question rapide : seulement la zone de texte et le choix du modèle. Ne touche que les fenêtres « appli » (helium-browser --app=https://claude.ai/new), jamais les onglets.
+@author         glime32
+@license        MIT
+@homepageURL    https://github.com/glime32/stylus-magique
+@updateURL      https://raw.githubusercontent.com/glime32/stylus-magique/main/claude-rapide.user.css
+@preprocessor   default
+==/UserStyle== */
+
+/* Une fenêtre lancée avec --app répond display-mode: standalone, un onglet répond browser. */
+@-moz-document domain("claude.ai") {
+@media (display-mode: standalone) {
+  /* ni barre latérale, ni barre du haut (incognito, titre, Partager), ni « Claude peut commettre des erreurs » */
+  aside,
+  header,
+  [data-testid="chat-header"],
+  [data-disclaimer] {
+    display: none !important;
+  }
+  main > div { padding-left: 0 !important; }
+
+  /* autour de la zone de texte : seulement le choix du modèle (et la flèche d'envoi) */
+  [data-testid="chat-input-attach"],
+  [data-testid="composer-dictate"],
+  [data-testid="chin-mic"],
+  button:is([aria-label="Utiliser le mode vocal"], [aria-label="Use voice mode"]),
+  div:has(> div > [class~="group/chin-end"]) > div:not(:has([class~="group/chin-end"])),
+  [class~="group/chin-end"] > :not(:has([data-testid="model-selector-dropdown"])) {
+    display: none !important;
+  }
+  div:has(> div > [class~="group/chin-end"]) { justify-content: flex-end !important; }
+
+  /* calme, même si Stylus magique repasse sur claude.ai : pas d'étoile devant les titres, rien ne penche */
+  :is(h1, h2, h3):not(#z#z)::before,
+  :is(h1, h2) > :is(a, div, p):first-child:not(#z#z)::before {
+    content: none !important;
+  }
+  :not(#z#z):hover { rotate: none !important; translate: none !important; }
+}
+}
+
+/* Accueil : ni salutation, ni artéfacts récents ; la zone de texte au milieu */
+@-moz-document regexp("https://claude\\.ai/new([?#].*)?") {
+@media (display-mode: standalone) {
+  div:has(> h2:first-child + div):not(:has(fieldset)),
+  div:has(a[href="/artifacts"]):not(:has(fieldset, aside)) {
+    display: none !important;
+  }
+  div:has(> div > h2:first-child + div) {
+    justify-content: center !important;
+    padding-top: 0 !important;
+  }
+}
+}
