@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.2.3
+@version        1.2.4
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -74,7 +74,7 @@
 
 ::selection { background: var(--sm-violet) !important; color: #fff !important; }
 :where(:root) { accent-color: var(--sm-violet); caret-color: var(--sm-rouge); }
-:is(input, textarea, [contenteditable]:not([contenteditable=false]), [role=textbox]):not(#z#z), :is([contenteditable]:not([contenteditable=false]), [role=textbox]) *:not(#z#z) { caret-color: var(--sm-rouge) !important; caret-animation: manual !important; }
+:is(input, textarea, [contenteditable]:not([contenteditable=false]), [role=textbox]):not(#z#z), :is([contenteditable]:not([contenteditable=false]), [role=textbox]) *:not(#z#z) { caret-color: var(--sm-rouge) !important; caret-animation: manual !important; caret-shape: block !important; }
 :where(:focus-visible:not(input, textarea, select, [contenteditable], [role=textbox])) { outline: 3px solid var(--sm-rouge); outline-offset: 2px; }
 :where(html) { scrollbar-color: var(--sm-violet) transparent; }
 :where(body) { scrollbar-color: auto; }

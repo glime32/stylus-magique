@@ -19,6 +19,11 @@ Nouveau style `claude-rapide.user.css`, seulement pour claude.ai ouvert en fenê
 - pas d'étoile devant les titres, rien ne penche au survol, même si Stylus magique est allumé sur claude.ai ;
 - les onglets ne changent pas (`@media (display-mode: standalone)`).
 
+## 1.2.4 et Stylus étude 1.1.2 · Curseur en bloc · 14 novembre 2026
+
+Changé :
+- Le curseur de texte des champs est un bloc rouge fixe (au lieu d'une barre fine), sur tous les sites.
+
 ## 1.2.3 et Stylus étude 1.1.1 · Curseur · 13 novembre 2026
 
 Corrigé :
