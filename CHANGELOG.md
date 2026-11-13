@@ -3,6 +3,10 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Claude rapide 1.1.0 · Zone de texte vide · 13 novembre 2026
+
+- Plus de phrase grise dans la zone de texte (« Comment puis-je vous aider aujourd'hui ? », « Répondre… ») : la zone reste vide jusqu'à ce qu'on écrive.
+
 ## Claude rapide 1.0.0 · Question rapide · 13 novembre 2026
 
 Nouveau style `claude-rapide.user.css`, seulement pour claude.ai ouvert en fenêtre appli (`--app=https://claude.ai/new`) :
