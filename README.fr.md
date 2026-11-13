@@ -90,7 +90,7 @@ python3 tools/etude.py
 
 ## Claude rapide
 
-Pour poser une question vite : claude.ai ouvert dans une fenêtre « appli », sans onglets ni barre d'adresse (`helium-browser --app=https://claude.ai/new`, ça marche aussi avec Chrome ou Chromium). Le style ne laisse que la zone de texte, centrée, et le choix du modèle : plus de barre latérale, de barre du haut, de salutation, d'artéfacts récents, de « Projet », de micro ni de mode vocal, ni la phrase sur les erreurs, et la zone de texte reste vide (pas de phrase grise).
+Pour poser une question vite : claude.ai ouvert dans une fenêtre « appli », sans onglets ni barre d'adresse (`helium-browser --app=https://claude.ai/new`, ça marche aussi avec Chrome ou Chromium). Le style ne laisse que la zone de texte, centrée, et le choix du modèle : plus de barre latérale, de barre du haut, de salutation, d'artéfacts récents, de « Projet », de micro ni de mode vocal, ni la phrase sur les erreurs, et la zone de texte reste vide (pas de phrase grise). Même l'écran de chargement de claude.ai ne montre que la zone de texte.
 
 Il ne touche que ces fenêtres : elles répondent `display-mode: standalone`, un onglet répond `browser`, donc claude.ai dans les onglets ne change pas. Les couleurs restent celles du thème allumé (Magique ou Étude), sans étoile devant les titres et sans rien qui penche.
 

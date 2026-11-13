@@ -3,6 +3,10 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Claude rapide 1.2.2 · Chargement propre · 13 novembre 2026
+
+- Pendant les 3-4 s où claude.ai se charge, on ne voit plus la fausse barre latérale avec « Claude », la salutation ni la phrase grise : seulement la zone de texte, au milieu, avec la même bordure que la vraie. On peut déjà y écrire, claude.ai garde le texte.
+
 ## Claude rapide 1.1.0 · Zone de texte vide · 13 novembre 2026
 
 - Plus de phrase grise dans la zone de texte (« Comment puis-je vous aider aujourd'hui ? », « Répondre… ») : la zone reste vide jusqu'à ce qu'on écrive.

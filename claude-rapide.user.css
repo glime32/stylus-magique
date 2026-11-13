@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Claude rapide
 @namespace      glime32.stylus-magique
-@version        1.1.0
+@version        1.2.2
 @description    claude.ai épuré pour une question rapide : seulement la zone de texte et le choix du modèle. Ne touche que les fenêtres « appli » (helium-browser --app=https://claude.ai/new), jamais les onglets.
 @author         glime32
 @license        MIT
@@ -19,9 +19,14 @@
   header,
   [data-testid="chat-header"],
   [data-disclaimer],
-  [data-composer-placeholder] {
+  [data-composer-placeholder],
+  #static-sidebar-skeleton,
+  #static-composer-greeting-reserve,
+  #static-composer-loading-status,
+  #desktop-boot-drag-strip {
     display: none !important;
   }
+  #static-composer-input::placeholder { color: transparent !important; }
   main > div { padding-left: 0 !important; }
 
   /* autour de la zone de texte : seulement le choix du modèle (et la flèche d'envoi) */
@@ -54,6 +59,32 @@
   div:has(> div > h2:first-child + div) {
     justify-content: center !important;
     padding-top: 0 !important;
+  }
+
+  /* écran de chargement (les 3-4 s avant que la page soit prête) : la même zone de texte, au même endroit */
+  #static-composer:not([hidden]) {
+    position: fixed !important;
+    inset: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 1rem 42px !important;
+    margin: 0 !important;
+  }
+  #static-composer:not([hidden]) > div {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 697px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    translate: none !important;
+  }
+  #static-composer-box {
+    border: 2px solid var(--sm-accent, #b7a6f2) !important;
+    border-radius: calc(1rem - 1px) !important;
+    box-shadow: none !important;
   }
 }
 }
