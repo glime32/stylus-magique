@@ -3,6 +3,10 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Claude rapide 1.3.0 · Sans bandeau · 14 novembre 2026
+
+- Plus de bandeau au-dessus de la zone de texte, comme « Vous avez utilisé 83 % de votre limite hebdomadaire · Obtenir plus d'utilisation ».
+
 ## Claude rapide 1.2.2 · Chargement propre · 13 novembre 2026
 
 - Pendant les 3-4 s où claude.ai se charge, on ne voit plus la fausse barre latérale avec « Claude », la salutation ni la phrase grise : seulement la zone de texte, au milieu, avec la même bordure que la vraie. On peut déjà y écrire, claude.ai garde le texte.

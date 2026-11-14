@@ -90,7 +90,7 @@ python3 tools/etude.py
 
 ## Claude rapide
 
-For a quick question: claude.ai in an "app" window, with no tabs and no address bar (`helium-browser --app=https://claude.ai/new`, Chrome or Chromium work too). The style keeps only the text box, centred, and the model picker: no sidebar, top bar, greeting, recent artifacts, "Project", microphone, voice mode or mistakes notice, and the text box stays empty (no grey hint). Even claude.ai's loading screen only shows the text box.
+For a quick question: claude.ai in an "app" window, with no tabs and no address bar (`helium-browser --app=https://claude.ai/new`, Chrome or Chromium work too). The style keeps only the text box, centred, and the model picker: no sidebar, top bar, greeting, recent artifacts, "Project", microphone, voice mode or mistakes notice, no "You've used …% of your limit" banner, and the text box stays empty (no grey hint). Even claude.ai's loading screen only shows the text box.
 
 It only touches those windows: they answer `display-mode: standalone` while a tab answers `browser`, so claude.ai in tabs does not change. Colours stay those of the theme that is on (Magique or Étude), without the star before headings and with nothing tilting.
 

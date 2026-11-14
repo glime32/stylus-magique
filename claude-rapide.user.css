@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Claude rapide
 @namespace      glime32.stylus-magique
-@version        1.2.2
+@version        1.3.0
 @description    claude.ai épuré pour une question rapide : seulement la zone de texte et le choix du modèle. Ne touche que les fenêtres « appli » (helium-browser --app=https://claude.ai/new), jamais les onglets.
 @author         glime32
 @license        MIT
@@ -14,12 +14,14 @@
 @-moz-document domain("claude.ai") {
 @media (display-mode: standalone) {
   /* ni barre latérale, ni barre du haut (incognito, titre, Partager), ni « Claude peut commettre des erreurs »,
-     ni la phrase grise dans la zone de texte (« Comment puis-je vous aider aujourd'hui ? ») */
+     ni la phrase grise dans la zone de texte (« Comment puis-je vous aider aujourd'hui ? »),
+     ni les bandeaux au-dessus (« Vous avez utilisé 83 % de votre limite hebdomadaire ») */
   aside,
   header,
   [data-testid="chat-header"],
   [data-disclaimer],
   [data-composer-placeholder],
+  [data-cds-dock-card]:has(> [data-cds="Banner"]),
   #static-sidebar-skeleton,
   #static-composer-greeting-reserve,
   #static-composer-loading-status,
