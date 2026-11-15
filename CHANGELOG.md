@@ -3,6 +3,10 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Keep rapide 1.1.0 · Note vide · 15 novembre 2026
+
+- Plus de phrase grise dans la note (« Créer une note… ») : elle reste vide jusqu'à ce qu'on écrive.
+
 ## Keep rapide 1.0.0 · Note rapide · 15 novembre 2026
 
 Nouveau style `keep-rapide.user.css`, seulement pour Google Keep ouvert en fenêtre appli (`--app=https://keep.new`) :

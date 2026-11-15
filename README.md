@@ -97,7 +97,7 @@ It only touches those windows: they answer `display-mode: standalone` while a ta
 
 ## Keep rapide
 
-For a quick note: Google Keep in an "app" window (`helium-browser --app=https://keep.new`, which opens a new note). The style keeps only the open note, filling the window: no top bar, menu, "Take a note" box or other notes, no title, pin or "Edited …", and at the bottom only colour, reminder, image, ⋮ and "Close".
+For a quick note: Google Keep in an "app" window (`helium-browser --app=https://keep.new`, which opens a new note). The style keeps only the open note, filling the window: no top bar, menu, "Take a note" box or other notes, no title, pin or "Edited …", and at the bottom only colour, reminder, image, ⋮ and "Close". The note stays empty until you type (no grey hint).
 
 Like Claude rapide, it only touches those windows, and colours stay those of the theme that is on.
 

@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Keep rapide
 @namespace      glime32.stylus-magique
-@version        1.0.0
+@version        1.1.0
 @description    Google Keep réduit à la note ouverte, qui remplit la fenêtre, pour noter vite. Ne touche que les fenêtres « appli » (helium-browser --app=https://keep.new), jamais les onglets.
 @author         glime32
 @license        MIT
@@ -52,8 +52,10 @@
     max-height: none !important;
   }
 
-  /* ni titre, ni épingle, ni « Modification : … » ; en bas seulement couleur, rappel, image, ⋮ et Fermer */
+  /* ni titre, ni épingle, ni « Modification : … », ni la phrase grise « Créer une note… » ;
+     en bas seulement couleur, rappel, image, ⋮ et Fermer */
   .VIpgJd-TUo6Hb.XKSfm-L9AdLc :is(.IZ65Hb-r4nke-haAclf, .IZ65Hb-ma6Yeb-INgbqf, .IZ65Hb-jfdpUb),
+  .VIpgJd-TUo6Hb.XKSfm-L9AdLc .IZ65Hb-qJTHM-haAclf .fmcmS-LwH6nd,
   .VIpgJd-TUo6Hb.XKSfm-L9AdLc .IZ65Hb-INgbqf > :is(
     [aria-label="Options de mise en forme"], [aria-label="Formatting options"],
     [aria-label="Collaborateur"], [aria-label="Collaborator"],

@@ -97,7 +97,7 @@ Il ne touche que ces fenêtres : elles répondent `display-mode: standalone`, un
 
 ## Keep rapide
 
-Pour noter vite : Google Keep dans une fenêtre « appli » (`helium-browser --app=https://keep.new`, qui ouvre une note neuve). Le style ne laisse que la note ouverte, qui remplit la fenêtre : plus de barre du haut, de menu, de « Créer une note » ni des autres notes, pas de titre, d'épingle ni de « Modification : … », et en bas seulement couleur, rappel, image, ⋮ et « Fermer ».
+Pour noter vite : Google Keep dans une fenêtre « appli » (`helium-browser --app=https://keep.new`, qui ouvre une note neuve). Le style ne laisse que la note ouverte, qui remplit la fenêtre : plus de barre du haut, de menu, de « Créer une note » ni des autres notes, pas de titre, d'épingle ni de « Modification : … », et en bas seulement couleur, rappel, image, ⋮ et « Fermer ». La note reste vide jusqu'à ce qu'on écrive (pas de phrase grise).
 
 Comme Claude rapide, il ne touche que ces fenêtres, et les couleurs restent celles du thème allumé.
 
