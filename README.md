@@ -34,6 +34,7 @@ The look of my [new-tab page](https://github.com/glime32/nouvel-onglet-cours) on
    | `volet.user.css` | the violet wipe between two pages of the same site | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
    | `stylus-etude.user.css` | the calm version for work (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-etude.user.css) |
    | `claude-rapide.user.css` | bare claude.ai in an app window (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/claude-rapide.user.css) |
+   | `keep-rapide.user.css` | Google Keep cut down to one note in an app window (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/keep-rapide.user.css) |
 
    The wipe is a separate style, so it can be switched off on its own. Both files have an `@updateURL` pointing here. The `@version` number goes up with every change, otherwise Stylus keeps the old one: see the [release notes](CHANGELOG.md) (in French).
 
@@ -93,6 +94,12 @@ python3 tools/etude.py
 For a quick question: claude.ai in an "app" window, with no tabs and no address bar (`helium-browser --app=https://claude.ai/new`, Chrome or Chromium work too). The style keeps only the text box, centred, and the model picker: no sidebar, top bar, greeting, recent artifacts, "Project", microphone, voice mode or mistakes notice, no "You've used …% of your limit" banner, and the text box stays empty (no grey hint). Even claude.ai's loading screen only shows the text box.
 
 It only touches those windows: they answer `display-mode: standalone` while a tab answers `browser`, so claude.ai in tabs does not change. Colours stay those of the theme that is on (Magique or Étude), without the star before headings and with nothing tilting.
+
+## Keep rapide
+
+For a quick note: Google Keep in an "app" window (`helium-browser --app=https://keep.new`, which opens a new note). The style keeps only the open note, filling the window: no top bar, menu, "Take a note" box or other notes, no title, pin or "Edited …", and at the bottom only colour, reminder, image, ⋮ and "Close".
+
+Like Claude rapide, it only touches those windows, and colours stay those of the theme that is on.
 
 ## See also
 

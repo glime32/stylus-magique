@@ -3,6 +3,13 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Keep rapide 1.0.0 · Note rapide · 15 novembre 2026
+
+Nouveau style `keep-rapide.user.css`, seulement pour Google Keep ouvert en fenêtre appli (`--app=https://keep.new`) :
+- plus que la note ouverte, qui remplit la fenêtre ;
+- cachés : barre du haut, menu, « Créer une note », les autres notes, le titre de la note, l'épingle, « Modification : … », et en bas mise en forme, collaborateur, archiver, annuler et rétablir ;
+- les onglets ne changent pas (`@media (display-mode: standalone)`).
+
 ## Claude rapide 1.3.0 · Sans bandeau · 14 novembre 2026
 
 - Plus de bandeau au-dessus de la zone de texte, comme « Vous avez utilisé 83 % de votre limite hebdomadaire · Obtenir plus d'utilisation ».

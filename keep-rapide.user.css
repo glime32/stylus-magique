@@ -1,0 +1,66 @@
+/* ==UserStyle==
+@name           Keep rapide
+@namespace      glime32.stylus-magique
+@version        1.0.0
+@description    Google Keep réduit à la note ouverte, qui remplit la fenêtre, pour noter vite. Ne touche que les fenêtres « appli » (helium-browser --app=https://keep.new), jamais les onglets.
+@author         glime32
+@license        MIT
+@homepageURL    https://github.com/glime32/stylus-magique
+@updateURL      https://raw.githubusercontent.com/glime32/stylus-magique/main/keep-rapide.user.css
+@preprocessor   default
+==/UserStyle== */
+
+/* Une fenêtre lancée avec --app répond display-mode: standalone, un onglet répond browser. */
+@-moz-document domain("keep.google.com") {
+@media (display-mode: standalone) {
+  /* ni barre du haut, ni menu, ni « Créer une note », ni les autres notes : rien que la note ouverte */
+  html, body { overflow: hidden !important; }
+  body > div:has(> header),
+  .notes-container {
+    display: none !important;
+  }
+
+  /* la note ouverte remplit la fenêtre (Keep la pose au milieu de la page et l'y fait glisser) */
+  .VIpgJd-TUo6Hb.XKSfm-L9AdLc {
+    inset: 0 !important;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transition: none !important;
+  }
+  .VIpgJd-TUo6Hb.XKSfm-L9AdLc .IZ65Hb-n0tgWb {
+    position: absolute !important;
+    inset: 8px !important;
+    width: auto !important;
+    height: auto !important;
+    max-width: none !important;
+    max-height: none !important;
+    margin: 0 !important;
+    display: flex !important;
+  }
+  .VIpgJd-TUo6Hb.XKSfm-L9AdLc .IZ65Hb-TBnied {
+    flex: 1 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: auto !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+  .VIpgJd-TUo6Hb.XKSfm-L9AdLc .IZ65Hb-s2gQvd {
+    flex: 1 !important;
+    max-height: none !important;
+  }
+
+  /* ni titre, ni épingle, ni « Modification : … » ; en bas seulement couleur, rappel, image, ⋮ et Fermer */
+  .VIpgJd-TUo6Hb.XKSfm-L9AdLc :is(.IZ65Hb-r4nke-haAclf, .IZ65Hb-ma6Yeb-INgbqf, .IZ65Hb-jfdpUb),
+  .VIpgJd-TUo6Hb.XKSfm-L9AdLc .IZ65Hb-INgbqf > :is(
+    [aria-label="Options de mise en forme"], [aria-label="Formatting options"],
+    [aria-label="Collaborateur"], [aria-label="Collaborator"],
+    [aria-label="Archiver"], [aria-label="Archive"],
+    [aria-label="Annuler"], [aria-label="Undo"],
+    [aria-label="Répéter"], [aria-label="Redo"]) {
+    display: none !important;
+  }
+}
+}
