@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.2.4
+@version        1.2.5
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -4811,6 +4811,9 @@ a.g-tabs-link.active, a.header__navMenuItem.selected {
 }
 a.g-tabs-link.active { padding-inline: 10px !important; }
 a.g-tabs-link.active::after, a.header__navMenuItem.selected::after { display: none !important; }
+/* Morceau aimé, republié, compte suivi : cœur, nombre et bord en violet clair (SoundCloud les met en orange, que le thème effaçait) */
+.sc-button.sc-button-selected:not(#z), .sc-button.sc-button-selected:not(#z):is(:hover, :focus) { color: var(--sm-violet-vif) !important; border-color: var(--sm-violet-vif) !important; box-shadow: inset 0 0 0 2px var(--sm-violet-vif) !important; }
+.sc-button.sc-button-selected:not(#z) :is(svg, svg *) { color: var(--sm-violet-vif) !important; fill: currentColor !important; }
 }
 
 /*@@ anime-sama-magique @@*/

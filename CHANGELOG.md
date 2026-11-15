@@ -3,6 +3,11 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## 1.2.5 et Stylus étude 1.1.3 · J'aime SoundCloud · 15 novembre 2026
+
+Corrigé :
+- SoundCloud : un morceau aimé ou republié, un compte suivi ne se voyaient plus (le thème effaçait l'orange de SoundCloud). Le cœur, le nombre et le bord passent en violet clair dans Magique, en lavande dans Étude.
+
 ## Keep rapide 1.2.0 · Plus de notes vides · 15 novembre 2026
 
 Corrigé :
