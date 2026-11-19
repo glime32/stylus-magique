@@ -2,8 +2,12 @@
 """Capture des pages avec Stylus magique et Stylus étude côte à côte, sans l'extension.
 
     ~/.venvs/pw/bin/python tools/apercu.py DOSSIER URL [URL…] [--bas N] [--largeur L]
+    ~/.venvs/pw/bin/python tools/apercu.py DOSSIER URL [URL…] --telephone [--gloock]
 
 Pour chaque adresse : DOSSIER/<nom>.jpg, Magique à gauche, Étude à droite.
+Avec --telephone : écran et navigateur d'un Galaxy A54, le site sans style à gauche,
+Magique à droite, avec les polices du téléphone (Gloock et Archivo n'y sont pas)
+sauf si --gloock.
 """
 
 import argparse
@@ -18,6 +22,16 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from etude import CIBLE, MAGIQUE, lire  # noqa: E402
 
 HELIUM = "/opt/helium-browser-bin/helium"
+A54 = {
+    "viewport": {"width": 412, "height": 800},
+    "device_scale_factor": 2,
+    "is_mobile": True,
+    "has_touch": True,
+    "user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) "
+                  "Chrome/155.0.0.0 Mobile Safari/537.36",
+}
+POLICES_TEL = ':root { --sm-serif: "Noto Serif", serif !important; --sm-etroite: Roboto, sans-serif !important; }\n'
+
 FONCTION = re.compile(r'(domain|url-prefix|url|regexp)\(\s*"((?:[^"\\]|\\.)*)"\s*\)')
 
 
@@ -74,23 +88,33 @@ def main():
     a.add_argument("--bas", type=int, default=0, help="défilement vers le bas, en pixels")
     a.add_argument("--largeur", type=int, default=1440)
     a.add_argument("--mesure", action="store_true", help="caractères par ligne du plus long paragraphe, avec Étude")
+    a.add_argument("--telephone", action="store_true", help="écran du Galaxy A54 : sans style puis Magique")
+    a.add_argument("--gloock", action="store_true", help="avec --telephone : garder Gloock et Archivo")
     args = a.parse_args()
+    if args.telephone:
+        args.largeur = A54["viewport"]["width"]
+    reglage = A54 if args.telephone else {"viewport": {"width": args.largeur, "height": 900}}
     from playwright.sync_api import sync_playwright
 
     sortie = Path(args.dossier)
     sortie.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         navigateur = p.chromium.launch(executable_path=HELIUM, headless=True)
-        contexte = navigateur.new_context(viewport={"width": args.largeur, "height": 900}, color_scheme="dark", locale="fr-FR")
+        contexte = navigateur.new_context(**reglage, color_scheme="dark", locale="fr-FR")
         contexte.add_cookies([{"name": "SOCS", "value": "CAI", "domain": ".youtube.com", "path": "/"}]
                              + [{"name": f"{w}wikimwclientpreferences", "value": "skin-theme-clientpref-os",
                                  "domain": f"{w}.wikipedia.org", "path": "/"} for w in ("fr", "en")])
         page = contexte.new_page()
+        table = navigateur.new_page()
         for url in args.urls:
             images = []
-            for style in (MAGIQUE, CIBLE):
+            for style in ((None, MAGIQUE) if args.telephone else (MAGIQUE, CIBLE)):
                 page.goto(url, wait_until="domcontentloaded", timeout=20000)
-                page.add_style_tag(content=css_pour(style, page.url))
+                if style:
+                    css = css_pour(style, page.url)
+                    if args.telephone and not args.gloock:
+                        css += POLICES_TEL
+                    page.add_style_tag(content=css)
                 page.wait_for_timeout(2500)
                 if args.bas:
                     page.mouse.wheel(0, args.bas)
@@ -99,13 +123,11 @@ def main():
                     print(url, page.evaluate(MESURE))
                 images.append(base64.b64encode(page.screenshot(type="jpeg", quality=80)).decode())
             planche = "".join(f'<img src="data:image/jpeg;base64,{i}">' for i in images)
-            page.goto("about:blank")
-            page.set_content(f'<body style="margin:0;display:flex;gap:6px;background:#444">{planche}'
-                             '<style>img{width:calc(50% - 3px)}</style></body>')
-            page.set_viewport_size({"width": args.largeur, "height": 450})
+            table.set_content(f'<body style="margin:0;display:flex;align-items:flex-start;gap:6px;background:#444">{planche}'
+                              '<style>img{width:calc(50% - 3px)}</style></body>')
+            table.set_viewport_size({"width": args.largeur * 4 + 6 if args.telephone else args.largeur, "height": 450})
             fichier = sortie / f"{nom(url)}.jpg"
-            page.screenshot(path=str(fichier), type="jpeg", quality=75, full_page=True)
-            page.set_viewport_size({"width": args.largeur, "height": 900})
+            table.screenshot(path=str(fichier), type="jpeg", quality=75, full_page=True)
             print(fichier)
         navigateur.close()
 
