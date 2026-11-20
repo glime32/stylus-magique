@@ -8,11 +8,12 @@ if [ -s "$VERROU" ] && [ "$(cat "$VERROU")" != "${CLAUDE_FRAME_COLOR:-moi}" ]; t
 fi
 echo "${CLAUDE_FRAME_COLOR:-moi}" > "$VERROU"
 trap 'rm -f "$VERROU"' EXIT
-cible=$(adb-a54 | tail -1 | grep -o '[0-9.]*:[0-9]*' || true)
-if [ -z "$cible" ]; then
-  adb devices | grep -q 'device$' || { echo "A54 injoignable (même Wi-Fi que le PC, ou câble)"; exit 1; }
-  cible=$(adb devices | awk '/device$/{print $1; exit}')
+if adb devices | grep -q 'device usb:' || adb devices -l | grep -q ' usb:'; then
+  cible=$(adb devices -l | awk '/ usb:/{print $1; exit}')
+else
+  cible=$(adb-a54 | tail -1 | grep -o '[0-9]\{1,3\}\(\.[0-9]\{1,3\}\)\{3\}:[0-9]\{2,5\}' || true)
 fi
+[ -n "$cible" ] || { echo "A54 injoignable : câble, ou même Wi-Fi que le PC (pas eduroam)"; exit 1; }
 for s in stylus-magique stylus-etude stylus-telephone; do
   adb -s "$cible" shell am start -a android.intent.action.VIEW -p io.github.jqssun.helium \
     -d "https://raw.githubusercontent.com/glime32/stylus-magique/main/$s.user.css" >/dev/null
