@@ -3,6 +3,13 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Stylus téléphone 2.0.2, 1.2.9 et Stylus étude 1.1.7 · Cinq sites de plus · 20 novembre 2026
+
+Nouveau :
+- duck.ai, Supercell (compte et boutique), Uniqlo, Samsung et Pages Jaunes passent en noir avec les couleurs du thème.
+- Pages Jaunes : le haut de page jaune (posé sur un ::before ou en !important) passe en noir, son texte redevient lisible.
+- Uniqlo : le bandeau d'offre et les onglets Femme/Homme, posés sur la photo claire, ont un fond noir.
+
 ## Stylus téléphone 2.0.1, 1.2.8 et Stylus étude 1.1.6 · Le style de l'A54 · 20 novembre 2026
 
 Changé :

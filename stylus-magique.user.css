@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.2.8
+@version        1.2.9
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -113,7 +113,8 @@ html:has(> body > pre:first-child[style]) > body > pre { color: var(--sm-texte) 
   domain("play.google.com"), domain("groups.google.com"), domain("scholar.google.com"), domain("books.google.com"), domain("trends.google.com"), domain("store.google.com"),
   domain("support.google.com"), domain("takeout.google.com"), domain("passwords.google.com"), domain("wallet.google.com"), domain("pay.google.com"), domain("myadcenter.google.com"),
   domain("adssettings.google.com"), domain("labs.google"), domain("artsandculture.google.com"), domain("developers.google.com"), domain("search.google.com"), domain("workspace.google.com"),
-  domain("analytics.google.com"), domain("lookerstudio.google.com"), domain("about.google"), domain("blog.google"), domain("safety.google") {
+  domain("analytics.google.com"), domain("lookerstudio.google.com"), domain("about.google"), domain("blog.google"), domain("safety.google"),
+  domain("duck.ai"), domain("supercell.com"), domain("uniqlo.com"), domain("samsung.com"), domain("pagesjaunes.fr") {
 html:root{color-scheme:dark!important;filter:none!important;background:#000!important}
 html:root :is(img,video,picture,canvas,iframe,svg image,embed,object,[style*="background-image"],[style*="background-image"] *):not(#z#z){filter:none!important}
 html body{background:#000!important;color:var(--sm-texte)!important}
@@ -3075,6 +3076,20 @@ html body :is(.a-button, .ma-cdp-pt-chip, .ma-cdp-pdl-chip):not(.a-button-thumbn
 html body :is(.a-button-toggle, .ma-cdp-pt-chip, .ma-cdp-pdl-chip):not(.a-button-thumbnail, #z), html body :is(.a-button-toggle, .ma-cdp-pt-chip, .ma-cdp-pdl-chip):not(.a-button-thumbnail, #z) * { color: var(--sm-texte) !important; }
 html body :is(.a-button:not(.a-button-toggle), .a-button-toggle:is(.a-button-selected, :hover), .ma-cdp-pt-chip:is(:hover, [aria-pressed=true], [aria-checked=true], [class*=selected]), .ma-cdp-pdl-chip:is(:hover, [aria-pressed=true], [aria-checked=true], [class*=selected])):not(.a-button-thumbnail, #z) :not(svg, svg *) { color: var(--sm-titre) !important; }
 html body .a-button.a-button-primary:not(#z) :not(svg, svg *) { color: #fff !important; }
+}
+
+/*@@ pagesjaunes-fix @@*/
+@-moz-document domain("pagesjaunes.fr") {
+/* le jaune du haut de page est posé en !important ou sur un ::before : noir, texte lisible */
+html body :is(.main-header-container, .motor-title, .form-moteur, .pj_search_ou_container, .habillage-jaune, .yellow-bg, .download_app, .overlay-app, .metanav-sub-hp-tablet, .metanav_connexion, .actu-btn-popin, .actu-btn-popin-b, .popin-actu-newsletter-item, .btn_accident):not(#z) { background: #000 !important; border-color: var(--sm-ligne) !important; }
+html body :is(.main-header-container, .pj-popin-contour, .actu-btn-popin, .bi-hp):not(#z)::before { background: #000 !important; }
+}
+
+/*@@ uniqlo-fix @@*/
+@-moz-document domain("uniqlo.com") {
+/* bandeau d'offre et onglets Femme/Homme posés sur la photo claire : fond noir */
+html body :is(.home-template__floating-ticker-wrapper, .home-template__tabs-wrapper):not(#z) { background: #000 !important; }
+html body .home-template__floating-ticker-wrapper:not(#z) > * { background: #000 !important; border: 2px solid var(--sm-violet) !important; }
 }
 
 /*@@ wikipedia-fix @@*/
