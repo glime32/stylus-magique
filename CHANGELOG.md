@@ -3,6 +3,11 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## 1.2.12, Stylus étude 1.1.10 et Stylus téléphone 2.0.5 · Bouton CAS de Moodle · 20 novembre 2026
+
+Changé :
+- Moodle, page de connexion : dans Stylus magique aussi, le bouton « CAS - Université de Montpellier » passe en violet avec un texte blanc, comme les autres boutons de Moodle (il était rouge, texte presque illisible).
+
 ## Stylus étude 1.1.9, 1.2.11 et Stylus téléphone 2.0.4 · Page de connexion de Moodle · 20 novembre 2026
 
 Corrigé :

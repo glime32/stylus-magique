@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus étude
 @namespace      glime32.stylus-etude
-@version        1.1.9
+@version        1.1.10
 @description    Noir OLED au calme pour travailler : texte gris clair, liens lavande, rien ne bouge, images adoucies, sur les mêmes sites que Stylus magique
 @author         glime32
 @license        MIT
@@ -2528,6 +2528,7 @@ li.tile.spacer{background:transparent!important;border:0!important}
 .bg-white,.bg-light,.card,.list-group-item,.dropdown-menu,.popover,.popover-body,.table,.table td,.table th,.alert-info,.form-control,.custom-select,.form-select,.drawer,.block,.navbar{background-color:#000!important;color:var(--sm-texte)!important;border-color:var(--sm-champ-bord)!important}
 #page-footer,.btn-footer-popover,[data-region=footer-container-popover],.footer-popover{display:none!important}
 #umcookie{color:var(--sm-lien)!important}
+html body a.login-identityprovider-btn{background:var(--sm-violet)!important;border:2px solid var(--sm-bouton-bord)!important;color:#fff!important;background-clip:padding-box!important}
 }
 
 /*@@ youtube-fix @@*/
@@ -4463,7 +4464,6 @@ div.body { font-size: 110% !important; }
 }
 @-moz-document domain("moodle.umontpellier.fr") {
 #region-main { font-size: 110% !important; }
-html body a.login-identityprovider-btn { background: var(--sm-violet) !important; border: 2px solid var(--sm-bouton-bord) !important; color: #fff !important; background-clip: padding-box !important; }
 }
 @-moz-document domain("stackoverflow.com"), domain("stackexchange.com"), domain("superuser.com"), domain("askubuntu.com"), domain("serverfault.com"), domain("mathoverflow.net") {
 .s-prose > :is(p, ul, ol, blockquote, h1, h2, h3, h4) { max-width: 80ch; }

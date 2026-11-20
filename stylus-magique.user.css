@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.2.11
+@version        1.2.12
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -2888,6 +2888,7 @@ li.tile.spacer{background:transparent!important;border:0!important}
 .bg-white,.bg-light,.card,.list-group-item,.dropdown-menu,.popover,.popover-body,.table,.table td,.table th,.alert-info,.form-control,.custom-select,.form-select,.drawer,.block,.navbar{background-color:#000!important;color:var(--sm-texte)!important;border-color:var(--sm-champ-bord)!important}
 #page-footer,.btn-footer-popover,[data-region=footer-container-popover],.footer-popover{display:none!important}
 #umcookie{color:var(--sm-lien)!important}
+html body a.login-identityprovider-btn{background:var(--sm-violet)!important;border:2px solid var(--sm-bouton-bord)!important;color:#fff!important;background-clip:padding-box!important}
 }
 
 /*@@ youtube-fix @@*/
