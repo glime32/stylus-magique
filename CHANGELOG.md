@@ -3,6 +3,15 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Stylus téléphone 1.0.0 · Au doigt · 20 novembre 2026
+
+Nouveau style, à poser à côté de Stylus magique ou de Stylus étude sur un téléphone :
+- les polices Gloock (gros titres) et Archivo (petits titres) se téléchargent une fois, le téléphone ne les a pas ;
+- au doigt, les boutons ne restent plus soulevés et penchés après un appui : seul l'enfoncement pendant l'appui reste ;
+- le flash quand on touche un lien ou un bouton devient violet transparent.
+
+Fabriqué par `tools/telephone.py` à partir de Magique.
+
 ## 1.2.7 et Stylus étude 1.1.5 · YouTube sur téléphone · 20 novembre 2026
 
 Corrigé :

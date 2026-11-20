@@ -34,6 +34,7 @@ Le style de ma page [Nouvel onglet](https://github.com/glime32/nouvel-onglet-cou
    | `volet.user.css` | le volet violet entre deux pages d'un même site | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
    | `stylus-etude.user.css` | la version calme pour travailler (voir plus bas) | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-etude.user.css) |
    | `claude-rapide.user.css` | claude.ai épuré dans une fenêtre appli (voir plus bas) | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/claude-rapide.user.css) |
+   | `stylus-telephone.user.css` | à ajouter sur un téléphone (Titanium, Chrome avec Stylus) : polices Gloock et Archivo, rien ne penche sous le doigt, flash violet au toucher | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-telephone.user.css) |
    | `keep-rapide.user.css` | Google Keep réduit à une note dans une fenêtre appli (voir plus bas) | [installer](https://raw.githubusercontent.com/glime32/stylus-magique/main/keep-rapide.user.css) |
 
    Le volet est un style à part : on le coupe dans Stylus si on n'en veut plus. Les deux fichiers ont un `@updateURL` qui pointe ici. Le numéro `@version` monte à chaque modification, sinon Stylus garde l'ancienne : ce qui change est dans les [notes de version](CHANGELOG.md).
@@ -88,6 +89,8 @@ Il n'est pas écrit à la main : `tools/etude.py` le fabrique à partir de `styl
 ```bash
 python3 tools/etude.py
 ```
+
+`stylus-telephone.user.css` est fabriqué par `tools/telephone.py` à partir de `stylus-magique.user.css` : sur un écran tactile, `:hover` reste collé après un appui, donc chaque règle de survol qui soulève ou penche est reprise sous `@media (hover: none)` avec ses valeurs de repos (l'enfoncement pendant l'appui reste). Relancer `python3 tools/telephone.py` après une modification de Magique.
 
 ## Claude rapide
 

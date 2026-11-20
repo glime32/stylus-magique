@@ -1,0 +1,120 @@
+/* ==UserStyle==
+@name           Stylus téléphone
+@namespace      glime32.stylus-telephone
+@version        1.0.0
+@description    À poser avec Stylus magique ou Stylus étude sur un téléphone : Gloock et Archivo, rien ne penche au doigt, flash violet transparent
+@author         glime32
+@license        MIT
+@homepageURL    https://github.com/glime32/stylus-magique
+@updateURL      https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-telephone.user.css
+@preprocessor   default
+==/UserStyle== */
+
+/* Fabriqué par tools/telephone.py à partir de stylus-magique.user.css : ne pas modifier à la main. */
+
+@-moz-document url-prefix("http"), url-prefix("file:") {
+@font-face {
+  font-family: "Gloock"; font-style: normal; font-weight: 400; font-display: swap;
+  src: local("Gloock"), local("Gloock-Regular"), url(https://fonts.gstatic.com/s/gloock/v8/Iurb6YFw84WUY4NJiBakJLRBjA.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Archivo"; font-style: normal; font-weight: 100 900; font-stretch: 62% 125%; font-display: swap;
+  src: local("Archivo"), url(https://fonts.gstatic.com/s/archivo/v25/k3kQo8UDI-1M0wlSfdnoLmvDIaI.woff2) format("woff2");
+}
+html, html * { -webkit-tap-highlight-color: color-mix(in srgb, var(--sm-violet-vif, #d980ff) 30%, transparent) !important; }
+}
+
+@-moz-document domain("aliexpress.com"), domain("amazon.fr"), domain("amazon.com"), domain("scribd.com"), domain("codeforces.com"), domain("hackerrank.com"), domain("atcoder.jp"), domain("france-ioi.org"), domain("kaggle.com"), domain("w3schools.com"), domain("geeksforgeeks.org"), domain("vinted.fr"), domain("vinted.com"), domain("vinted.be"), domain("deepl.com"), domain("openclassrooms.com"), domain("pythontutor.com"), domain("infoservices.umontpellier.fr"), domain("numerique.umontpellier.fr"), domain("stages.umontpellier.fr"), domain("sapiens.umontpellier.fr"), domain("convocation-examen.umontpellier.fr"), domain("handy.umontpellier.fr"), domain("survey.umontpellier.fr"), domain("video.umontpellier.fr"), domain("listes.etu.umontpellier.fr"), domain("consentement.umontpellier.fr"), domain("resum.umontpellier.fr"), domain("portail-applicatif.umontpellier.fr"), domain("cmsweb.umontpellier.fr"), domain("www.umontpellier.fr"), domain("app.wooclap.com"), domain("filesender.renater.fr"), domain("pec-univ.fr"), regexp("https://app\\.umontpellier\\.fr/(?!(n-1-)?prose).*"), domain("bibliotheques.umontpellier.fr"), domain("sport.umontpellier.fr"), domain("guidedesressourcesemploi.fr"), domain("crous-montpellier.fr"), domain("lescrous.fr"), domain("etudiant.gouv.fr"), domain("izly.fr"), domain("ubib.libanswers.com"), url-prefix("https://app.umontpellier.fr/mdw"), domain("wooflash.com"), domain("www.wooclap.com"), domain("wooclap.com"), domain("arxiv.org"), domain("oeis.org"), domain("mathworld.wolfram.com"), domain("exo7.emath.fr"), domain("symbolab.com"), domain("khanacademy.org"), domain("wordreference.com"), domain("brilliant.org"), domain("larousse.fr"), domain("reverso.net"), domain("cppreference.com"), domain("onlinegdb.com"), regexp("https://replit\\.com/(?!@|~|t/|replit/).*"), domain("pypi.org"), domain("ollama.com"), domain("store.kde.org"), domain("pling.com"), domain("opendesktop.org"), domain("phoronix.com"), domain("distrowatch.com"), domain("alternativeto.net"), domain("spigotmc.org"), domain("chunkbase.com"), domain("coc.guide"), domain("allocine.fr"), domain("genius.com"), domain("cdiscount.com"), domain("fnac.com"), domain("ldlc.com"), domain("backmarket.fr"), domain("backmarket.com"), domain("idealo.fr"), domain("temu.com"), domain("sncf-connect.com"), domain("blablacar.fr"), domain("tam-voyages.com"), domain("doctolib.fr"), domain("ameli.fr"), domain("caf.fr"), domain("laposte.fr"), domain("red-by-sfr.fr"), domain("ilovepdf.com"), regexp("https://www\\.figma\\.com/(?!design/|file/|board/|files|proto/|slides/|make/|deck/|site/|buzz/).*"), domain("lemonde.fr"), domain("franceinfo.fr"), domain("francetvinfo.fr"), domain("midilibre.fr"), domain("contacts.google.com"), domain("one.google.com"), domain("play.google.com"), domain("groups.google.com"), domain("scholar.google.com"), domain("books.google.com"), domain("trends.google.com"), domain("store.google.com"), domain("support.google.com"), domain("takeout.google.com"), domain("passwords.google.com"), domain("wallet.google.com"), domain("pay.google.com"), domain("myadcenter.google.com"), domain("adssettings.google.com"), domain("labs.google"), domain("artsandculture.google.com"), domain("developers.google.com"), domain("search.google.com"), domain("workspace.google.com"), domain("analytics.google.com"), domain("lookerstudio.google.com"), domain("about.google"), domain("blog.google"), domain("safety.google") {
+@media (hover: none) {
+body :is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i],.accordion-header,:has(> button:first-child)):hover:not(:active, #sm-tel)::before { rotate: none !important; scale: none !important; }
+body :is(button,input[type=submit],input[type=button],input[type=reset],a[class*=button i],a[class*=btn i]):not([role=tab]):hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+body [role=button]:not(button,a,[role=tab]):hover:not(:active, #sm-tel) { translate: none !important; }
+body :is(a,li)[aria-current]:not([aria-current=false],[role=tab]):hover:not(:active, #sm-tel)::before { rotate: none !important; }
+body :is([class*=badge i],[class*=counter i]):not(:has(*)):not(:empty):hover:not(:active, #sm-tel)::before { rotate: none !important; }
+}
+}
+
+@-moz-document domain("soundcloud.com"), domain("claude.ai"), domain("gemini.google.com"), regexp("https?://([^/]*\\.)?anime-sama\\.[^/]+/.*"), domain("duckduckgo.com"), domain("mail.google.com"), domain("youtube.com"), domain("moodle.umontpellier.fr"), domain("cas.umontpellier.fr"), domain("wikipedia.org"), domain("github.com"), domain("twitch.tv"), domain("open.spotify.com"), domain("ent.umontpellier.fr"), regexp("https?://([^/]*\\.)?anime-sama\\.[a-z]+/.*"), domain("mathraining.be"), domain("wiki.archlinux.org"), domain("wiktionary.org"), domain("wikibooks.org"), domain("wikiversity.org"), domain("wikisource.org"), domain("wikiquote.org"), domain("wikivoyage.org"), domain("wikinews.org"), domain("wikidata.org"), domain("wikimedia.org"), domain("mediawiki.org"), domain("wiki.cachyos.org"), domain("chess.com"), domain("store.steampowered.com"), domain("protondb.com"), domain("stackexchange.com"), domain("stackoverflow.com"), domain("superuser.com"), domain("askubuntu.com"), domain("serverfault.com"), domain("mathoverflow.net"), domain("wolframalpha.com"), domain("docs.python.org"), regexp("https://www\\.(wikipedia|wiktionary|wikibooks|wikiquote|wikisource|wikiversity|wikivoyage|wikinews)\\.org/.*"), domain("modrinth.com"), domain("developer.mozilla.org"), domain("minecraft.wiki"), domain("fandom.com"), domain("desmos.com"), domain("geogebra.org"), domain("web.whatsapp.com"), domain("snapchat.com"), domain("instagram.com"), domain("tiktok.com"), regexp("https://www\\.tiktok\\.com/(foryou)?([?#].*)?"), url-prefix("https://www.tiktok.com/explore"), url-prefix("https://www.tiktok.com/following"), url-prefix("https://www.tiktok.com/friends"), url-prefix("https://www.tiktok.com/shortdrama"), url-prefix("https://www.tiktok.com/live"), url-prefix("https://www.tiktok.com/@glime32"), domain("discord.com"), domain("reddit.com"), domain("linkedin.com"), domain("zoom.us"), domain("zoom.com"), domain("roblox.com"), domain("paypal.com"), domain("mangadex.org"), domain("scan-manga.com"), domain("proseconsult.umontpellier.fr"), url-prefix("https://app.umontpellier.fr/prose-etudiant"), domain("pinterest.com"), domain("pinterest.fr"), domain("leetcode.com"), domain("leetcode.cn"), domain("projecteuler.net"), domain("pokemonshowdown.com"), domain("codewars.com"), domain("codingame.com"), domain("adventofcode.com"), domain("cses.fi"), domain("prologin.org"), domain("codechef.com"), domain("chatgpt.com"), domain("chat.openai.com"), domain("myanimelist.net"), domain("anilist.co"), domain("webtoons.com"), domain("leboncoin.fr"), domain("perplexity.ai"), domain("aur.archlinux.org"), domain("bbs.archlinux.org"), url-prefix("https://archlinux.org/"), url-prefix("https://www.archlinux.org/"), domain("flathub.org"), domain("minecraft.net"), domain("curseforge.com"), domain("crunchyroll.com"), domain("dcode.fr"), domain("bibmath.net"), domain("clash.ninja"), domain("clashofstats.com"), domain("keep.google.com"), domain("messages.google.com"), domain("devdocs.io"), domain("regex101.com"), domain("godbolt.org"), domain("realpython.com"), domain("numpy.org"), domain("matplotlib.org"), domain("pandas.pydata.org"), domain("scipy.org"), domain("huggingface.co"), domain("chat.mistral.ai"), domain("chat.deepseek.com"), domain("copilot.microsoft.com"), domain("copilot.com"), domain("wiki.hypr.land"), domain("wiki.hyprland.org"), url-prefix("https://kde.org/"), url-prefix("https://www.kde.org/"), domain("docs.voidlinux.org"), domain("papermc.io"), domain("purpurmc.org"), domain("aternos.org"), domain("lichess.org"), domain("store.epicgames.com"), domain("epicgames.com"), domain("gog.com"), domain("speedrun.com"), domain("imdb.com"), domain("livechart.me"), domain("deezer.com"), domain("letterboxd.com"), domain("web.telegram.org"), domain("bsky.app"), domain("dealabs.com"), domain("impots.gouv.fr"), domain("ants.gouv.fr"), domain("service-public.fr"), domain("service-public.gouv.fr"), domain("info.gouv.fr"), domain("education.gouv.fr"), domain("enseignementsup-recherche.gouv.fr"), domain("parcoursup.gouv.fr"), domain("monmaster.gouv.fr"), domain("photopea.com"), domain("canva.com"), domain("cloudconvert.com"), domain("wetransfer.com"), domain("excalidraw.com"), domain("monkeytype.com"), domain("speedtest.net"), domain("imgur.com"), domain("gitlab.com"), domain("namemc.com"), domain("planetminecraft.com"), domain("root-me.org"), url-prefix("https://leetcode.com/unsubscribe"), url-prefix("https://contacts.google.com/widget/hovercard"), domain("accounts.google.com"), domain("myaccount.google.com"), domain("drive.google.com"), domain("docs.google.com"), domain("sites.google.com"), domain("calendar.google.com"), domain("photos.google.com"), domain("translate.google.com"), domain("meet.google.com"), domain("chat.google.com"), domain("classroom.google.com"), domain("policies.google.com"), domain("tasks.google.com"), domain("families.google.com"), domain("myactivity.google.com"), domain("news.google.com"), domain("fonts.google.com"), domain("notebooklm.google.com"), domain("notebook.google.com"), domain("aistudio.google.com"), domain("colab.research.google.com"), domain("earth.google.com"), domain("console.cloud.google.com"), url-prefix("https://www.google.com/search"), url-prefix("https://www.google.fr/search"), url("https://www.google.com/"), url("https://www.google.fr/"), url-prefix("https://www.google.com/?"), url-prefix("https://www.google.com/webhp"), url-prefix("https://www.google.com/travel"), url-prefix("https://www.google.com/finance"), url-prefix("https://www.google.com/shopping"), url-prefix("https://www.google.com/maps"), url-prefix("https://www.google.fr/maps"), url-prefix("https://maps.google.com") {
+@media (hover: none) {
+:is(h1,h2):not(:empty,:has(img,svg,picture,video,canvas),.vector-pinnable-header-label,.vector-menu-heading-label,.vector-toc-title,:is([role=dialog],[role=menu],[role=listbox],dialog,tp-yt-iron-dropdown,ytd-popup-container,ytd-multi-page-menu-renderer) *,.sr-only,.visually-hidden,.screen-reader-text,[class*=sr-only],[class*=visually-hidden i],[class*=screenreader i],[class*=logo i],[class*=brand i],.accordion-header,:has(> button:first-child)):hover:not(:active, #sm-tel)::before { rotate: none !important; scale: none !important; }
+}
+}
+
+@-moz-document domain("duckduckgo.com") {
+@media (hover: none) {
+.result--more__btn:hover:not(:active, #sm-tel), .result--more a:hover:not(:active, #sm-tel), .result--more button:hover:not(:active, #sm-tel), #more-results:hover:not(:active, #sm-tel), button[id*="more" i]:hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document domain("mail.google.com") {
+@media (hover: none) {
+.T-I.T-I-KE.L3:hover:not(:active, #sm-tel), .z0 > .L3:hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important; }
+.aim .TO:hover .bsU:not(:active, #sm-tel)::before { rotate: none !important; }
+.ams:hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document domain("youtube.com") {
+@media (hover: none) {
+.ytSpecButtonShapeNextTonal:hover:not(:active, #sm-tel), .yt-spec-button-shape-next--tonal:hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+ytd-subscribe-button-renderer .ytSpecButtonShapeNextFilled:hover:not(:active, #sm-tel), ytd-subscribe-button-renderer .yt-spec-button-shape-next--filled:hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 color-mix(in srgb, var(--sm-violet) 45%, #000) !important; }
+}
+}
+
+@-moz-document domain("discord.com") {
+@media (hover: none) {
+button[class*="lookFilled_"]:hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document url-prefix("https://www.amazon.fr/checkout/"), url-prefix("https://www.amazon.fr/gp/buy/"), url-prefix("https://www.amazon.fr/a/addresses"), url-prefix("https://www.amazon.fr/gp/css/account/address"), url-prefix("https://www.amazon.com/checkout/"), url-prefix("https://www.amazon.com/gp/buy/"), url-prefix("https://www.amazon.com/a/addresses"), url-prefix("https://www.amazon.com/gp/css/account/address") {
+@media (hover: none) {
+html body .a-button:not(.a-button-toggle, .a-button-thumbnail, #z):hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document domain("moodle.umontpellier.fr") {
+@media (hover: none) {
+.course-card:not(#z):hover:not(:active, #sm-tel), .dashboard-card:not(#z):hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 5px 0 var(--sm-violet) !important; }
+:is(.course-card, .dashboard-card):hover a.coursename:not(#z):not(#y):not(:active, #sm-tel)::before { rotate: none !important; scale: none !important; }
+.btn:is(.btn-primary, .btn-secondary, [class*="btn-outline-"]):not(#z):hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document domain("claude.ai") {
+@media (hover: none) {
+:has(> .cds-card-body):hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 5px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document domain("keep.google.com") {
+@media (hover: none) {
+.IZ65Hb-n0tgWb:hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 5px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document domain("github.com") {
+@media (hover: none) {
+:is(.btn, .Button, [data-component="Button"]):not(.btn-octicon, .btn-link, .Button--invisible, .Button--iconOnly, [data-variant="invisible"], [data-variant="link"]):hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document regexp("https?://([^/]*\\.)?anime-sama\\.[^/]+/.*") {
+@media (hover: none) {
+.as-carte:hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 5px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document domain("chess.com") {
+@media (hover: none) {
+:is([class*="cc-button-primary"], [class*="cc-button-secondary"]):hover:not(:active, #sm-tel) { translate: none !important; rotate: none !important; box-shadow: 0 4px 0 var(--sm-violet) !important; }
+}
+}
+
+@-moz-document url-prefix("http"), url-prefix("file:") {
+@media (hover: none) {
+@container style(--sm-et: oui) { :is(h1, h2):hover > :is(a, div, p):first-child:not(:active, #sm-tel)::before { rotate: none !important; scale: none !important; } }
+h1.ytd-watch-metadata:not(#z):hover:not(:active, #sm-tel)::before { rotate: none !important; scale: none !important; }
+:is(.aim .TO.nZ:hover span.nU, ytd-guide-entry-renderer[active]:hover yt-formatted-string.title, .vector-toc .vector-toc-list-item-active > .vector-toc-link:hover .vector-toc-text, .courseindex .courseindex-item.pageitem:hover .courseindex-link, [class*="interactiveSelected_"]:hover [class*="name_"]:not([class*="name_"] *), a.gem-nav-list-item:is(.mdc-list-item--activated, [aria-current="page"], .is-active):hover :is(.title-text, .conversation-title), [role="tab"].PvRhvb-ibnC6b.gk6SMd:hover .PvRhvb-ibnC6b-V67aGc, aside a[aria-current="page"]:hover .dframe-fade-label > span:first-child):not(:active, #sm-tel)::before { rotate: none !important; }
+}
+}

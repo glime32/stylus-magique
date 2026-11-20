@@ -34,6 +34,7 @@ The look of my [new-tab page](https://github.com/glime32/nouvel-onglet-cours) on
    | `volet.user.css` | the violet wipe between two pages of the same site | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/volet.user.css) |
    | `stylus-etude.user.css` | the calm version for work (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-etude.user.css) |
    | `claude-rapide.user.css` | bare claude.ai in an app window (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/claude-rapide.user.css) |
+   | `stylus-telephone.user.css` | add-on for phones (Titanium, Chrome with Stylus): Gloock and Archivo fonts, nothing tilts under a finger, violet tap flash | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/stylus-telephone.user.css) |
    | `keep-rapide.user.css` | Google Keep cut down to one note in an app window (see below) | [install](https://raw.githubusercontent.com/glime32/stylus-magique/main/keep-rapide.user.css) |
 
    The wipe is a separate style, so it can be switched off on its own. Both files have an `@updateURL` pointing here. The `@version` number goes up with every change, otherwise Stylus keeps the old one: see the [release notes](CHANGELOG.md) (in French).
@@ -88,6 +89,8 @@ It is not written by hand: `tools/etude.py` builds it from `stylus-magique.user.
 ```bash
 python3 tools/etude.py
 ```
+
+`stylus-telephone.user.css` is built by `tools/telephone.py` from `stylus-magique.user.css`: on a touch screen `:hover` sticks after a tap, so every hover rule that lifts or tilts is repeated under `@media (hover: none)` with its resting values (the press-down on `:active` stays). Run `python3 tools/telephone.py` after changing Magique.
 
 ## Claude rapide
 
