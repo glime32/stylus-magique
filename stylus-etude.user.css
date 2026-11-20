@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus étude
 @namespace      glime32.stylus-etude
-@version        1.1.3
+@version        1.1.4
 @description    Noir OLED au calme pour travailler : texte gris clair, liens lavande, rien ne bouge, images adoucies, sur les mêmes sites que Stylus magique
 @author         glime32
 @license        MIT
@@ -2679,6 +2679,29 @@ div.queue{border:2px solid var(--sm-bouton-bord)!important;background-clip:paddi
 li.related-searches__item{background:#000!important;border:2px solid var(--sm-champ-bord)!important;background-clip:padding-box!important}
 li.related-searches__item:hover{border-color:var(--sm-violet-vif)!important}
 li.nav-menu__item:has(>a[href="/duckduckgo-help-pages"]),li.nav-menu__item:has(>a[href="/terms"]){display:none!important}
+}
+
+/*@@ amazon-fix @@*/
+@-moz-document domain("amazon.fr"), domain("amazon.com") {
+html body .a-section-expander-container:not(#z) { border: 2px solid var(--sm-bouton-bord) !important; border-radius: 8px !important; background-color: #000 !important; overflow: hidden; }
+html body a.a-link-section-expander:not(#z), html body a.a-link-section-expander:not(#z) * { background-color: #000 !important; color: var(--sm-texte) !important; text-decoration: none !important; }
+html body a.a-link-section-expander:not(#z) { border: 0 !important; }
+html body a.a-link-section-expander:not(#z):hover, html body a.a-link-section-expander:not(#z):hover * { background-color: var(--sm-survol) !important; color: var(--sm-titre) !important; }
+html body a.a-link-section-expander:not(#z) :is(.a-icon-section-expand, .a-icon-section-collapse) { background-color: transparent !important; filter: invert(1) brightness(.785) !important; opacity: .8 !important; }
+html body .a-section-expander-container:not(#z) > .a-section-expander-inner:not(a) { background-color: #000 !important; border-top: 2px solid var(--sm-ligne) !important; }
+}
+@-moz-document url-prefix("https://www.amazon.fr/checkout/"), url-prefix("https://www.amazon.fr/gp/buy/"), url-prefix("https://www.amazon.fr/a/addresses"), url-prefix("https://www.amazon.fr/gp/css/account/address"),
+  url-prefix("https://www.amazon.com/checkout/"), url-prefix("https://www.amazon.com/gp/buy/"), url-prefix("https://www.amazon.com/a/addresses"), url-prefix("https://www.amazon.com/gp/css/account/address") {
+html body .a-button:not(.a-button-toggle, .a-button-thumbnail, #z) { background-color: var(--sm-bouton-fond) !important; border: 2px solid var(--sm-bouton-bord) !important; border-radius: var(--sm-r-bouton) !important; box-shadow: none !important; background-clip: padding-box !important; overflow: visible !important; transition: translate .15s, rotate .15s, box-shadow .15s; }
+html body .a-button:not(.a-button-toggle, .a-button-thumbnail, #z):hover { border-color: var(--sm-accent) !important; }
+html body .a-button.a-button-primary:not(#z) { background-color: var(--sm-violet) !important; border-color: color-mix(in srgb, var(--sm-violet-vif) 60%, var(--sm-bouton-bord)) !important; }
+html body :is(.a-button-toggle:not(.a-button-thumbnail), .ma-cdp-pt-chip, .ma-cdp-pdl-chip):not(#z) { background-color: #000 !important; border: 2px solid var(--sm-bouton-bord) !important; border-radius: var(--sm-r-bouton) !important; box-shadow: none !important; background-clip: padding-box !important; }
+html body :is(.a-button-toggle:not(.a-button-thumbnail), .ma-cdp-pt-chip, .ma-cdp-pdl-chip):not(#z):hover { background-color: var(--sm-survol) !important; border-color: var(--sm-violet-vif) !important; }
+html body :is(.a-button-toggle.a-button-selected, .ma-cdp-pt-chip:is([aria-pressed=true], [aria-checked=true], [class*=selected]), .ma-cdp-pdl-chip:is([aria-pressed=true], [aria-checked=true], [class*=selected])):not(.a-button-thumbnail, #z) { background-color: var(--sm-actif-fond) !important; border-color: var(--sm-violet-vif) !important; box-shadow: none !important; }
+html body :is(.a-button, .ma-cdp-pt-chip, .ma-cdp-pdl-chip):not(.a-button-thumbnail, #z) :is(.a-button-inner, .a-button-text) { background: transparent !important; box-shadow: none !important; }
+html body :is(.a-button-toggle, .ma-cdp-pt-chip, .ma-cdp-pdl-chip):not(.a-button-thumbnail, #z), html body :is(.a-button-toggle, .ma-cdp-pt-chip, .ma-cdp-pdl-chip):not(.a-button-thumbnail, #z) * { color: var(--sm-texte) !important; }
+html body :is(.a-button:not(.a-button-toggle), .a-button-toggle:is(.a-button-selected, :hover), .ma-cdp-pt-chip:is(:hover, [aria-pressed=true], [aria-checked=true], [class*=selected]), .ma-cdp-pdl-chip:is(:hover, [aria-pressed=true], [aria-checked=true], [class*=selected])):not(.a-button-thumbnail, #z) :not(svg, svg *) { color: var(--sm-titre) !important; }
+html body .a-button.a-button-primary:not(#z) :not(svg, svg *) { color: var(--sm-texte) !important; }
 }
 
 /*@@ wikipedia-fix @@*/

@@ -3,6 +3,12 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## 1.2.6 et Stylus étude 1.1.4 · Adresse Amazon · 20 novembre 2026
+
+Corrigé :
+- Amazon : les questions repliables (instructions de livraison, « Avons-nous besoin d'un code d'accès… ») étaient des cadres blancs au texte pâle, presque illisible. Elles passent en noir avec un bord violet (lavande dans Étude) et un texte clair.
+- Amazon, passage en caisse et carnet d'adresses : les puces « Maison / Appartement / Entreprise / Autre » et les boutons comme « Ajouter instr. de livraison » prennent l'aspect des boutons du thème, et la puce choisie ressort en violet.
+
 ## 1.2.5 et Stylus étude 1.1.3 · J'aime SoundCloud · 15 novembre 2026
 
 Corrigé :
