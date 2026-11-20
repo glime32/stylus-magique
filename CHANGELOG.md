@@ -3,6 +3,12 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Stylus étude 1.1.9, 1.2.11 et Stylus téléphone 2.0.4 · Page de connexion de Moodle · 20 novembre 2026
+
+Corrigé :
+- Moodle : le lien « Avis relatif aux cookies », sombre sur fond noir, prend la couleur des liens.
+- Stylus étude : le bouton « CAS - Université de Montpellier » de la page de connexion de Moodle passe en violet, comme les autres boutons principaux (il restait rouge, texte presque illisible).
+
 ## Stylus téléphone 2.0.3, 1.2.10 et Stylus étude 1.1.8 · Recherche d'anime-sama · 20 novembre 2026
 
 Corrigé :
