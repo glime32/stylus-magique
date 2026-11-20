@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.2.9
+@version        1.2.10
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -3025,8 +3025,9 @@ ytm-info-panel-container-renderer, .ytmDrawerLayoutContainerDrawerLayout, ytm-ch
 
 /*@@ anime-sama-fix @@*/
 @-moz-document regexp("https?://([^/]*\\.)?anime-sama\\.[^/]+/.*") {
-.asn-desktop-search{background:#000!important;border:2px solid var(--sm-champ-bord)!important;background-clip:padding-box!important}
-.asn-desktop-search:focus-within{border-color:var(--sm-violet-vif)!important}
+.asn-desktop-search,.asn-mobile-search{background:#000!important;border:2px solid var(--sm-champ-bord)!important;background-clip:padding-box!important}
+.asn-desktop-search:focus-within,.asn-mobile-search:focus-within{border-color:var(--sm-violet-vif)!important}
+html body :is(.asn-desktop-search,.asn-mobile-search) input,html body :is(.asn-desktop-search,.asn-mobile-search) input:focus{border:0!important;box-shadow:none!important;outline:none!important;background:transparent!important}
 .as-carte{background:#000!important;border:2px solid var(--sm-violet)!important;background-clip:padding-box!important}
 .as-carte:hover{border-color:var(--sm-violet-vif)!important}
 html body label.filter-checkbox-item.filter-checkbox-item{border-width:2px!important;border-style:solid!important;background-clip:padding-box!important}

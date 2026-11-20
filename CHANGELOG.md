@@ -3,6 +3,11 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Stylus téléphone 2.0.3, 1.2.10 et Stylus étude 1.1.8 · Recherche d'anime-sama · 20 novembre 2026
+
+Corrigé :
+- anime-sama : le champ de recherche avait deux contours (celui du cadre et celui du champ dedans). Il n'en garde qu'un, sur le cadre, en version téléphone comme en version ordinateur.
+
 ## Stylus téléphone 2.0.2, 1.2.9 et Stylus étude 1.1.7 · Cinq sites de plus · 20 novembre 2026
 
 Nouveau :

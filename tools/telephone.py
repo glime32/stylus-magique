@@ -16,7 +16,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from etude import CIBLE as ETUDE, lire  # noqa: E402
 
 CIBLE = ETUDE.parent / "stylus-telephone.user.css"
-VERSION = "2.0.2"
+VERSION = "2.0.3"
 
 ENTETE = f"""/* ==UserStyle==
 @name           Stylus téléphone
