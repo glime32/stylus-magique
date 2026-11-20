@@ -6,7 +6,7 @@
 
 Pour chaque adresse : DOSSIER/<nom>.jpg, Magique à gauche, Étude à droite.
 Avec --telephone : écran et navigateur d'un Galaxy A54, le site sans style à gauche,
-Magique à droite, avec les polices du téléphone (Gloock et Archivo n'y sont pas)
+Stylus téléphone (Étude pour l'A54) à droite, avec les polices du téléphone (Gloock et Archivo n'y sont pas)
 sauf si --gloock.
 """
 
@@ -88,7 +88,7 @@ def main():
     a.add_argument("--bas", type=int, default=0, help="défilement vers le bas, en pixels")
     a.add_argument("--largeur", type=int, default=1440)
     a.add_argument("--mesure", action="store_true", help="caractères par ligne du plus long paragraphe, avec Étude")
-    a.add_argument("--telephone", action="store_true", help="écran du Galaxy A54 : sans style puis Magique")
+    a.add_argument("--telephone", action="store_true", help="écran du Galaxy A54 : sans style puis Stylus téléphone")
     a.add_argument("--gloock", action="store_true", help="avec --telephone : garder Gloock et Archivo")
     args = a.parse_args()
     if args.telephone:
@@ -108,8 +108,9 @@ def main():
         table = navigateur.new_page()
         for url in args.urls:
             images = []
-            for style in ((None, MAGIQUE) if args.telephone else (MAGIQUE, CIBLE)):
-                page.goto(url, wait_until="domcontentloaded", timeout=20000)
+            for style in ((None, CIBLE.parent / "stylus-telephone.user.css") if args.telephone else (MAGIQUE, CIBLE)):
+                page.goto(url, wait_until="commit", timeout=30000)
+                page.wait_for_timeout(3500)
                 if style:
                     css = css_pour(style, page.url)
                     if args.telephone and not args.gloock:

@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus magique
 @namespace      glime32.stylus-magique
-@version        1.2.7
+@version        1.2.8
 @description    Noir OLED, violet et bleu, titres en Gloock : le style du Nouvel onglet sur plus de 250 sites
 @author         glime32
 @license        MIT
@@ -3018,6 +3018,8 @@ ytm-mobile-topbar-renderer, ytm-mobile-topbar-renderer#header-bar, ytm-pivot-bar
 ytm-info-panel-container-renderer, .ytmDrawerLayoutContainerDrawerLayout, ytm-chip-cloud-renderer, .chip-bar, ytm-feed-filter-chip-bar-renderer {
   background: #000 !important; background-color: #000 !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
 }
+/* cadres d'annonce (historique désactivé…) : noirs à bord violet au lieu de gris */
+.feed-nudge-content-wrapper, ytm-feed-nudge-renderer .feed-nudge-content-wrapper { background: #000 !important; border: 2px solid var(--sm-violet) !important; box-shadow: none !important; }
 }
 
 /*@@ anime-sama-fix @@*/

@@ -3,6 +3,14 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## Stylus téléphone 2.0.1, 1.2.8 et Stylus étude 1.1.6 · Le style de l'A54 · 20 novembre 2026
+
+Changé :
+- Stylus téléphone devient Stylus étude pour le Galaxy A54, à installer seul (sans Magique ni Étude). Il n'habille plus les pages de Stylus, qui restaient illisibles sur le téléphone, et garde le flash violet au toucher.
+
+Corrigé :
+- YouTube version téléphone : le cadre « Votre historique YouTube est désactivé » était gris ; il passe en noir à bord violet.
+
 ## Stylus téléphone 1.0.0 · Au doigt · 20 novembre 2026
 
 Nouveau style, à poser à côté de Stylus magique ou de Stylus étude sur un téléphone :

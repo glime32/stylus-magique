@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           Stylus étude
 @namespace      glime32.stylus-etude
-@version        1.1.5
+@version        1.1.6
 @description    Noir OLED au calme pour travailler : texte gris clair, liens lavande, rien ne bouge, images adoucies, sur les mêmes sites que Stylus magique
 @author         glime32
 @license        MIT
@@ -2656,6 +2656,7 @@ ytm-mobile-topbar-renderer, ytm-mobile-topbar-renderer#header-bar, ytm-pivot-bar
 ytm-info-panel-container-renderer, .ytmDrawerLayoutContainerDrawerLayout, ytm-chip-cloud-renderer, .chip-bar, ytm-feed-filter-chip-bar-renderer {
   background: #000 !important; background-color: #000 !important; box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important;
 }
+.feed-nudge-content-wrapper, ytm-feed-nudge-renderer .feed-nudge-content-wrapper { background: #000 !important; border: 2px solid var(--sm-bouton-bord) !important; box-shadow: none !important; }
 }
 
 /*@@ anime-sama-fix @@*/
