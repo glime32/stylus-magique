@@ -3,6 +3,11 @@
 Stylus n'installe une mise à jour que si le numéro `@version` change. Il monte à chaque modification :
 le dernier chiffre pour une correction, celui du milieu pour une nouveauté.
 
+## 1.2.7 et Stylus étude 1.1.5 · YouTube sur téléphone · 20 novembre 2026
+
+Corrigé :
+- YouTube version téléphone (m.youtube.com) : les barres du haut et du bas, le panneau d'infos et le menu étaient gris très foncé. Ils passent en noir pur, comme sur ordinateur.
+
 ## 1.2.6 et Stylus étude 1.1.4 · Adresse Amazon · 20 novembre 2026
 
 Corrigé :
